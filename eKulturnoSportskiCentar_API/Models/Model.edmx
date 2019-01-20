@@ -1,0 +1,1453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Centar">
+          <Key>
+            <PropertyRef Name="CentarID" />
+          </Key>
+          <Property Name="CentarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DodatnaOprema">
+          <Key>
+            <PropertyRef Name="DodatnaOpremaID" />
+          </Key>
+          <Property Name="DodatnaOpremaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cijena" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Slika" Type="varbinary(max)" />
+          <Property Name="SlikaThumb" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Dogadjaj">
+          <Key>
+            <PropertyRef Name="DogadjajID" />
+          </Key>
+          <Property Name="DogadjajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VrstaDogadjajaID" Type="int" />
+          <Property Name="BrojMijesta" Type="int" />
+          <Property Name="JavniDogadjaj" Type="bit" />
+          <Property Name="Plakat" Type="varbinary(max)" />
+          <Property Name="PlakatThumb" Type="varbinary(max)" />
+          <Property Name="CijenaUlaza" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TerminID" Type="int" />
+          <Property Name="KorisnikID" Type="int" />
+          <Property Name="Odobrena" Type="bit" />
+        </EntityType>
+        <EntityType Name="DogadjajDodatnaOprema">
+          <Key>
+            <PropertyRef Name="DogadjajDodatnaOpremaID" />
+          </Key>
+          <Property Name="DogadjajDodatnaOpremaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DogadjajID" Type="int" />
+          <Property Name="DodatnaOpremaID" Type="int" />
+        </EntityType>
+        <EntityType Name="DogadjajOcjena">
+          <Key>
+            <PropertyRef Name="DogadjajOcjenaID" />
+          </Key>
+          <Property Name="DogadjajOcjenaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnikID" Type="int" />
+          <Property Name="OcjenaID" Type="int" />
+          <Property Name="DogadjajID" Type="int" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="KorisnickoIme" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LozinkaHash" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LozinkaSalt" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="KorisnikDogadjaj">
+          <Key>
+            <PropertyRef Name="KorisnikDogadjajID" />
+          </Key>
+          <Property Name="KorisnikDogadjajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnikID" Type="int" />
+          <Property Name="DogadjajID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KorisnikUloga">
+          <Key>
+            <PropertyRef Name="KorisnikUlogaID" />
+          </Key>
+          <Property Name="KorisnikUlogaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnikID" Type="int" Nullable="false" />
+          <Property Name="UlogaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocjena">
+          <Key>
+            <PropertyRef Name="OcjenaID" />
+          </Key>
+          <Property Name="OcjenaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="OcjenaBroj" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oprema">
+          <Key>
+            <PropertyRef Name="OpremaID" />
+          </Key>
+          <Property Name="OpremaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Kolicina" Type="int" Nullable="false" />
+          <Property Name="SalaID" Type="int" Nullable="false" />
+          <Property Name="Slika" Type="varbinary(max)" />
+          <Property Name="SlikaThumb" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="SalaID" />
+          </Key>
+          <Property Name="SalaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CentarID" Type="int" />
+        </EntityType>
+        <EntityType Name="Termin">
+          <Key>
+            <PropertyRef Name="TerminID" />
+          </Key>
+          <Property Name="TerminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="date" Nullable="false" />
+          <Property Name="Pocetak" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Kraj" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Rezervisan" Type="bit" Nullable="false" />
+          <Property Name="SalaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Uloga">
+          <Key>
+            <PropertyRef Name="UlogaID" />
+          </Key>
+          <Property Name="UlogaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VrstaDogadjaja">
+          <Key>
+            <PropertyRef Name="VrstaDogadjajaID" />
+          </Key>
+          <Property Name="VrstaDogadjajaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Dogadjaj_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="Dogadjaj">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogadjaj_Termin">
+          <End Role="Termin" Type="Self.Termin" Multiplicity="0..1" />
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Termin">
+              <PropertyRef Name="TerminID" />
+            </Principal>
+            <Dependent Role="Dogadjaj">
+              <PropertyRef Name="TerminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogadjaj_VrstaDogadjaja">
+          <End Role="VrstaDogadjaja" Type="Self.VrstaDogadjaja" Multiplicity="0..1" />
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaDogadjaja">
+              <PropertyRef Name="VrstaDogadjajaID" />
+            </Principal>
+            <Dependent Role="Dogadjaj">
+              <PropertyRef Name="VrstaDogadjajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajDodatnaOprema_DodatnaOprema">
+          <End Role="DodatnaOprema" Type="Self.DodatnaOprema" Multiplicity="0..1" />
+          <End Role="DogadjajDodatnaOprema" Type="Self.DogadjajDodatnaOprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DodatnaOprema">
+              <PropertyRef Name="DodatnaOpremaID" />
+            </Principal>
+            <Dependent Role="DogadjajDodatnaOprema">
+              <PropertyRef Name="DodatnaOpremaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajDodatnaOprema_Dogadjaj">
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="0..1" />
+          <End Role="DogadjajDodatnaOprema" Type="Self.DogadjajDodatnaOprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Principal>
+            <Dependent Role="DogadjajDodatnaOprema">
+              <PropertyRef Name="DogadjajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajOcjena_Dogadjaj">
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="0..1" />
+          <End Role="DogadjajOcjena" Type="Self.DogadjajOcjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Principal>
+            <Dependent Role="DogadjajOcjena">
+              <PropertyRef Name="DogadjajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajOcjena_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="DogadjajOcjena" Type="Self.DogadjajOcjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="DogadjajOcjena">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajOcjena_Ocjena">
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="0..1" />
+          <End Role="DogadjajOcjena" Type="Self.DogadjajOcjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ocjena">
+              <PropertyRef Name="OcjenaID" />
+            </Principal>
+            <Dependent Role="DogadjajOcjena">
+              <PropertyRef Name="OcjenaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikDogadjajID_Dogadjaj">
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="1" />
+          <End Role="KorisnikDogadjaj" Type="Self.KorisnikDogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Principal>
+            <Dependent Role="KorisnikDogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikDogadjajID_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="KorisnikDogadjaj" Type="Self.KorisnikDogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="KorisnikDogadjaj">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikUloga_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="KorisnikUloga" Type="Self.KorisnikUloga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="KorisnikUloga">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikUloga_Uloga">
+          <End Role="Uloga" Type="Self.Uloga" Multiplicity="1" />
+          <End Role="KorisnikUloga" Type="Self.KorisnikUloga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="UlogaID" />
+            </Principal>
+            <Dependent Role="KorisnikUloga">
+              <PropertyRef Name="UlogaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oprema_Sala">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
+          <End Role="Oprema" Type="Self.Oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="SalaID" />
+            </Principal>
+            <Dependent Role="Oprema">
+              <PropertyRef Name="SalaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Centar">
+          <End Role="Centar" Type="Self.Centar" Multiplicity="0..1" />
+          <End Role="Sala" Type="Self.Sala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centar">
+              <PropertyRef Name="CentarID" />
+            </Principal>
+            <Dependent Role="Sala">
+              <PropertyRef Name="CentarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Sala">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="SalaID" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="SalaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="esp_Centar_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Centar_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="centarID" Type="int" Mode="In" />
+          <Parameter Name="naziv" Type="nvarchar" Mode="In" />
+          <Parameter Name="adresa" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefon" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Dogadjaj_JavniDogadjaji_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Dogadjaj_SelectListaPrisutnih" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dogadjajID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_DogadjajDodatnaOprema_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dogadjajID" Type="int" Mode="In" />
+          <Parameter Name="dodatnaOpremaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_DogadjajiZaAdministraciju_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_DogadjajiZaPrisustvovati_SelectByKorisnik" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="korisnikID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_GetZadnjiDatumTermina_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Korisnici_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ime" Type="nvarchar" Mode="In" />
+          <Parameter Name="prezime" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefon" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="korisnickoIme" Type="nvarchar" Mode="In" />
+          <Parameter Name="lozinkaSalt" Type="nvarchar" Mode="In" />
+          <Parameter Name="lozinkaHash" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Korisnici_SelectByImePrezime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ImePrezime" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_KorisniciUloge_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="korisnikID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_KorisniciUloge_GetByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="korisnikID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_KorisniciUloge_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikID" Type="int" Mode="In" />
+          <Parameter Name="UlogaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Korisnik_SelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="korisnikID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Korisnik_SelectByUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Korisnik_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KorisnikID" Type="int" Mode="In" />
+          <Parameter Name="Ime" Type="nvarchar" Mode="In" />
+          <Parameter Name="Prezime" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefon" Type="nvarchar" Mode="In" />
+          <Parameter Name="KorisnickoIme" Type="nvarchar" Mode="In" />
+          <Parameter Name="LozinkaSalt" Type="nvarchar" Mode="In" />
+          <Parameter Name="LozinkaHash" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="esp_MojiDogadjaji_SelectByKorisnik" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="korisniID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Oprema_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="salaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Oprema_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opremaId" Type="int" Mode="In" />
+          <Parameter Name="naziv" Type="nvarchar" Mode="In" />
+          <Parameter Name="kolicina" Type="int" Mode="In" />
+          <Parameter Name="salaId" Type="int" Mode="In" />
+          <Parameter Name="slika" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="slikaThumb" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="esp_Sala_GetByCentar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="centarID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Sala_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="salaID" Type="int" Mode="In" />
+          <Parameter Name="naziv" Type="nvarchar" Mode="In" />
+          <Parameter Name="centarID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Termin_Change" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminID" Type="int" Mode="In" />
+          <Parameter Name="rezervisan" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Termin_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="datum" Type="date" Mode="In" />
+          <Parameter Name="salaID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Centar" EntityType="Self.Centar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DodatnaOprema" EntityType="Self.DodatnaOprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogadjaj" EntityType="Self.Dogadjaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DogadjajDodatnaOprema" EntityType="Self.DogadjajDodatnaOprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DogadjajOcjena" EntityType="Self.DogadjajOcjena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KorisnikDogadjaj" EntityType="Self.KorisnikDogadjaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KorisnikUloga" EntityType="Self.KorisnikUloga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocjena" EntityType="Self.Ocjena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oprema" EntityType="Self.Oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Termin" EntityType="Self.Termin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uloga" EntityType="Self.Uloga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VrstaDogadjaja" EntityType="Self.VrstaDogadjaja" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Dogadjaj_Korisnik" Association="Self.FK_Dogadjaj_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogadjaj_Termin" Association="Self.FK_Dogadjaj_Termin">
+            <End Role="Termin" EntitySet="Termin" />
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogadjaj_VrstaDogadjaja" Association="Self.FK_Dogadjaj_VrstaDogadjaja">
+            <End Role="VrstaDogadjaja" EntitySet="VrstaDogadjaja" />
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajDodatnaOprema_DodatnaOprema" Association="Self.FK_DogadjajDodatnaOprema_DodatnaOprema">
+            <End Role="DodatnaOprema" EntitySet="DodatnaOprema" />
+            <End Role="DogadjajDodatnaOprema" EntitySet="DogadjajDodatnaOprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajDodatnaOprema_Dogadjaj" Association="Self.FK_DogadjajDodatnaOprema_Dogadjaj">
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+            <End Role="DogadjajDodatnaOprema" EntitySet="DogadjajDodatnaOprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajOcjena_Dogadjaj" Association="Self.FK_DogadjajOcjena_Dogadjaj">
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+            <End Role="DogadjajOcjena" EntitySet="DogadjajOcjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajOcjena_Korisnik" Association="Self.FK_DogadjajOcjena_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="DogadjajOcjena" EntitySet="DogadjajOcjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajOcjena_Ocjena" Association="Self.FK_DogadjajOcjena_Ocjena">
+            <End Role="Ocjena" EntitySet="Ocjena" />
+            <End Role="DogadjajOcjena" EntitySet="DogadjajOcjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikDogadjajID_Dogadjaj" Association="Self.FK_KorisnikDogadjajID_Dogadjaj">
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+            <End Role="KorisnikDogadjaj" EntitySet="KorisnikDogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikDogadjajID_Korisnik" Association="Self.FK_KorisnikDogadjajID_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="KorisnikDogadjaj" EntitySet="KorisnikDogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikUloga_Korisnik" Association="Self.FK_KorisnikUloga_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="KorisnikUloga" EntitySet="KorisnikUloga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikUloga_Uloga" Association="Self.FK_KorisnikUloga_Uloga">
+            <End Role="Uloga" EntitySet="Uloga" />
+            <End Role="KorisnikUloga" EntitySet="KorisnikUloga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oprema_Sala" Association="Self.FK_Oprema_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Oprema" EntitySet="Oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Centar" Association="Self.FK_Sala_Centar">
+            <End Role="Centar" EntitySet="Centar" />
+            <End Role="Sala" EntitySet="Sala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Sala" Association="Self.FK_Termin_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Centar">
+          <Key>
+            <PropertyRef Name="CentarID" />
+          </Key>
+          <Property Name="CentarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sala" Relationship="Self.FK_Sala_Centar" FromRole="Centar" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="DodatnaOprema">
+          <Key>
+            <PropertyRef Name="DodatnaOpremaID" />
+          </Key>
+          <Property Name="DodatnaOpremaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cijena" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SlikaThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="DogadjajDodatnaOprema" Relationship="Self.FK_DogadjajDodatnaOprema_DodatnaOprema" FromRole="DodatnaOprema" ToRole="DogadjajDodatnaOprema" />
+        </EntityType>
+        <EntityType Name="Dogadjaj">
+          <Key>
+            <PropertyRef Name="DogadjajID" />
+          </Key>
+          <Property Name="DogadjajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VrstaDogadjajaID" Type="Int32" />
+          <Property Name="BrojMijesta" Type="Int32" />
+          <Property Name="JavniDogadjaj" Type="Boolean" />
+          <Property Name="Plakat" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PlakatThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CijenaUlaza" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TerminID" Type="Int32" />
+          <Property Name="KorisnikID" Type="Int32" />
+          <Property Name="Odobrena" Type="Boolean" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Dogadjaj_Korisnik" FromRole="Dogadjaj" ToRole="Korisnik" />
+          <NavigationProperty Name="Termin" Relationship="Self.FK_Dogadjaj_Termin" FromRole="Dogadjaj" ToRole="Termin" />
+          <NavigationProperty Name="VrstaDogadjaja" Relationship="Self.FK_Dogadjaj_VrstaDogadjaja" FromRole="Dogadjaj" ToRole="VrstaDogadjaja" />
+          <NavigationProperty Name="DogadjajDodatnaOprema" Relationship="Self.FK_DogadjajDodatnaOprema_Dogadjaj" FromRole="Dogadjaj" ToRole="DogadjajDodatnaOprema" />
+          <NavigationProperty Name="DogadjajOcjena" Relationship="Self.FK_DogadjajOcjena_Dogadjaj" FromRole="Dogadjaj" ToRole="DogadjajOcjena" />
+          <NavigationProperty Name="KorisnikDogadjaj" Relationship="Self.FK_KorisnikDogadjajID_Dogadjaj" FromRole="Dogadjaj" ToRole="KorisnikDogadjaj" />
+        </EntityType>
+        <EntityType Name="DogadjajDodatnaOprema">
+          <Key>
+            <PropertyRef Name="DogadjajDodatnaOpremaID" />
+          </Key>
+          <Property Name="DogadjajDodatnaOpremaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DogadjajID" Type="Int32" />
+          <Property Name="DodatnaOpremaID" Type="Int32" />
+          <NavigationProperty Name="DodatnaOprema" Relationship="Self.FK_DogadjajDodatnaOprema_DodatnaOprema" FromRole="DogadjajDodatnaOprema" ToRole="DodatnaOprema" />
+          <NavigationProperty Name="Dogadjaj" Relationship="Self.FK_DogadjajDodatnaOprema_Dogadjaj" FromRole="DogadjajDodatnaOprema" ToRole="Dogadjaj" />
+        </EntityType>
+        <EntityType Name="DogadjajOcjena">
+          <Key>
+            <PropertyRef Name="DogadjajOcjenaID" />
+          </Key>
+          <Property Name="DogadjajOcjenaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnikID" Type="Int32" />
+          <Property Name="OcjenaID" Type="Int32" />
+          <Property Name="DogadjajID" Type="Int32" />
+          <NavigationProperty Name="Dogadjaj" Relationship="Self.FK_DogadjajOcjena_Dogadjaj" FromRole="DogadjajOcjena" ToRole="Dogadjaj" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_DogadjajOcjena_Korisnik" FromRole="DogadjajOcjena" ToRole="Korisnik" />
+          <NavigationProperty Name="Ocjena" Relationship="Self.FK_DogadjajOcjena_Ocjena" FromRole="DogadjajOcjena" ToRole="Ocjena" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KorisnickoIme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LozinkaHash" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LozinkaSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Dogadjaj" Relationship="Self.FK_Dogadjaj_Korisnik" FromRole="Korisnik" ToRole="Dogadjaj" />
+          <NavigationProperty Name="DogadjajOcjena" Relationship="Self.FK_DogadjajOcjena_Korisnik" FromRole="Korisnik" ToRole="DogadjajOcjena" />
+          <NavigationProperty Name="KorisnikDogadjaj" Relationship="Self.FK_KorisnikDogadjajID_Korisnik" FromRole="Korisnik" ToRole="KorisnikDogadjaj" />
+          <NavigationProperty Name="KorisnikUloga" Relationship="Self.FK_KorisnikUloga_Korisnik" FromRole="Korisnik" ToRole="KorisnikUloga" />
+        </EntityType>
+        <EntityType Name="KorisnikDogadjaj">
+          <Key>
+            <PropertyRef Name="KorisnikDogadjajID" />
+          </Key>
+          <Property Name="KorisnikDogadjajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnikID" Type="Int32" />
+          <Property Name="DogadjajID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dogadjaj" Relationship="Self.FK_KorisnikDogadjajID_Dogadjaj" FromRole="KorisnikDogadjaj" ToRole="Dogadjaj" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_KorisnikDogadjajID_Korisnik" FromRole="KorisnikDogadjaj" ToRole="Korisnik" />
+        </EntityType>
+        <EntityType Name="KorisnikUloga">
+          <Key>
+            <PropertyRef Name="KorisnikUlogaID" />
+          </Key>
+          <Property Name="KorisnikUlogaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" />
+          <Property Name="UlogaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_KorisnikUloga_Korisnik" FromRole="KorisnikUloga" ToRole="Korisnik" />
+          <NavigationProperty Name="Uloga" Relationship="Self.FK_KorisnikUloga_Uloga" FromRole="KorisnikUloga" ToRole="Uloga" />
+        </EntityType>
+        <EntityType Name="Ocjena">
+          <Key>
+            <PropertyRef Name="OcjenaID" />
+          </Key>
+          <Property Name="OcjenaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OcjenaBroj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DogadjajOcjena" Relationship="Self.FK_DogadjajOcjena_Ocjena" FromRole="Ocjena" ToRole="DogadjajOcjena" />
+        </EntityType>
+        <EntityType Name="Oprema">
+          <Key>
+            <PropertyRef Name="OpremaID" />
+          </Key>
+          <Property Name="OpremaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kolicina" Type="Int32" Nullable="false" />
+          <Property Name="SalaID" Type="Int32" Nullable="false" />
+          <Property Name="Slika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SlikaThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Sala" Relationship="Self.FK_Oprema_Sala" FromRole="Oprema" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="SalaID" />
+          </Key>
+          <Property Name="SalaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CentarID" Type="Int32" />
+          <NavigationProperty Name="Centar" Relationship="Self.FK_Sala_Centar" FromRole="Sala" ToRole="Centar" />
+          <NavigationProperty Name="Oprema" Relationship="Self.FK_Oprema_Sala" FromRole="Sala" ToRole="Oprema" />
+          <NavigationProperty Name="Termin" Relationship="Self.FK_Termin_Sala" FromRole="Sala" ToRole="Termin" />
+        </EntityType>
+        <EntityType Name="Termin">
+          <Key>
+            <PropertyRef Name="TerminID" />
+          </Key>
+          <Property Name="TerminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pocetak" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Kraj" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Rezervisan" Type="Boolean" Nullable="false" />
+          <Property Name="SalaID" Type="Int32" />
+          <NavigationProperty Name="Dogadjaj" Relationship="Self.FK_Dogadjaj_Termin" FromRole="Termin" ToRole="Dogadjaj" />
+          <NavigationProperty Name="Sala" Relationship="Self.FK_Termin_Sala" FromRole="Termin" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="Uloga">
+          <Key>
+            <PropertyRef Name="UlogaID" />
+          </Key>
+          <Property Name="UlogaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="KorisnikUloga" Relationship="Self.FK_KorisnikUloga_Uloga" FromRole="Uloga" ToRole="KorisnikUloga" />
+        </EntityType>
+        <EntityType Name="VrstaDogadjaja">
+          <Key>
+            <PropertyRef Name="VrstaDogadjajaID" />
+          </Key>
+          <Property Name="VrstaDogadjajaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dogadjaj" Relationship="Self.FK_Dogadjaj_VrstaDogadjaja" FromRole="VrstaDogadjaja" ToRole="Dogadjaj" />
+        </EntityType>
+        <Association Name="FK_Sala_Centar">
+          <End Role="Centar" Type="Self.Centar" Multiplicity="0..1" />
+          <End Role="Sala" Type="Self.Sala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Centar">
+              <PropertyRef Name="CentarID" />
+            </Principal>
+            <Dependent Role="Sala">
+              <PropertyRef Name="CentarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajDodatnaOprema_DodatnaOprema">
+          <End Role="DodatnaOprema" Type="Self.DodatnaOprema" Multiplicity="0..1" />
+          <End Role="DogadjajDodatnaOprema" Type="Self.DogadjajDodatnaOprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DodatnaOprema">
+              <PropertyRef Name="DodatnaOpremaID" />
+            </Principal>
+            <Dependent Role="DogadjajDodatnaOprema">
+              <PropertyRef Name="DodatnaOpremaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogadjaj_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="Dogadjaj">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogadjaj_Termin">
+          <End Role="Termin" Type="Self.Termin" Multiplicity="0..1" />
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Termin">
+              <PropertyRef Name="TerminID" />
+            </Principal>
+            <Dependent Role="Dogadjaj">
+              <PropertyRef Name="TerminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogadjaj_VrstaDogadjaja">
+          <End Role="VrstaDogadjaja" Type="Self.VrstaDogadjaja" Multiplicity="0..1" />
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaDogadjaja">
+              <PropertyRef Name="VrstaDogadjajaID" />
+            </Principal>
+            <Dependent Role="Dogadjaj">
+              <PropertyRef Name="VrstaDogadjajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajDodatnaOprema_Dogadjaj">
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="0..1" />
+          <End Role="DogadjajDodatnaOprema" Type="Self.DogadjajDodatnaOprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Principal>
+            <Dependent Role="DogadjajDodatnaOprema">
+              <PropertyRef Name="DogadjajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajOcjena_Dogadjaj">
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="0..1" />
+          <End Role="DogadjajOcjena" Type="Self.DogadjajOcjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Principal>
+            <Dependent Role="DogadjajOcjena">
+              <PropertyRef Name="DogadjajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikDogadjajID_Dogadjaj">
+          <End Role="Dogadjaj" Type="Self.Dogadjaj" Multiplicity="1" />
+          <End Role="KorisnikDogadjaj" Type="Self.KorisnikDogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Principal>
+            <Dependent Role="KorisnikDogadjaj">
+              <PropertyRef Name="DogadjajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajOcjena_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="DogadjajOcjena" Type="Self.DogadjajOcjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="DogadjajOcjena">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DogadjajOcjena_Ocjena">
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="0..1" />
+          <End Role="DogadjajOcjena" Type="Self.DogadjajOcjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ocjena">
+              <PropertyRef Name="OcjenaID" />
+            </Principal>
+            <Dependent Role="DogadjajOcjena">
+              <PropertyRef Name="OcjenaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikDogadjajID_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="KorisnikDogadjaj" Type="Self.KorisnikDogadjaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="KorisnikDogadjaj">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikUloga_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="KorisnikUloga" Type="Self.KorisnikUloga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="KorisnikUloga">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikUloga_Uloga">
+          <End Role="Uloga" Type="Self.Uloga" Multiplicity="1" />
+          <End Role="KorisnikUloga" Type="Self.KorisnikUloga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="UlogaID" />
+            </Principal>
+            <Dependent Role="KorisnikUloga">
+              <PropertyRef Name="UlogaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oprema_Sala">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
+          <End Role="Oprema" Type="Self.Oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="SalaID" />
+            </Principal>
+            <Dependent Role="Oprema">
+              <PropertyRef Name="SalaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Termin_Sala">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+          <End Role="Termin" Type="Self.Termin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="SalaID" />
+            </Principal>
+            <Dependent Role="Termin">
+              <PropertyRef Name="SalaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eKulturnoSportskiCentar_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Centar" EntityType="Self.Centar" />
+          <EntitySet Name="DodatnaOprema" EntityType="Self.DodatnaOprema" />
+          <EntitySet Name="Dogadjaj" EntityType="Self.Dogadjaj" />
+          <EntitySet Name="DogadjajDodatnaOprema" EntityType="Self.DogadjajDodatnaOprema" />
+          <EntitySet Name="DogadjajOcjena" EntityType="Self.DogadjajOcjena" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+          <EntitySet Name="KorisnikDogadjaj" EntityType="Self.KorisnikDogadjaj" />
+          <EntitySet Name="KorisnikUloga" EntityType="Self.KorisnikUloga" />
+          <EntitySet Name="Ocjena" EntityType="Self.Ocjena" />
+          <EntitySet Name="Oprema" EntityType="Self.Oprema" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" />
+          <EntitySet Name="Termin" EntityType="Self.Termin" />
+          <EntitySet Name="Uloga" EntityType="Self.Uloga" />
+          <EntitySet Name="VrstaDogadjaja" EntityType="Self.VrstaDogadjaja" />
+          <AssociationSet Name="FK_Sala_Centar" Association="Self.FK_Sala_Centar">
+            <End Role="Centar" EntitySet="Centar" />
+            <End Role="Sala" EntitySet="Sala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajDodatnaOprema_DodatnaOprema" Association="Self.FK_DogadjajDodatnaOprema_DodatnaOprema">
+            <End Role="DodatnaOprema" EntitySet="DodatnaOprema" />
+            <End Role="DogadjajDodatnaOprema" EntitySet="DogadjajDodatnaOprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogadjaj_Korisnik" Association="Self.FK_Dogadjaj_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogadjaj_Termin" Association="Self.FK_Dogadjaj_Termin">
+            <End Role="Termin" EntitySet="Termin" />
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogadjaj_VrstaDogadjaja" Association="Self.FK_Dogadjaj_VrstaDogadjaja">
+            <End Role="VrstaDogadjaja" EntitySet="VrstaDogadjaja" />
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajDodatnaOprema_Dogadjaj" Association="Self.FK_DogadjajDodatnaOprema_Dogadjaj">
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+            <End Role="DogadjajDodatnaOprema" EntitySet="DogadjajDodatnaOprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajOcjena_Dogadjaj" Association="Self.FK_DogadjajOcjena_Dogadjaj">
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+            <End Role="DogadjajOcjena" EntitySet="DogadjajOcjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikDogadjajID_Dogadjaj" Association="Self.FK_KorisnikDogadjajID_Dogadjaj">
+            <End Role="Dogadjaj" EntitySet="Dogadjaj" />
+            <End Role="KorisnikDogadjaj" EntitySet="KorisnikDogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajOcjena_Korisnik" Association="Self.FK_DogadjajOcjena_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="DogadjajOcjena" EntitySet="DogadjajOcjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DogadjajOcjena_Ocjena" Association="Self.FK_DogadjajOcjena_Ocjena">
+            <End Role="Ocjena" EntitySet="Ocjena" />
+            <End Role="DogadjajOcjena" EntitySet="DogadjajOcjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikDogadjajID_Korisnik" Association="Self.FK_KorisnikDogadjajID_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="KorisnikDogadjaj" EntitySet="KorisnikDogadjaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikUloga_Korisnik" Association="Self.FK_KorisnikUloga_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="KorisnikUloga" EntitySet="KorisnikUloga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikUloga_Uloga" Association="Self.FK_KorisnikUloga_Uloga">
+            <End Role="Uloga" EntitySet="Uloga" />
+            <End Role="KorisnikUloga" EntitySet="KorisnikUloga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oprema_Sala" Association="Self.FK_Oprema_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Oprema" EntitySet="Oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Termin_Sala" Association="Self.FK_Termin_Sala">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Termin" EntitySet="Termin" />
+          </AssociationSet>
+          <FunctionImport Name="esp_Centar_SelectAll" ReturnType="Collection(Model.Centar_Result)" />
+          <FunctionImport Name="esp_Centar_Update">
+            <Parameter Name="centarID" Mode="In" Type="Int32" />
+            <Parameter Name="naziv" Mode="In" Type="String" />
+            <Parameter Name="adresa" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="telefon" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Sala_GetByCentar" ReturnType="Collection(Model.Sala_Result)">
+          <Parameter Name="centarID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Sala_Update">
+            <Parameter Name="salaID" Mode="In" Type="Int32" />
+            <Parameter Name="naziv" Mode="In" Type="String" />
+            <Parameter Name="centarID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Korisnici_SelectByImePrezime" ReturnType="Collection(Model.Korisnici_Result)">
+          <Parameter Name="ImePrezime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_KorisniciUloge_Delete">
+          <Parameter Name="korisnikID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_KorisniciUloge_Insert">
+            <Parameter Name="KorisnikID" Mode="In" Type="Int32" />
+            <Parameter Name="UlogaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Korisnik_SelectById" ReturnType="Collection(Model.Korisnici_Result1)">
+          <Parameter Name="korisnikID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Korisnik_SelectByUsername" ReturnType="Collection(Model.Korisnici_Result1)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Korisnik_Update">
+            <Parameter Name="KorisnikID" Mode="In" Type="Int32" />
+            <Parameter Name="Ime" Mode="In" Type="String" />
+            <Parameter Name="Prezime" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefon" Mode="In" Type="String" />
+            <Parameter Name="KorisnickoIme" Mode="In" Type="String" />
+            <Parameter Name="LozinkaSalt" Mode="In" Type="String" />
+            <Parameter Name="LozinkaHash" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Korisnici_Insert" ReturnType="Collection(Decimal)">
+            <Parameter Name="ime" Mode="In" Type="String" />
+            <Parameter Name="prezime" Mode="In" Type="String" />
+            <Parameter Name="telefon" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="korisnickoIme" Mode="In" Type="String" />
+            <Parameter Name="lozinkaSalt" Mode="In" Type="String" />
+            <Parameter Name="lozinkaHash" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_KorisniciUloge_GetByUserID" ReturnType="Collection(Model.KorisniciUloge_Result)">
+          <Parameter Name="korisnikID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Termin_Change">
+            <Parameter Name="terminID" Mode="In" Type="Int32" />
+            <Parameter Name="rezervisan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Termin_Select" ReturnType="Collection(Model.Termin_Result)">
+            <Parameter Name="datum" Mode="In" Type="DateTime" />
+            <Parameter Name="salaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_GetZadnjiDatumTermina_Select" ReturnType="Collection(DateTime)" />
+          <FunctionImport Name="esp_DogadjajDodatnaOprema_Insert">
+            <Parameter Name="dogadjajID" Mode="In" Type="Int32" />
+            <Parameter Name="dodatnaOpremaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_MojiDogadjaji_SelectByKorisnik" ReturnType="Collection(Model.MojiDogadjaji_Result)">
+          <Parameter Name="korisniID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Dogadjaj_JavniDogadjaji_Select" ReturnType="Collection(Model.Dogadjaji_Result)" />
+          <FunctionImport Name="esp_Dogadjaj_SelectListaPrisutnih" ReturnType="Collection(Model.Lista_Result)">
+          <Parameter Name="dogadjajID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_DogadjajiZaAdministraciju_Select" ReturnType="Collection(Model.DogadjajiZaAdministraciju_Result)" />
+          <FunctionImport Name="esp_Oprema_Select" ReturnType="Collection(Model.Oprema_Result)">
+          <Parameter Name="salaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Oprema_Update">
+            <Parameter Name="opremaId" Mode="In" Type="Int32" />
+            <Parameter Name="naziv" Mode="In" Type="String" />
+            <Parameter Name="kolicina" Mode="In" Type="Int32" />
+            <Parameter Name="salaId" Mode="In" Type="Int32" />
+            <Parameter Name="slika" Mode="In" Type="Binary" />
+            <Parameter Name="slikaThumb" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="esp_DogadjajiZaPrisustvovati_SelectByKorisnik" ReturnType="Collection(Model.DogadjajiZaPrisustvovati_Result)">
+            <Parameter Name="korisnikID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Centar_Result">
+          <Property Type="Int32" Name="CentarID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Adresa" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Sala_Result">
+          <Property Type="Int32" Name="SalaID" Nullable="false" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Centar" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Korisnici_Result">
+          <Property Type="Int32" Name="KorisnikID" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Korisnici_Result1">
+          <Property Type="Int32" Name="KorisnikID" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KorisniciUloge_Result">
+          <Property Type="Int32" Name="KorisnikUlogaID" Nullable="false" />
+          <Property Type="Int32" Name="KorisnikID" Nullable="false" />
+          <Property Type="Int32" Name="UlogaID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Termin_Result">
+          <Property Type="Int32" Name="TerminID" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="Time" Name="Pocetak" Nullable="false" />
+          <Property Type="Time" Name="Kraj" Nullable="false" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="MojiDogadjaji_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="Plakat" Nullable="true" />
+          <Property Type="Boolean" Name="Odobrena" Nullable="true" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="String" Name="Satnica" Nullable="true" MaxLength="63" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SalaID" Nullable="false" />
+          <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Dogadjaji_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="PlakatThumb" Nullable="true" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="String" Name="Satnica" Nullable="true" MaxLength="63" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SalaID" Nullable="false" />
+          <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Lista_Result">
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="201" />
+          <Property Type="Int32" Name="KorisnikID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="DogadjajiZaAdministraciju_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="false" />
+          <Property Type="Boolean" Name="JavniDogadjaj" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="String" Name="Satnica" Nullable="true" MaxLength="63" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SalaID" Nullable="false" />
+          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
+        </ComplexType>
+        <ComplexType Name="Oprema_Result">
+          <Property Type="Int32" Name="OpremaId" Nullable="false" />
+          <Property Type="String" Name="Oprema" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Kolicina" Nullable="false" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_DogadjajiZaPrisustvovati_SelectByKorisnik_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="TerminId" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="DogadjajiZaPrisustvovati_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="TerminId" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="eKulturnoSportskiCentar_Entities">
+          <EntitySetMapping Name="Centar">
+            <EntityTypeMapping TypeName="Model.Centar">
+              <MappingFragment StoreEntitySet="Centar">
+                <ScalarProperty Name="CentarID" ColumnName="CentarID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DodatnaOprema">
+            <EntityTypeMapping TypeName="Model.DodatnaOprema">
+              <MappingFragment StoreEntitySet="DodatnaOprema">
+                <ScalarProperty Name="DodatnaOpremaID" ColumnName="DodatnaOpremaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogadjaj">
+            <EntityTypeMapping TypeName="Model.Dogadjaj">
+              <MappingFragment StoreEntitySet="Dogadjaj">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+                <ScalarProperty Name="BrojMijesta" ColumnName="BrojMijesta" />
+                <ScalarProperty Name="JavniDogadjaj" ColumnName="JavniDogadjaj" />
+                <ScalarProperty Name="Plakat" ColumnName="Plakat" />
+                <ScalarProperty Name="PlakatThumb" ColumnName="PlakatThumb" />
+                <ScalarProperty Name="CijenaUlaza" ColumnName="CijenaUlaza" />
+                <ScalarProperty Name="TerminID" ColumnName="TerminID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Odobrena" ColumnName="Odobrena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DogadjajDodatnaOprema">
+            <EntityTypeMapping TypeName="Model.DogadjajDodatnaOprema">
+              <MappingFragment StoreEntitySet="DogadjajDodatnaOprema">
+                <ScalarProperty Name="DogadjajDodatnaOpremaID" ColumnName="DogadjajDodatnaOpremaID" />
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="DodatnaOpremaID" ColumnName="DodatnaOpremaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DogadjajOcjena">
+            <EntityTypeMapping TypeName="Model.DogadjajOcjena">
+              <MappingFragment StoreEntitySet="DogadjajOcjena">
+                <ScalarProperty Name="DogadjajOcjenaID" ColumnName="DogadjajOcjenaID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="OcjenaID" ColumnName="OcjenaID" />
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisnik">
+            <EntityTypeMapping TypeName="Model.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KorisnikDogadjaj">
+            <EntityTypeMapping TypeName="Model.KorisnikDogadjaj">
+              <MappingFragment StoreEntitySet="KorisnikDogadjaj">
+                <ScalarProperty Name="KorisnikDogadjajID" ColumnName="KorisnikDogadjajID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KorisnikUloga">
+            <EntityTypeMapping TypeName="Model.KorisnikUloga">
+              <MappingFragment StoreEntitySet="KorisnikUloga">
+                <ScalarProperty Name="KorisnikUlogaID" ColumnName="KorisnikUlogaID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="UlogaID" ColumnName="UlogaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocjena">
+            <EntityTypeMapping TypeName="Model.Ocjena">
+              <MappingFragment StoreEntitySet="Ocjena">
+                <ScalarProperty Name="OcjenaID" ColumnName="OcjenaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="OcjenaBroj" ColumnName="OcjenaBroj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oprema">
+            <EntityTypeMapping TypeName="Model.Oprema">
+              <MappingFragment StoreEntitySet="Oprema">
+                <ScalarProperty Name="OpremaID" ColumnName="OpremaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sala">
+            <EntityTypeMapping TypeName="Model.Sala">
+              <MappingFragment StoreEntitySet="Sala">
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="CentarID" ColumnName="CentarID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Termin">
+            <EntityTypeMapping TypeName="Model.Termin">
+              <MappingFragment StoreEntitySet="Termin">
+                <ScalarProperty Name="TerminID" ColumnName="TerminID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Pocetak" ColumnName="Pocetak" />
+                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+                <ScalarProperty Name="Rezervisan" ColumnName="Rezervisan" />
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uloga">
+            <EntityTypeMapping TypeName="Model.Uloga">
+              <MappingFragment StoreEntitySet="Uloga">
+                <ScalarProperty Name="UlogaID" ColumnName="UlogaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VrstaDogadjaja">
+            <EntityTypeMapping TypeName="Model.VrstaDogadjaja">
+              <MappingFragment StoreEntitySet="VrstaDogadjaja">
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="esp_Centar_SelectAll" FunctionName="Model.Store.esp_Centar_SelectAll">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Centar_Result">
+                <ScalarProperty Name="CentarID" ColumnName="CentarID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Centar_Update" FunctionName="Model.Store.esp_Centar_Update" />
+          <FunctionImportMapping FunctionImportName="esp_Sala_GetByCentar" FunctionName="Model.Store.esp_Sala_GetByCentar">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Sala_Result">
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="Centar" ColumnName="Centar" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Sala_Update" FunctionName="Model.Store.esp_Sala_Update" />
+          <FunctionImportMapping FunctionImportName="esp_Korisnici_SelectByImePrezime" FunctionName="Model.Store.esp_Korisnici_SelectByImePrezime">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Korisnici_Result">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_KorisniciUloge_Delete" FunctionName="Model.Store.esp_KorisniciUloge_Delete" />
+          <FunctionImportMapping FunctionImportName="esp_KorisniciUloge_Insert" FunctionName="Model.Store.esp_KorisniciUloge_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_Korisnik_SelectById" FunctionName="Model.Store.esp_Korisnik_SelectById">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Korisnici_Result1">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Korisnik_SelectByUsername" FunctionName="Model.Store.esp_Korisnik_SelectByUsername">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Korisnici_Result1">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Korisnik_Update" FunctionName="Model.Store.esp_Korisnik_Update" />
+          <FunctionImportMapping FunctionImportName="esp_Korisnici_Insert" FunctionName="Model.Store.esp_Korisnici_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_KorisniciUloge_GetByUserID" FunctionName="Model.Store.esp_KorisniciUloge_GetByUserID">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.KorisniciUloge_Result">
+                <ScalarProperty Name="KorisnikUlogaID" ColumnName="KorisnikUlogaID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="UlogaID" ColumnName="UlogaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Termin_Change" FunctionName="Model.Store.esp_Termin_Change" />
+          <FunctionImportMapping FunctionImportName="esp_Termin_Select" FunctionName="Model.Store.esp_Termin_Select">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Termin_Result">
+                <ScalarProperty Name="TerminID" ColumnName="TerminID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Pocetak" ColumnName="Pocetak" />
+                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_GetZadnjiDatumTermina_Select" FunctionName="Model.Store.esp_GetZadnjiDatumTermina_Select" />
+          <FunctionImportMapping FunctionImportName="esp_DogadjajDodatnaOprema_Insert" FunctionName="Model.Store.esp_DogadjajDodatnaOprema_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_MojiDogadjaji_SelectByKorisnik" FunctionName="Model.Store.esp_MojiDogadjaji_SelectByKorisnik">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.MojiDogadjaji_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
+                <ScalarProperty Name="Plakat" ColumnName="Plakat" />
+                <ScalarProperty Name="Odobrena" ColumnName="Odobrena" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Satnica" ColumnName="Satnica" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Dogadjaj_JavniDogadjaji_Select" FunctionName="Model.Store.esp_Dogadjaj_JavniDogadjaji_Select">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Dogadjaji_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
+                <ScalarProperty Name="PlakatThumb" ColumnName="PlakatThumb" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Satnica" ColumnName="Satnica" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Dogadjaj_SelectListaPrisutnih" FunctionName="Model.Store.esp_Dogadjaj_SelectListaPrisutnih">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Lista_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_DogadjajiZaAdministraciju_Select" FunctionName="Model.Store.esp_DogadjajiZaAdministraciju_Select">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.DogadjajiZaAdministraciju_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+                <ScalarProperty Name="JavniDogadjaj" ColumnName="JavniDogadjaj" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Satnica" ColumnName="Satnica" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Oprema_Select" FunctionName="Model.Store.esp_Oprema_Select">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Oprema_Result">
+                <ScalarProperty Name="OpremaId" ColumnName="OpremaId" />
+                <ScalarProperty Name="Oprema" ColumnName="Oprema" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Oprema_Update" FunctionName="Model.Store.esp_Oprema_Update" />
+          <FunctionImportMapping FunctionImportName="esp_DogadjajiZaPrisustvovati_SelectByKorisnik" FunctionName="Model.Store.esp_DogadjajiZaPrisustvovati_SelectByKorisnik">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.DogadjajiZaPrisustvovati_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="TerminId" ColumnName="TerminId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

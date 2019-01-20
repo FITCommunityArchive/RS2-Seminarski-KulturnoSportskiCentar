@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18fb8c0d15d746619cd0aef0219762bb" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Centar" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DodatnaOprema" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Dogadjaj" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DogadjajDodatnaOprema" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DogadjajOcjena" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Korisnik" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KorisnikDogadjaj" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KorisnikUloga" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Ocjena" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Oprema" Width="1.5" PointX="3.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sala" Width="1.5" PointX="1.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Termin" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Uloga" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VrstaDogadjaja" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Sala_Centar" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DogadjajDodatnaOprema_DodatnaOprema" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Dogadjaj_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Dogadjaj_Termin" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Dogadjaj_VrstaDogadjaja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DogadjajDodatnaOprema_Dogadjaj" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DogadjajOcjena_Dogadjaj" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_KorisnikDogadjajID_Dogadjaj" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DogadjajOcjena_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DogadjajOcjena_Ocjena" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_KorisnikDogadjajID_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_KorisnikUloga_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_KorisnikUloga_Uloga" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Oprema_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Termin_Sala" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DEFC7767-F18D-4F25-A644-2DE1AE6E1AB0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>eKulturnoSportskiCentar_UI</RootNamespace>
+    <AssemblyName>eKulturnoSportskiCentar_UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Centar_UI\DodajCentar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Centar_UI\DodajCentar.Designer.cs">
+      <DependentUpon>DodajCentar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Centar_UI\IndexCentar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Centar_UI\IndexCentar.Designer.cs">
+      <DependentUpon>IndexCentar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Centar_UI\UrediCentar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Centar_UI\UrediCentar.Designer.cs">
+      <DependentUpon>UrediCentar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodatnaOprema_UI\DodajDodatnaOprema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodatnaOprema_UI\DodajDodatnaOprema.Designer.cs">
+      <DependentUpon>DodajDodatnaOprema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodatnaOprema_UI\IndexDodatnaOprema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodatnaOprema_UI\IndexDodatnaOprema.Designer.cs">
+      <DependentUpon>IndexDodatnaOprema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodatnaOprema_UI\UrediDodatnaOprema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodatnaOprema_UI\UrediDodatnaOprema.Designer.cs">
+      <DependentUpon>UrediDodatnaOprema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\AdministracijaDogadjaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\AdministracijaDogadjaja.Designer.cs">
+      <DependentUpon>AdministracijaDogadjaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\Dogadjaji za posjetiti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\Dogadjaji za posjetiti.Designer.cs">
+      <DependentUpon>Dogadjaji za posjetiti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\IndexDogadjaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\IndexDogadjaj.Designer.cs">
+      <DependentUpon>IndexDogadjaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\JavniDogadjaji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\JavniDogadjaji.Designer.cs">
+      <DependentUpon>JavniDogadjaji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\Kreiraj dogadjaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\Kreiraj dogadjaj.Designer.cs">
+      <DependentUpon>Kreiraj dogadjaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\OcjeniDogadjaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\OcjeniDogadjaj.Designer.cs">
+      <DependentUpon>OcjeniDogadjaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\VlastitiDogadjaji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dogadjaj_UI\VlastitiDogadjaji.Designer.cs">
+      <DependentUpon>VlastitiDogadjaji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Korisnik_UI\DodajKorisnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnik_UI\DodajKorisnika.Designer.cs">
+      <DependentUpon>DodajKorisnika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnik_UI\IndexKorisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnik_UI\IndexKorisnici.Designer.cs">
+      <DependentUpon>IndexKorisnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnik_UI\UrediKorisnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnik_UI\UrediKorisnika.Designer.cs">
+      <DependentUpon>UrediKorisnika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Oprema_UI\DodajOpremu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oprema_UI\DodajOpremu.Designer.cs">
+      <DependentUpon>DodajOpremu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oprema_UI\IndexOprema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oprema_UI\IndexOprema.Designer.cs">
+      <DependentUpon>IndexOprema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oprema_UI\UrediOpremu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oprema_UI\UrediOpremu.Designer.cs">
+      <DependentUpon>UrediOpremu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sala_UI\DodajSalu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sala_UI\DodajSalu.Designer.cs">
+      <DependentUpon>DodajSalu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sala_UI\IndexSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sala_UI\IndexSala.Designer.cs">
+      <DependentUpon>IndexSala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sala_UI\UrediSalu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sala_UI\UrediSalu.Designer.cs">
+      <DependentUpon>UrediSalu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm.Designer.cs">
+      <DependentUpon>SubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Termin_UI\IndexTermin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Termin_UI\IndexTermin.Designer.cs">
+      <DependentUpon>IndexTermin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\UIHelper.cs" />
+    <Compile Include="Util\WebAPIHelper.cs" />
+    <EmbeddedResource Include="Centar_UI\DodajCentar.resx">
+      <DependentUpon>DodajCentar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Centar_UI\IndexCentar.resx">
+      <DependentUpon>IndexCentar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Centar_UI\UrediCentar.resx">
+      <DependentUpon>UrediCentar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodatnaOprema_UI\DodajDodatnaOprema.resx">
+      <DependentUpon>DodajDodatnaOprema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodatnaOprema_UI\IndexDodatnaOprema.resx">
+      <DependentUpon>IndexDodatnaOprema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodatnaOprema_UI\UrediDodatnaOprema.resx">
+      <DependentUpon>UrediDodatnaOprema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\AdministracijaDogadjaja.resx">
+      <DependentUpon>AdministracijaDogadjaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\Dogadjaji za posjetiti.resx">
+      <DependentUpon>Dogadjaji za posjetiti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\IndexDogadjaj.resx">
+      <DependentUpon>IndexDogadjaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\JavniDogadjaji.resx">
+      <DependentUpon>JavniDogadjaji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\Kreiraj dogadjaj.resx">
+      <DependentUpon>Kreiraj dogadjaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\OcjeniDogadjaj.resx">
+      <DependentUpon>OcjeniDogadjaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dogadjaj_UI\VlastitiDogadjaji.resx">
+      <DependentUpon>VlastitiDogadjaji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnik_UI\DodajKorisnika.resx">
+      <DependentUpon>DodajKorisnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnik_UI\IndexKorisnici.resx">
+      <DependentUpon>IndexKorisnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnik_UI\UrediKorisnika.resx">
+      <DependentUpon>UrediKorisnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oprema_UI\DodajOpremu.resx">
+      <DependentUpon>DodajOpremu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oprema_UI\IndexOprema.resx">
+      <DependentUpon>IndexOprema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oprema_UI\UrediOpremu.resx">
+      <DependentUpon>UrediOpremu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Sala_UI\DodajSalu.resx">
+      <DependentUpon>DodajSalu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sala_UI\IndexSala.resx">
+      <DependentUpon>IndexSala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sala_UI\UrediSalu.resx">
+      <DependentUpon>UrediSalu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm.resx">
+      <DependentUpon>SubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Termin_UI\IndexTermin.resx">
+      <DependentUpon>IndexTermin.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eKulturnoSportskiCentar_API\eKulturnoSportskiCentar_API.csproj">
+      <Project>{66B6524F-DEA8-4281-BD46-1205764D5EA5}</Project>
+      <Name>eKulturnoSportskiCentar_API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
