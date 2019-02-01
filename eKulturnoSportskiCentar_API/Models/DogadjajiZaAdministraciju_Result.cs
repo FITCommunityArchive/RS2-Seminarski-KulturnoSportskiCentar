@@ -17,11 +17,11 @@ namespace eKulturnoSportskiCentar_API.Models
         public string Dogadjaj { get; set; }
         public string Vrsta { get; set; }
         public int VrstaDogadjajaID { get; set; }
-        public Nullable<bool> JavniDogadjaj { get; set; }
         public System.DateTime Datum { get; set; }
         public string Satnica { get; set; }
         public string Sala { get; set; }
         public int SalaID { get; set; }
-        public string Korisnik { get; set; }
+        public Nullable<bool> Javni { get; set; }
+        public string korisnik { get; set; }
     }
 }

@@ -72,21 +72,7 @@ namespace eKulturnoSportskiCentar_UI.Sala_UI
             }
         }
 
-        private void Obrisi_BTN_Click(object sender, EventArgs e)
-        {
-            int salaId = Convert.ToInt32(Sala_DGV.SelectedRows[0].Cells[0].Value);
-            HttpResponseMessage response = salaServices.DeleteResponse(salaId);
-
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("Obrisano");
-                BindGrid();
-            }
-            else
-            {
-                MessageBox.Show("Nije obrisano");
-            }
-        }
+        
 
         private void Centar_CMB_SelectedIndexChanged(object sender, EventArgs e)
         {

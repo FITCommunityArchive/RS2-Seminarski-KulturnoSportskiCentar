@@ -33,6 +33,7 @@ namespace eKulturnoSportskiCentar_API.Models
         public Nullable<int> TerminID { get; set; }
         public Nullable<int> KorisnikID { get; set; }
         public Nullable<bool> Odobrena { get; set; }
+        public Nullable<bool> Aktivna { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
         public virtual Termin Termin { get; set; }

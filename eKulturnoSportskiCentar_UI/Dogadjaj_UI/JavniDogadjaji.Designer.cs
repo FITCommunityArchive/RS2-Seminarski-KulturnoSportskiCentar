@@ -61,6 +61,7 @@
             // 
             // Vrsta_CMB
             // 
+            this.Vrsta_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vrsta_CMB.FormattingEnabled = true;
             this.Vrsta_CMB.Location = new System.Drawing.Point(544, 13);
             this.Vrsta_CMB.Name = "Vrsta_CMB";
@@ -106,6 +107,7 @@
             // 
             // Sala_CMB
             // 
+            this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
             this.Sala_CMB.Location = new System.Drawing.Point(334, 13);
             this.Sala_CMB.Name = "Sala_CMB";
@@ -197,9 +199,9 @@
             // 
             // OznaciSe_BTN
             // 
-            this.OznaciSe_BTN.Location = new System.Drawing.Point(726, 74);
+            this.OznaciSe_BTN.Location = new System.Drawing.Point(678, 80);
             this.OznaciSe_BTN.Name = "OznaciSe_BTN";
-            this.OznaciSe_BTN.Size = new System.Drawing.Size(75, 23);
+            this.OznaciSe_BTN.Size = new System.Drawing.Size(104, 47);
             this.OznaciSe_BTN.TabIndex = 48;
             this.OznaciSe_BTN.Text = "Oznaci se";
             this.OznaciSe_BTN.UseVisualStyleBackColor = true;

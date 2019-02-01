@@ -20,5 +20,9 @@ namespace eKulturnoSportskiCentar_API.Models
         public string Email { get; set; }
         public string Telefon { get; set; }
         public Nullable<bool> Status { get; set; }
+
+        public Nullable<int> BrojOcjenjenihDogadjaja { get; set; }
+        public Nullable<int> BrojKreiranihDogadjaja { get; set; }
+        public Nullable<int> BrojPosjecenihDogadjaja { get; set; }
     }
 }

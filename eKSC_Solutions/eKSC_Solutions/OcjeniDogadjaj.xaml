@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKSC_Solutions.OcjeniDogadjaj">
+    <ContentPage.Content>
+        <StackLayout Margin="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  >
+
+            <Label Text="eKulturnoSportskiCentar::Ocijeni događaj"
+                   TextColor="CornflowerBlue"
+                   FontSize="25"></Label>
+            <Label x:Name="NazivInput" ></Label>
+                <Label x:Name="KorisnikInput" ></Label>
+            
+                <Picker x:Name="OcjenePicker" Title="Ocjene"  ></Picker>
+            
+                
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="Odustani" Clicked="Odustani_OnClicked" Text="Odustani"></Button>
+                    <Button x:Name="Ocjeni" Clicked="Ocjeni_OnClicked" Text="Ocjeni"></Button>
+                </StackLayout>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

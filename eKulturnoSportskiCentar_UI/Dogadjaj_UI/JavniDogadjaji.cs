@@ -37,7 +37,7 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
         {
             BindSale();
             BindVrsteDogadjaja();
-            BindGrid(false);
+            BindGrid(true);
         }
         private void BindVrsteDogadjaja()
         {
@@ -66,7 +66,7 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
 
         {
             HttpResponseMessage response =
-                dogadjajServices.GetResponse();
+                dogadjajServices.GetActionResponse("GetSlicniDogadjaji", Global.logiraniKorisnik.KorisnikID.ToString());
             List<Dogadjaji_Result> lista = response.Content.ReadAsAsync<List<Dogadjaji_Result>>().Result;
             int salaId = Convert.ToInt32(Sala_CMB.SelectedValue);
             int vrstaId = Convert.ToInt32(Vrsta_CMB.SelectedValue);
@@ -142,13 +142,8 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
                 }
                 else
                 {
-                    string msg = response.ReasonPhrase;
-                    if (String.IsNullOrEmpty(Messages.ResourceManager.GetString(response.ReasonPhrase)))
-                    {
-                        msg = Messages.ResourceManager.GetString(response.ReasonPhrase);
-                    }
-
-                    MessageBox.Show("Error code: " + response.StatusCode + " Message: " + msg);
+                    MessageBox.Show("Več ste prijavljeni na odabranom događaju", Messages.error, MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
 
             }

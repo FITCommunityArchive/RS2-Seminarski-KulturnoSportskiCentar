@@ -40,13 +40,13 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.UcitajKorisnike_BTN = new System.Windows.Forms.Button();
+            this.Izvjesta_BTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Korisnici_DGV)).BeginInit();
             this.SuspendLayout();
             // 
             // Izmjeni_BTN
             // 
-            this.Izmjeni_BTN.Location = new System.Drawing.Point(505, 39);
+            this.Izmjeni_BTN.Location = new System.Drawing.Point(428, 39);
             this.Izmjeni_BTN.Name = "Izmjeni_BTN";
             this.Izmjeni_BTN.Size = new System.Drawing.Size(75, 23);
             this.Izmjeni_BTN.TabIndex = 12;
@@ -69,10 +69,11 @@
             this.imePrezimeInput.Name = "imePrezimeInput";
             this.imePrezimeInput.Size = new System.Drawing.Size(122, 20);
             this.imePrezimeInput.TabIndex = 10;
+            this.imePrezimeInput.TextChanged += new System.EventHandler(this.imePrezimeInput_TextChanged);
             // 
             // DodajKorisnika_BTN
             // 
-            this.DodajKorisnika_BTN.Location = new System.Drawing.Point(379, 39);
+            this.DodajKorisnika_BTN.Location = new System.Drawing.Point(302, 39);
             this.DodajKorisnika_BTN.Name = "DodajKorisnika_BTN";
             this.DodajKorisnika_BTN.Size = new System.Drawing.Size(75, 23);
             this.DodajKorisnika_BTN.TabIndex = 9;
@@ -148,27 +149,27 @@
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             // 
-            // UcitajKorisnike_BTN
+            // Izvjesta_BTN
             // 
-            this.UcitajKorisnike_BTN.Location = new System.Drawing.Point(265, 39);
-            this.UcitajKorisnike_BTN.Name = "UcitajKorisnike_BTN";
-            this.UcitajKorisnike_BTN.Size = new System.Drawing.Size(75, 23);
-            this.UcitajKorisnike_BTN.TabIndex = 7;
-            this.UcitajKorisnike_BTN.Text = "Ucitaj korisnike";
-            this.UcitajKorisnike_BTN.UseVisualStyleBackColor = true;
-            this.UcitajKorisnike_BTN.Click += new System.EventHandler(this.UcitajKorisnike_BTN_Click);
+            this.Izvjesta_BTN.Location = new System.Drawing.Point(541, 40);
+            this.Izvjesta_BTN.Name = "Izvjesta_BTN";
+            this.Izvjesta_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Izvjesta_BTN.TabIndex = 13;
+            this.Izvjesta_BTN.Text = "Izvještaj";
+            this.Izvjesta_BTN.UseVisualStyleBackColor = true;
+            this.Izvjesta_BTN.Click += new System.EventHandler(this.Izvjesta_BTN_Click);
             // 
             // IndexKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 252);
+            this.Controls.Add(this.Izvjesta_BTN);
             this.Controls.Add(this.Izmjeni_BTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.imePrezimeInput);
             this.Controls.Add(this.DodajKorisnika_BTN);
             this.Controls.Add(this.Korisnici_DGV);
-            this.Controls.Add(this.UcitajKorisnike_BTN);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "IndexKorisnici";
@@ -196,6 +197,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
-        private System.Windows.Forms.Button UcitajKorisnike_BTN;
+        private System.Windows.Forms.Button Izvjesta_BTN;
     }
 }

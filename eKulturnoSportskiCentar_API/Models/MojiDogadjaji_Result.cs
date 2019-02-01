@@ -23,5 +23,6 @@ namespace eKulturnoSportskiCentar_API.Models
         public string Sala { get; set; }
         public int SalaID { get; set; }
         public int VrstaDogadjajaID { get; set; }
+        public Nullable<bool> Aktivna { get; set; }
     }
 }

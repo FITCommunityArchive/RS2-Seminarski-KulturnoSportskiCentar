@@ -41,7 +41,7 @@
             // 
             // Naziv_Input
             // 
-            this.Naziv_Input.Location = new System.Drawing.Point(74, 31);
+            this.Naziv_Input.Location = new System.Drawing.Point(75, 14);
             this.Naziv_Input.Name = "Naziv_Input";
             this.Naziv_Input.Size = new System.Drawing.Size(152, 20);
             this.Naziv_Input.TabIndex = 18;
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 38);
+            this.label2.Location = new System.Drawing.Point(30, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 19;
@@ -58,8 +58,9 @@
             // 
             // Centar_CMB
             // 
+            this.Centar_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Centar_CMB.FormattingEnabled = true;
-            this.Centar_CMB.Location = new System.Drawing.Point(74, 68);
+            this.Centar_CMB.Location = new System.Drawing.Point(75, 51);
             this.Centar_CMB.Name = "Centar_CMB";
             this.Centar_CMB.Size = new System.Drawing.Size(152, 21);
             this.Centar_CMB.TabIndex = 21;
@@ -68,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 76);
+            this.label1.Location = new System.Drawing.Point(26, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 22;
@@ -76,9 +77,9 @@
             // 
             // Odustani_BTN
             // 
-            this.Odustani_BTN.Location = new System.Drawing.Point(14, 122);
+            this.Odustani_BTN.Location = new System.Drawing.Point(15, 92);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(102, 31);
+            this.Odustani_BTN.Size = new System.Drawing.Size(102, 30);
             this.Odustani_BTN.TabIndex = 23;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -86,9 +87,9 @@
             // 
             // Izmjeni_BTN
             // 
-            this.Izmjeni_BTN.Location = new System.Drawing.Point(128, 122);
+            this.Izmjeni_BTN.Location = new System.Drawing.Point(129, 92);
             this.Izmjeni_BTN.Name = "Izmjeni_BTN";
-            this.Izmjeni_BTN.Size = new System.Drawing.Size(98, 31);
+            this.Izmjeni_BTN.Size = new System.Drawing.Size(98, 30);
             this.Izmjeni_BTN.TabIndex = 20;
             this.Izmjeni_BTN.Text = "Izmjeni";
             this.Izmjeni_BTN.UseVisualStyleBackColor = true;
@@ -102,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(239, 174);
+            this.ClientSize = new System.Drawing.Size(239, 139);
             this.Controls.Add(this.Centar_CMB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Odustani_BTN);

@@ -82,10 +82,12 @@ namespace eKulturnoSportskiCentar_API.Controllers
         }
 
         // DELETE: api/Oprema/5
+        [HttpDelete]
+        [Route("api/oprema/{opremaId}")]
         [ResponseType(typeof(Oprema))]
-        public IHttpActionResult DeleteOprema(int id)
+        public IHttpActionResult DeleteOprema(int opremaId)
         {
-            Oprema oprema = db.Oprema.Find(id);
+            Oprema oprema = db.Oprema.Find(opremaId);
             if (oprema == null)
             {
                 return NotFound();

@@ -13,7 +13,7 @@ namespace eKulturnoSportskiCentar_API.Models
     
     public partial class Lista_Result
     {
-        public string Column1 { get; set; }
         public int KorisnikID { get; set; }
+        public string Korisnik { get; set; }
     }
 }

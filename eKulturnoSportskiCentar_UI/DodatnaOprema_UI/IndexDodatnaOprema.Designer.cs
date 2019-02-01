@@ -41,6 +41,8 @@
             // 
             // DodatnaOprema_DGV
             // 
+            this.DodatnaOprema_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DodatnaOprema_DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DodatnaOprema_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DodatnaOprema_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DodatnaOpremaID,
@@ -48,10 +50,10 @@
             this.Cijena,
             this.Slika});
             this.DodatnaOprema_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DodatnaOprema_DGV.Location = new System.Drawing.Point(0, 60);
+            this.DodatnaOprema_DGV.Location = new System.Drawing.Point(0, 70);
             this.DodatnaOprema_DGV.Name = "DodatnaOprema_DGV";
             this.DodatnaOprema_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DodatnaOprema_DGV.Size = new System.Drawing.Size(346, 219);
+            this.DodatnaOprema_DGV.Size = new System.Drawing.Size(341, 428);
             this.DodatnaOprema_DGV.TabIndex = 8;
             // 
             // Izmjeni_BTN
@@ -92,6 +94,7 @@
             this.DodatnaOpremaID.Name = "DodatnaOpremaID";
             this.DodatnaOpremaID.ReadOnly = true;
             this.DodatnaOpremaID.Visible = false;
+            this.DodatnaOpremaID.Width = 121;
             // 
             // Naziv
             // 
@@ -100,6 +103,7 @@
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
+            this.Naziv.Width = 59;
             // 
             // Cijena
             // 
@@ -108,11 +112,12 @@
             this.Cijena.HeaderText = "Cijena";
             this.Cijena.Name = "Cijena";
             this.Cijena.ReadOnly = true;
+            this.Cijena.Width = 61;
             // 
             // Slika
             // 
+            this.Slika.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Slika.DataPropertyName = "SlikaThumb";
-            this.Slika.Frozen = true;
             this.Slika.HeaderText = "Slika";
             this.Slika.Name = "Slika";
             this.Slika.ReadOnly = true;
@@ -121,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 279);
+            this.ClientSize = new System.Drawing.Size(341, 498);
             this.Controls.Add(this.DodatnaOprema_DGV);
             this.Controls.Add(this.Izmjeni_BTN);
             this.Controls.Add(this.Obrisi_BTN);

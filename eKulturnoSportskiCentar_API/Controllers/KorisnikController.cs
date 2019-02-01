@@ -4,6 +4,7 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Web.Http;
 using System.Web.Http.Description;
 using eKulturnoSportskiCentar_API.Models;
@@ -27,7 +28,7 @@ namespace eKulturnoSportskiCentar_API.Controllers
             return Ok(korisnik);
         }
 
-        [ResponseType(typeof(Korisnici_Result))]
+        [ResponseType(typeof(Korisnici_Result1))]
         [Route("api/korisnik/GetByUsername/{username}")]
         public IHttpActionResult GetByUsername(string username)
         {
@@ -40,6 +41,31 @@ namespace eKulturnoSportskiCentar_API.Controllers
             return Ok(k);
         }
 
+        [HttpGet]
+        [Route("api/korisnik/GetKorisniciReport/{name?}")]
+
+        public List<Korisnici_Result> GetKorisniciReport(string name="")
+        {
+            List<Korisnici_Result>lista= db.esp_Korisnici_SelectByImePrezime(name).ToList();
+            if (lista.Count>0)
+            {
+                List<KorisnikDogadjaj> korisnikDogadjaj = new List<KorisnikDogadjaj>();
+                List<Termin> termini = new List<Termin>();
+                List<DogadjajOcjena> ocjene = new List<DogadjajOcjena>();
+                foreach (var K in lista)
+                {
+                    K.BrojPosjecenihDogadjaja =
+                        db.KorisnikDogadjaj.Where(x => x.KorisnikID == K.KorisnikID).ToList().Count;
+                    K.BrojKreiranihDogadjaja = db.Dogadjaj.Where(x => x.KorisnikID == K.KorisnikID).ToList().Count;
+                    K.BrojOcjenjenihDogadjaja = db.DogadjajOcjena.Where(x => x.KorisnikID == K.KorisnikID).ToList().Count;
+                }
+
+                return lista;
+            }
+
+            return null;
+
+        }
 
         [HttpGet]
         [Route("api/korisnik/SearchByName/{name?}")]
@@ -103,16 +129,34 @@ namespace eKulturnoSportskiCentar_API.Controllers
             {
                 return BadRequest();
             }
-            try
+
+            if (K.KorisnikID != 0 )
             {
+                try
+                {
+                   db.esp_Korisnik_Update(K.KorisnikID, K.Ime, K.Prezime, K.Email, K.Telefon, K.KorisnickoIme,
+                        K.LozinkaSalt, K.LozinkaHash, K.Status);
+                }
+                catch (EntityException ex)
+                {
+
+                    throw CreateHttpResponseException(Util.ExceptionHandler.HandleException(ex), HttpStatusCode.Conflict);
+                }
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
+        try
+
+        {
                 K.KorisnikID = Convert.ToInt32(db.esp_Korisnici_Insert(K.Ime, K.Prezime, K.Telefon, K.Email, K.KorisnickoIme, K.LozinkaSalt,
                     K.LozinkaHash).FirstOrDefault());
             }
-            catch (Exception ex)
+            catch (EntityException ex)
             {
-                throw;
+
+                throw CreateHttpResponseException(Util.ExceptionHandler.HandleException(ex), HttpStatusCode.Conflict);
             }
-            if (K.Uloge.Count == 0)
+            if (K.Uloge.Count == 0||K.Uloge==null)
             {
                 int ulogaID = db.Uloga.Where(x => x.Naziv == "Korisnik").Select(x => x.UlogaID).FirstOrDefault();
                 db.esp_KorisniciUloge_Insert(K.KorisnikID, ulogaID);

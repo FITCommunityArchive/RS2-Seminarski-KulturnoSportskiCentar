@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:local="clr-namespace:eKSC_Solutions.Converters;"
+             x:Class="eKSC_Solutions.KreirajDogadjaj">
+ 
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="40">
+            <Label TextColor="CornflowerBlue" Text="eKulturnoSportskiCentar::Kreiranje događaja" FontSize="25" HorizontalOptions="CenterAndExpand"></Label>
+           
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="SatnicaInput" ></Label>
+                <Label x:Name="salaInput" Grid.Column="1"></Label>
+
+
+                <StackLayout   Grid.Row="1" Grid.Column="0">
+                  <Label Text="Naziv:"> </Label>
+                    <Entry x:Name="NazivInput" Placeholder="NazivDogadjaja"></Entry>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="1" Grid.Column="1" >
+                     <Picker Title="VrstaDogadjaja" x:Name="vrstaPicker"></Picker>
+                </StackLayout>
+
+
+                <StackLayout  Grid.Row="2">
+                    <Label Text="Javni događaj?"></Label>
+                    <Switch x:Name="javniDogadjajSwitch" Toggled="JavniDogadjajSwitch_OnToggled" IsToggled="False"></Switch>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.Column="1" x:Name="javniDogadjajaLayout">
+                    <Label Text="Broj mjesta:"></Label>
+                    <Entry x:Name="brojMjestaInput" Placeholder="Broj mjesta"></Entry>
+                    <Label Text="Cijena ulaza:"></Label>
+                    <Entry x:Name="cijenaUlazaInput" Placeholder="cijenaUlaza"></Entry>
+                </StackLayout>
+             
+            </Grid>
+
+            <Label Text="Dodatna oprema" FontSize="18" TextColor="CornflowerBlue" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView x:Name="DodatnaOpremaList" ItemSelected="DodatnaOpremaList_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="slika" Grid.Column="0" Source="{Binding SlikaThumb,Converter={StaticResource imgConv}}"></Image>
+
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="{Binding Naziv, StringFormat='Naziv: {0:F0}'}"></Label>
+                                    <Label Text="{Binding Cijena, StringFormat='Cijena: {0:F0} KM'}"></Label>
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="Odabrano"></Label>
+                                            <Switch  IsToggled="{Binding IsOznacen}" Grid.Column="1"></Switch>
+                                        </Grid>
+                                    </StackLayout>
+                                    
+
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout>
+                <Button x:Name="KreirajDogadjaj_BTN" Text="Kreiraj događaja" BackgroundColor="CornflowerBlue" Clicked="KreirajDogadjaj_BTN_OnClicked"></Button>
+            </StackLayout>
+        </StackLayout>
+        
+       
+        
+    </ContentPage.Content>
+</ContentPage>

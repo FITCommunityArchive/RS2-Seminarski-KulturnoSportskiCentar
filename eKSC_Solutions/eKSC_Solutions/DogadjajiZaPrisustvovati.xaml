@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eKSC_Solutions.Converters"
+             x:Class="eKSC_Solutions.DogadjajiZaPrisustvovati">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolConverter x:TypeArguments="x:String" FalseValue="DA" NullValue="Nista" TrueValue="DA" x:Key="CYesNo" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="30">
+            <Label Text="eKulturnoSportskiCentar::Događaji za posjetiti"   
+                TextColor="CornflowerBlue" FontSize="20"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" ></Label>
+            <ListView x:Name="DogadjajiList" ItemTapped="DogadjajiList_OnItemTapped" >
+               <ListView.ItemTemplate>
+                   <DataTemplate>
+                       <ViewCell>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>  
+                         </Grid.ColumnDefinitions>
+                            <StackLayout>
+                                <Label Text="{Binding Naziv,StringFormat='Naziv: {0:F0}'}"></Label>
+                                <Label Text="{Binding Datum,StringFormat='Datum: {0:dd.MM.yyyy}'}"></Label>
+                                <Label Text="{Binding Aktivna, Converter={StaticResource CYesNo},StringFormat='Aktivna: {0:F0}'}"></Label>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Button Text="Otkaži prisustvo" x:Name="Otkazi_BTN" Clicked="Otkazi_BTN_OnClicked" CommandParameter="{Binding DogadjajID}"></Button>
+                                <Button Text="Ocijeni događaj" x:Name="Ocijeni_BTN" CommandParameter="{Binding DogadjajID}" Clicked="Ocijeni_BTN_OnClicked"> </Button>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                              
+                                </StackLayout>
+                             
+                            </Grid>
+                       </ViewCell>
+                   </DataTemplate>
+               </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

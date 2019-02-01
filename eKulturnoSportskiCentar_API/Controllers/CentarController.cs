@@ -65,6 +65,7 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 return NotFound();
             }
 
+            List<Sala> sale = db.Sala.Where(x => x.CentarID == centar.CentarID).ToList();
             db.Centar.Remove(centar);
             db.SaveChanges();
 

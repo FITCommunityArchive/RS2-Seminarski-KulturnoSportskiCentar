@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Odustani_BTN = new System.Windows.Forms.Button();
             this.Izmjeni_BTN = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Slika_PCB)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             this.Slika_PCB.Location = new System.Drawing.Point(429, 31);
             this.Slika_PCB.Name = "Slika_PCB";
             this.Slika_PCB.Size = new System.Drawing.Size(333, 197);
+            this.Slika_PCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Slika_PCB.TabIndex = 59;
             this.Slika_PCB.TabStop = false;
             // 
@@ -63,6 +65,7 @@
             // 
             this.Slika_Input.Location = new System.Drawing.Point(78, 109);
             this.Slika_Input.Name = "Slika_Input";
+            this.Slika_Input.ReadOnly = true;
             this.Slika_Input.Size = new System.Drawing.Size(222, 20);
             this.Slika_Input.TabIndex = 51;
             // 
@@ -74,6 +77,7 @@
             this.DodajSliku_BTN.TabIndex = 52;
             this.DodajSliku_BTN.Text = "...";
             this.DodajSliku_BTN.UseVisualStyleBackColor = true;
+            this.DodajSliku_BTN.Click += new System.EventHandler(this.DodajSliku_BTN_Click);
             // 
             // label4
             // 
@@ -95,6 +99,7 @@
             // 
             // Sala_CMB
             // 
+            this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
             this.Sala_CMB.Location = new System.Drawing.Point(195, 67);
             this.Sala_CMB.Name = "Sala_CMB";
@@ -157,6 +162,10 @@
             this.Izmjeni_BTN.UseVisualStyleBackColor = true;
             this.Izmjeni_BTN.Click += new System.EventHandler(this.Izmjeni_BTN_Click);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
             // UrediOpremu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,5 +211,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Odustani_BTN;
         private System.Windows.Forms.Button Izmjeni_BTN;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

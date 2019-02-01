@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eKSC_Solutions.Converters"
+             x:Class="eKSC_Solutions.DetaljiDogadjaja">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolConverter x:TypeArguments="x:String" FalseValue="DA" NullValue="Nista" TrueValue="DA" x:Key="CYesNo" />
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label Text="eKulturnoSportskiCentar::Detalji događaja" TextColor="CornflowerBlue" FontSize="19"></Label>
+            <Grid>
+               <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=""></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+               </Grid.ColumnDefinitions>
+               <Image x:Name="slika" Grid.Column="0" Source="{Binding PlakatThumb,Converter={StaticResource imgConv}}"></Image>
+
+                <StackLayout Grid.Column="1">
+                    <Label x:Name="DogadjajInput"></Label>
+                    <Label x:Name="TerminInput"></Label>
+                    <Label x:Name="VrstaInput"></Label>
+
+                    <Label x:Name="SalaInput"></Label>
+                    <Label x:Name="KorisikInput"></Label>
+                    <Label x:Name="CijenaUlazaInput"></Label>
+                </StackLayout>
+
+</Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

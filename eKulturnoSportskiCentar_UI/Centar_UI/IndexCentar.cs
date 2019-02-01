@@ -61,21 +61,27 @@ namespace eKulturnoSportskiCentar_UI.Centar_UI
             }
         }
 
-        private void Obrisi_BTN_Click(object sender, EventArgs e)
-        {
-            int centarId = Convert.ToInt32(Centar_DGV.SelectedRows[0].Cells[0].Value);
-            HttpResponseMessage response = centarServices.DeleteResponse(centarId);
+        //private void Obrisi_BTN_Click(object sender, EventArgs e)
+        //{
+        //    Yes_No f=new Yes_No(Messages.delete_msg);
+        //    if (f.ShowDialog() == DialogResult.Yes)
+        //    {
+        //        int centarId = Convert.ToInt32(Centar_DGV.SelectedRows[0].Cells[0].Value);
+        //        HttpResponseMessage response = centarServices.DeleteResponse(centarId);
 
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show(Messages.delete_Centar_succes, Messages.msg_succ, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BindGrid();
-            }
-            else
-            {
-                MessageBox.Show(Messages.Delete_Centar_Faild, Messages.error, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            MessageBox.Show(Messages.delete_Centar_succes, Messages.msg_succ, MessageBoxButtons.OK,
+        //                MessageBoxIcon.Information);
+        //            BindGrid();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(Messages.Delete_Centar_Faild, Messages.error, MessageBoxButtons.OK,
+        //                MessageBoxIcon.Information);
+        //        }
+        //    }
+        //}
 
        
     }

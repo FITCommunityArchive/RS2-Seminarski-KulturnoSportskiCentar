@@ -19,12 +19,12 @@ namespace eKulturnoSportskiCentar_API.Controllers
         public IHttpActionResult GetTermin()
         {
             List<Termin> povrat = new List<Termin>();
-            for (int i = 10; i < 24; i++)
+            for (int i = 8; i < 22; i+=2)
             {
                 Termin T = new Termin
                 {
                     Pocetak = new TimeSpan(i, 0, 0),
-                    Kraj = new TimeSpan(1 + i, 0, 0)
+                    Kraj = new TimeSpan(2 + i, 0, 0)
                 };
                 povrat.Add(T);
             }
@@ -53,13 +53,14 @@ namespace eKulturnoSportskiCentar_API.Controllers
             DateTime DATUM = DateTime.ParseExact(datum, "MMddyyyy", System.Globalization.CultureInfo.InvariantCulture);
             List<Termin_Result> termini = db.esp_Termin_Select(DATUM, salaID).ToList();
             List<Termin> povrat=new List<Termin>();
-            for (int i = 10; i < 23; i++)
+            for (int i = 8; i < 22; i+=2)
             {
                 Termin T = new Termin
                 {
+
                     Pocetak = new TimeSpan(i, 0, 0),
-                    Kraj = new TimeSpan(1 + i, 0, 0),
-                    Datum=DATUM,
+                    Kraj = new TimeSpan(2 + i, 0, 0),
+                    Datum =DATUM,
                     SalaID = salaID
                     
                 };
@@ -69,7 +70,10 @@ namespace eKulturnoSportskiCentar_API.Controllers
                     {
                         if (T.Pocetak == X.Pocetak && T.Kraj == X.Kraj)
                         {
-                            isValid = false;
+                            if (X.Rezervisan)
+                            {
+                                isValid = false;
+                            }
                         }
                     }
 
@@ -86,6 +90,11 @@ namespace eKulturnoSportskiCentar_API.Controllers
                
                 
                
+            }
+
+            foreach (var x in povrat)
+            {
+                x.salaNaziv = db.Sala.Find(x.SalaID).Naziv;
             }
             return Ok(povrat);
         }
@@ -141,8 +150,9 @@ namespace eKulturnoSportskiCentar_API.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             if (!IsValid(termin))
-                return BadRequest();
+                return BadRequest(ModelState);
 
             db.Termin.Add(termin);
             db.SaveChanges();

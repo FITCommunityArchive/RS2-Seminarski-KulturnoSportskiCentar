@@ -9,5 +9,7 @@ namespace eKulturnoSportskiCentar_API.Models
     {
         public double BrojPrisutnih { get; set; }
         public double ProsjecnaOcjena { get; set; }
+        public double CijenaTermina { get; set; }
+        public  double Ukupno { get; set; }
     }
 }

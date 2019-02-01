@@ -56,7 +56,7 @@ namespace eKulturnoSportskiCentar_UI.Oprema_UI
         {
             HttpResponseMessage response = salaServices.GetResponse();
             List<Sala_Result> sale = new List<Sala_Result>();
-          sale.Add(new Sala_Result { Sala = "Odaberi Salu", SalaID = 0 });
+          sale.Add(new Sala_Result { Sala = "<<<Odaberi Salu>>>", SalaID = 0 });
             sale.AddRange(response.Content.ReadAsAsync<List<Sala_Result>>().Result);
             Sala_CMB.DataSource = sale;
             Sala_CMB.DisplayMember = "Sala";
@@ -93,18 +93,26 @@ namespace eKulturnoSportskiCentar_UI.Oprema_UI
 
         private void Obrisi_BTN_Click(object sender, EventArgs e)
         {
-            int opremaId = Convert.ToInt32(Oprema_DGV.SelectedRows[0].Cells[0].Value);
-            HttpResponseMessage response = opremaServices.DeleteResponse(opremaId);
-
-            if (response.IsSuccessStatusCode)
+            Yes_No F=new Yes_No("Da li zelite obrisati opremu?");
+            if (F.ShowDialog() == DialogResult.Yes)
             {
-                MessageBox.Show("Obrisano");
+                int opremaId = Convert.ToInt32(Oprema_DGV.SelectedRows[0].Cells[0].Value);
+                HttpResponseMessage response = opremaServices.DeleteResponse(opremaId);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Obrisano");
+
+                }
+
+                else
+                {
+                    MessageBox.Show("Nije obrisano");
+
+                }
                 BindForm();
             }
-            else
-            {
-                MessageBox.Show("Nije obrisano");
-            }
+            
         }
     }
 }

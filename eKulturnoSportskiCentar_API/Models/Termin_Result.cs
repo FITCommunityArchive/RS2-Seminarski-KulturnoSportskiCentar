@@ -18,5 +18,6 @@ namespace eKulturnoSportskiCentar_API.Models
         public System.TimeSpan Pocetak { get; set; }
         public System.TimeSpan Kraj { get; set; }
         public string Sala { get; set; }
+        public bool Rezervisan { get; set; }
     }
 }

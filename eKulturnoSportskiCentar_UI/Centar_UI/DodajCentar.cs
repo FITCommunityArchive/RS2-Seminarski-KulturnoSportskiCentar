@@ -66,7 +66,22 @@ namespace eKulturnoSportskiCentar_UI.Centar_UI
                 errorProvider.SetError(NazivInput, Messages.Name_Required);
             }
         }
-
+        private void TelefonInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(TelefonInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(TelefonInput, "Telefon je obavezno polje!");
+            }
+            else
+            {
+                if (TelefonInput.Text.Length != 10 && TelefonInput.Text.Length != 9)
+                {
+                    e.Cancel = true;
+                    errorProvider.SetError(TelefonInput, "Telefon nije u ispravnom formatu!");
+                }
+            }
+        }
         private void AdresaInput_Validating(object sender, CancelEventArgs e)
         {
             if (String.IsNullOrEmpty(AdresaInput.Text))
@@ -97,7 +112,9 @@ namespace eKulturnoSportskiCentar_UI.Centar_UI
                     errorProvider.SetError(EmailInput, Messages.Email_Error);
                 }
             }
-        } 
+        }
         #endregion
+
+       
     }
 }

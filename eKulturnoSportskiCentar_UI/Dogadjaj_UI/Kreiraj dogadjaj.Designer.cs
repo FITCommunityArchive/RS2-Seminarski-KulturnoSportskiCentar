@@ -59,6 +59,7 @@
             this.DatumInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DodatnaOprema_DGV)).BeginInit();
             this.javniDogadjaj_box.SuspendLayout();
@@ -184,6 +185,7 @@
             this.Slika_BTN.TabIndex = 17;
             this.Slika_BTN.Text = "Dodaj sliku";
             this.Slika_BTN.UseVisualStyleBackColor = true;
+            this.Slika_BTN.Click += new System.EventHandler(this.Slika_BTN_Click);
             // 
             // label6
             // 
@@ -198,6 +200,7 @@
             // 
             this.Plakat_Input.Location = new System.Drawing.Point(92, 51);
             this.Plakat_Input.Name = "Plakat_Input";
+            this.Plakat_Input.ReadOnly = true;
             this.Plakat_Input.Size = new System.Drawing.Size(144, 20);
             this.Plakat_Input.TabIndex = 16;
             // 
@@ -267,6 +270,7 @@
             // 
             // Vrsta_CMB
             // 
+            this.Vrsta_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vrsta_CMB.FormattingEnabled = true;
             this.Vrsta_CMB.Location = new System.Drawing.Point(123, 124);
             this.Vrsta_CMB.Name = "Vrsta_CMB";
@@ -339,6 +343,10 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
             // KreirajDogadjaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,5 +417,6 @@
         private System.Windows.Forms.TextBox DatumInput;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

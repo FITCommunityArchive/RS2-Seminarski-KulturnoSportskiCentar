@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Obrisi_BTN = new System.Windows.Forms.Button();
             this.Izmjeni_BTN = new System.Windows.Forms.Button();
             this.Dodaj_BTN = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,16 +38,6 @@
             this.Centar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Sala_DGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Obrisi_BTN
-            // 
-            this.Obrisi_BTN.Location = new System.Drawing.Point(258, 68);
-            this.Obrisi_BTN.Name = "Obrisi_BTN";
-            this.Obrisi_BTN.Size = new System.Drawing.Size(91, 23);
-            this.Obrisi_BTN.TabIndex = 13;
-            this.Obrisi_BTN.Text = "Obriši";
-            this.Obrisi_BTN.UseVisualStyleBackColor = true;
-            this.Obrisi_BTN.Click += new System.EventHandler(this.Obrisi_BTN_Click);
             // 
             // Izmjeni_BTN
             // 
@@ -81,10 +70,11 @@
             // 
             // Centar_CMB
             // 
+            this.Centar_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Centar_CMB.FormattingEnabled = true;
-            this.Centar_CMB.Location = new System.Drawing.Point(104, 32);
+            this.Centar_CMB.Location = new System.Drawing.Point(81, 32);
             this.Centar_CMB.Name = "Centar_CMB";
-            this.Centar_CMB.Size = new System.Drawing.Size(159, 21);
+            this.Centar_CMB.Size = new System.Drawing.Size(213, 21);
             this.Centar_CMB.TabIndex = 8;
             this.Centar_CMB.SelectedIndexChanged += new System.EventHandler(this.Centar_CMB_SelectedIndexChanged);
             // 
@@ -96,10 +86,10 @@
             this.Naziv,
             this.Centar});
             this.Sala_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Sala_DGV.Location = new System.Drawing.Point(0, 105);
+            this.Sala_DGV.Location = new System.Drawing.Point(0, 108);
             this.Sala_DGV.Name = "Sala_DGV";
             this.Sala_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Sala_DGV.Size = new System.Drawing.Size(361, 150);
+            this.Sala_DGV.Size = new System.Drawing.Size(361, 210);
             this.Sala_DGV.TabIndex = 7;
             // 
             // SalaID
@@ -119,6 +109,7 @@
             // 
             // Centar
             // 
+            this.Centar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Centar.DataPropertyName = "Centar";
             this.Centar.HeaderText = "Centar";
             this.Centar.Name = "Centar";
@@ -128,8 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 255);
-            this.Controls.Add(this.Obrisi_BTN);
+            this.ClientSize = new System.Drawing.Size(361, 318);
             this.Controls.Add(this.Izmjeni_BTN);
             this.Controls.Add(this.Dodaj_BTN);
             this.Controls.Add(this.label1);
@@ -149,8 +139,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Obrisi_BTN;
         private System.Windows.Forms.Button Izmjeni_BTN;
         private System.Windows.Forms.Button Dodaj_BTN;
         private System.Windows.Forms.Label label1;

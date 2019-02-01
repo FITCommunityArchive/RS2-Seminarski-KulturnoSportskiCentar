@@ -64,7 +64,6 @@ namespace eKulturnoSportskiCentar_UI
                             Status = K.Status
                         };
                         Global.logiraniKorisnik = korisnik;
-                        Global.terminGenerated = false;
                         this.Close();
 
                     }

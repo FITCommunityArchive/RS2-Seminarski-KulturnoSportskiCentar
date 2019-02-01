@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using eKulturnoSportskiCentar_API.Models;
+using eKulturnoSportskiCentar_API.Util;
 
 namespace eKulturnoSportskiCentar_API.Controllers
 {
@@ -27,6 +29,36 @@ namespace eKulturnoSportskiCentar_API.Controllers
         }
 
 
+        [HttpGet]
+        [ResponseType(typeof(List<Dogadjaji_Result>))]
+        [Route("api/Dogadjaj/GetSlicniDogadjaji/{KorisnikId}")]
+        public IHttpActionResult GetSlicniDogadjaji(int KorisnikId)
+        {
+            Recommender R = new Recommender();
+            return Ok(R.GetSlicniDogadjaji(KorisnikId));
+        }
+
+        [ResponseType(typeof(int))]
+        [Route("api/Dogadjaj/GetBrojNeadministriranihDogadjaja")]
+        public IHttpActionResult GetBrojNeadministriranihDogadjaja()
+        {
+            List<DogadjajiZaAdministraciju_Result> lista = db.esp_DogadjajiZaAdministraciju_Select().ToList();
+            return Ok(lista.Count);
+        }
+        [HttpGet]
+        [ResponseType(typeof(Detalji_Dogadjaja_Result))]
+        [Route("api/Dogadjaj/GetDetaljiDogadjaja/{DogadjajId}")]
+        public IHttpActionResult GetDetaljiDogadjaja(int DogadjajId)
+        {
+            Dogadjaj d = db.Dogadjaj.Find(DogadjajId);
+            if (d == null)
+            {
+                return NotFound();
+            }
+            Detalji_Dogadjaja_Result result = db.esp_Dogadjaj_Detalji(DogadjajId).FirstOrDefault();
+            return Ok(result);
+        }
+
         //Get: api/Dogadjaj/GetDogadjajiZaPrisustvovati
         [HttpGet]
         [ResponseType(typeof(List<DogadjajiZaPrisustvovati_Result>))]
@@ -36,16 +68,20 @@ namespace eKulturnoSportskiCentar_API.Controllers
             List<DogadjajiZaPrisustvovati_Result> result = db.esp_DogadjajiZaPrisustvovati_SelectByKorisnik(KorisnikId).ToList();
             return Ok(result);
         }
+      
 
-        // GET: api/Dogadjaj
-        [ResponseType(typeof(List<Dogadjaji_Result>))]
-        public IHttpActionResult GetDogadjaj()
+        [HttpGet]
+        [Route("api/Dogadjaj/{pocetniDatum}/{krajnjiDatum}")]
+        public List<Dogadjaj_Detalji_Result> GetDogadjaj(string pocetniDatum, string krajnjiDatum)
         {
-            List<Dogadjaji_Result> lista = db.esp_Dogadjaj_JavniDogadjaji_Select().ToList();
+            DateTime PocetniDatum = DateTime.ParseExact(pocetniDatum, "MMddyyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime KrajnjiDatum = DateTime.ParseExact(krajnjiDatum, "MMddyyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+            List<Dogadjaj_Detalji_Result> lista = db.esp_Dogadjaj_Detalji_Filter(PocetniDatum, KrajnjiDatum).ToList();
             foreach (var X in lista)
             {
                 List<KorisnikDogadjaj> ListaPrisutnih = db.KorisnikDogadjaj.Where(s => s.DogadjajID == X.DogadjajID).ToList();
-                List<DogadjajOcjena> DogadjajOcjena = db.DogadjajOcjena.Where(o => o.DogadjajID == X.DogadjajID).ToList();
+                List<DogadjajOcjena> DogadjajOcjena = db.DogadjajOcjena.Where(o => o.DogadjajID == X.DogadjajID).Include(x=>x.Ocjena).ToList();
                 X.BrojPrisutnih = ListaPrisutnih.Count;
                 double suma = 0;
                 foreach (var O in DogadjajOcjena)
@@ -58,7 +94,34 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 }
                 else
                 {
-                    X.ProsjecnaOcjena = suma / X.BrojPrisutnih;
+                    X.ProsjecnaOcjena = suma / DogadjajOcjena.Count;
+                }
+            }
+            return (lista);
+        }
+
+        // GET: api/Dogadjaj
+        [ResponseType(typeof(List<Dogadjaji_Result>))]
+        public IHttpActionResult GetDogadjaj()
+        {
+            List<Dogadjaji_Result> lista = db.esp_Dogadjaj_JavniDogadjaji_Select().ToList();
+            foreach (var X in lista)
+            {
+                List<KorisnikDogadjaj> ListaPrisutnih = db.KorisnikDogadjaj.Where(s => s.DogadjajID == X.DogadjajID).ToList();
+                List<DogadjajOcjena> DogadjajOcjena = db.DogadjajOcjena.Where(o => o.DogadjajID == X.DogadjajID).Include(x => x.Ocjena).ToList();
+                X.BrojPrisutnih = ListaPrisutnih.Count;
+                double suma = 0;
+                foreach (var O in DogadjajOcjena)
+                {
+                    suma += Double.Parse(O.Ocjena.OcjenaBroj.ToString());
+                }
+                if (X.BrojPrisutnih == 0)
+                {
+                    X.ProsjecnaOcjena = 0;
+                }
+                else
+                {
+                    X.ProsjecnaOcjena = suma / DogadjajOcjena.Count;
                 }
             }
             return Ok(lista);
@@ -74,7 +137,7 @@ namespace eKulturnoSportskiCentar_API.Controllers
             foreach (var X in povrat)
             {
                 List<KorisnikDogadjaj> ListaPrisutnih = db.KorisnikDogadjaj.Where(s => s.DogadjajID == X.DogadjajID).ToList();
-                List<DogadjajOcjena> DogadjajOcjena = db.DogadjajOcjena.Where(o => o.DogadjajID == X.DogadjajID).ToList();
+                List<DogadjajOcjena> DogadjajOcjena = db.DogadjajOcjena.Where(o => o.DogadjajID == X.DogadjajID).Include(x=>x.Ocjena).ToList();
                 X.BrojPrisutnih = ListaPrisutnih.Count;
                 double suma = 0;
                 foreach (var O in DogadjajOcjena)
@@ -85,9 +148,13 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 {
                     X.ProsjecnaOcjena = 0;
                 }
+                else if (DogadjajOcjena.Count == 0)
+                {
+                    X.ProsjecnaOcjena = 0;
+                }
                 else
                 {
-                    X.ProsjecnaOcjena = suma / X.BrojPrisutnih;
+                    X.ProsjecnaOcjena = suma / DogadjajOcjena.Count;
                 }
             }
             return Ok(povrat);
@@ -120,28 +187,25 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 return BadRequest();
             }
 
+            int odobreno = Convert.ToInt32(dogadjaj.Odobrena);
+            int aktivan= Convert.ToInt32(dogadjaj.Aktivna);
             if (dogadjaj.Odobrena == true)
             {
                 Termin T = db.Termin.Find(dogadjaj.TerminID);
                 T.Rezervisan = true;
-            }
-            db.Entry(dogadjaj).State = EntityState.Modified;
-
-            try
-            {
                 db.SaveChanges();
+
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!DogadjajExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                Termin T = db.Termin.Find(dogadjaj.TerminID);
+                T.Rezervisan = false;
+                db.SaveChanges();
+
             }
+            
+            db.esp_Dogadjaj_Update(dogadjaj.DogadjajID,odobreno,aktivan);
+          
 
             return StatusCode(HttpStatusCode.NoContent);
         }

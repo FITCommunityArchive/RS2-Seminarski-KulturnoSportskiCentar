@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eKSC_Solutions.Converters"
+             x:Class="eKSC_Solutions.JavniDogadjaji">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolConverter x:TypeArguments="x:String" FalseValue="DA" NullValue="Nista" TrueValue="DA" x:Key="CYesNo" />
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="30">
+            <Label TextColor="CornflowerBlue" x:Name="naslovLabel" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Label Text="Odaberite datum:"></Label>
+                    <DatePicker x:Name="DatumPicker" DateSelected="DatumPicker_OnDateSelected" ></DatePicker>
+                </StackLayout>
+               
+                <Picker x:Name="SalaPicker" Title="Odaberite salu" Grid.Column="1" SelectedIndexChanged="SalaPicker_OnSelectedIndexChanged"></Picker>
+                <Picker x:Name="vrstaDogadjajaPicker" Title="Odaberite vrstu događaja:" Grid.Column="2" SelectedIndexChanged="VrstaDogadjajaPicker_OnSelectedIndexChanged"></Picker>
+                <Button x:Name="PrikaziSveBtn" Text="Prikaži sve" Grid.Column="3" Clicked="PrikaziSveBtn_OnClicked" Margin="10"></Button>
+            </Grid>
+            <ListView x:Name="DogadjajiList" ItemTapped="DogadjajiList_OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Image x:Name="slika" Grid.Column="0" Source="{Binding PlakatThumb,Converter={StaticResource imgConv}}"></Image>
+
+                                
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="{Binding Dogadjaj, StringFormat='Događaj: {0:F0}'}"></Label>
+                                    <Label Text="{Binding Vrsta, StringFormat='Vrsta događaja: {0:F0}'}"></Label>
+                                    <!--<StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+                                    </StackLayout>-->
+                                    <StackLayout >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="Aktivna:"></Label>
+                                            <Label Text="{Binding Aktivna, Converter={StaticResource CYesNo},StringFormat='Aktivna: {0:F0}'}"></Label>
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="{Binding Datum,StringFormat='Datum: {0:dd.MM.yyyy}'}"></Label>
+                                    <Label Text="{Binding Sala,StringFormat='Sala: {0:F0}'}"></Label>
+                                    <Label Text="{Binding Satnica,StringFormat='Satnica: {0:F0}'}"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3">
+
+                                    <Label Text="{Binding BrojPrisutnih,StringFormat='Broj prisutnih: {0:F0}'}"></Label>
+                                    <Label Text="{Binding ProsjecnaOcjena,StringFormat='Prosječna ocjena: {0:F0}'}"></Label>
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="4" Orientation="Horizontal"  Margin="50">
+                                    <Button x:Name="OznaciSeBtn" Text="Oznaći se " CommandParameter="{Binding DogadjajID}" Clicked="OznaciSeBtn_OnClicked"></Button>
+
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -14,7 +15,7 @@ namespace eKulturnoSportskiCentar_API.Controllers
 {
     public class KorisnikDogadjajController : ApiController
     {
-        private eKulturnoSportskiCentar_Entities db = new eKulturnoSportskiCentar_Entities();
+        private eKulturnoSportskiCentar_Entities db = new eKulturnoSportskiCentar_Entities(false);
 
     
 
@@ -29,6 +30,17 @@ namespace eKulturnoSportskiCentar_API.Controllers
             }
 
             return Ok(korisnikDogadjaj);
+        }
+        [HttpGet]
+        [Route("api/korisnikDogadjaj/ListaPrisutnih/{DogadjajID}")]
+        [ResponseType(typeof(List<Lista_Result>))]
+        public IHttpActionResult ListaPrisutnih(int DogadjajID)
+        {
+            List<Lista_Result> povrat = new List<Lista_Result>();
+            povrat = db.esp_Dogadjaj_SelectListaPrisutnih(DogadjajID).ToList();
+            if (povrat.Count == 0)
+                return NotFound();
+            return Ok(povrat);
         }
 
         // PUT: api/KorisnikDogadjaj/5
@@ -75,10 +87,46 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.KorisnikDogadjaj.Add(korisnikDogadjaj);
+            KorisnikDogadjaj KD = db.KorisnikDogadjaj.Where(x =>
+                    x.DogadjajID == korisnikDogadjaj.DogadjajID && x.KorisnikID == korisnikDogadjaj.KorisnikID)
+                .FirstOrDefault();
+            if (KD == null)
+            {
+                db.KorisnikDogadjaj.Add(korisnikDogadjaj);
+                db.SaveChanges();
+                return CreatedAtRoute("DefaultApi", new { id = korisnikDogadjaj.KorisnikDogadjajID }, korisnikDogadjaj);
+
+            }
+            else return Conflict();
+            //try
+            //{
+            //    db.KorisnikDogadjaj.Add(korisnikDogadjaj);
+            //    db.SaveChanges();
+            //}
+            //catch (EntityException ex)
+            //{
+
+            //    throw ex;
+            //}
+
+            //return CreatedAtRoute("DefaultApi", new { id = korisnikDogadjaj.KorisnikDogadjajID }, korisnikDogadjaj);
+        }
+
+        [ResponseType(typeof(KorisnikDogadjaj))]
+        [Route("api/KorisnikDogadjaj/{DogadjajID}/{KorisnikID}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteKorisnikDogadjaj(int DogadjajID, int KorisnikID)
+        {
+            KorisnikDogadjaj korisnikDogadjaj = db.KorisnikDogadjaj.Where(x => x.DogadjajID == DogadjajID && x.KorisnikID == KorisnikID).FirstOrDefault();
+            if (korisnikDogadjaj == null)
+            {
+                return NotFound();
+            }
+
+            db.KorisnikDogadjaj.Remove(korisnikDogadjaj);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = korisnikDogadjaj.KorisnikDogadjajID }, korisnikDogadjaj);
+            return Ok(korisnikDogadjaj);
         }
 
         // DELETE: api/KorisnikDogadjaj/5

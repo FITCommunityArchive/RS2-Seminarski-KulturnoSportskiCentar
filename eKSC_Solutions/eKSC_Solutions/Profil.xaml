@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKSC_Solutions.Profil">
+    <ContentPage.Content  >
+        <StackLayout Margin="10" VerticalOptions="CenterAndExpand"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text=" @eKulturnoSportskiCentar::Profil korisnika" FontSize="24" TextColor="CornflowerBlue" HorizontalTextAlignment="Center" Grid.ColumnSpan="2"></Label>
+
+                <Label FontSize="12" Text="Ime: " VerticalTextAlignment="Center" Grid.Row="1"></Label>
+                <Entry x:Name="imeInput" Grid.Row="1" Grid.Column="1" Placeholder="Ime" ></Entry>
+
+                <Label FontSize="12" Text="Prezime: " VerticalTextAlignment="Center" Grid.Row="2"></Label>
+                <Entry x:Name="prezimeInput" Grid.Row="2" Grid.Column="1" Placeholder="Prezime" ></Entry>
+
+                <Label FontSize="12" Text="Telefon: " VerticalTextAlignment="Center" Grid.Row="3"></Label>
+                <Entry x:Name="telefonInput" Grid.Row="3" Grid.Column="1" Placeholder="Telefon" Keyboard="Telephone" ></Entry>
+
+                <Label FontSize="12" Text="Email: " VerticalTextAlignment="Center" Grid.Row="4"></Label>
+                <Entry x:Name="emailInput" Grid.Row="4" Grid.Column="1" Placeholder="Email" Keyboard="Email" ></Entry>
+
+
+                <Label FontSize="12" Text="Korisničko ime: " VerticalTextAlignment="Center" Grid.Row="5"></Label>
+                <Entry x:Name="korisnickoImeInput" Grid.Row="5" Grid.Column="1" Placeholder="Korisničko ime"  ></Entry>
+
+                <Label FontSize="12" Text="Lozinka: " VerticalTextAlignment="Center" Grid.Row="6"></Label>
+                <Entry x:Name="lozinkaInput" Grid.Row="6" Grid.Column="1" IsPassword="True" Placeholder="Lozinka" ></Entry>
+
+                <Button x:Name="izmjeniButton" Text="Izmjeni" Grid.Row="7" Grid.Column="1" Clicked="IzmjeniButton_OnClicked"></Button>
+
+            </Grid>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

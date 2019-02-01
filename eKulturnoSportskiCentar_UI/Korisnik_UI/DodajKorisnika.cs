@@ -137,6 +137,23 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
             }
         }
 
+        private void TelefonInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(TelefonInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(TelefonInput, "Telefon je obavezno polje!");
+            }
+            else
+            {
+                if (TelefonInput.Text.Length != 10 && TelefonInput.Text.Length != 9)
+                {
+                    e.Cancel = true;
+                    errorProvider.SetError(TelefonInput, "Telefon nije u ispravnom formatu!");
+                }
+            }
+        }
+
         private void LozinkaInput_Validating(object sender, CancelEventArgs e)
         {
             if (String.IsNullOrEmpty(LozinkaInput.Text))
@@ -162,5 +179,6 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         }
         #endregion
 
+        
     }
 }

@@ -38,7 +38,7 @@ namespace eKulturnoSportskiCentar_UI.Util
         {
             return client.GetAsync(route + "/" + action + "/" + parametar).Result;
         }
-
+     
         #endregion
 
 

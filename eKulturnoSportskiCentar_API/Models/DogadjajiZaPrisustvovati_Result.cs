@@ -17,5 +17,6 @@ namespace eKulturnoSportskiCentar_API.Models
         public string Naziv { get; set; }
         public Nullable<int> TerminId { get; set; }
         public System.DateTime Datum { get; set; }
+        public Nullable<bool> Aktivna { get; set; }
     }
 }

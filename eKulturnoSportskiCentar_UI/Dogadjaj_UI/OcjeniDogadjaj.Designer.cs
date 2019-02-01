@@ -90,6 +90,7 @@
             // 
             // Ocjene_CMB
             // 
+            this.Ocjene_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Ocjene_CMB.FormattingEnabled = true;
             this.Ocjene_CMB.Location = new System.Drawing.Point(92, 84);
             this.Ocjene_CMB.Name = "Ocjene_CMB";

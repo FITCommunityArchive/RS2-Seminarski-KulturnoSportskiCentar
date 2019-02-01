@@ -23,26 +23,31 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
         private WebAPIHelper dogadjajServices =
             new WebAPIHelper("http://localhost:51348/", Global.DogadjajRoute);
         private int brojac = 0;
+        private List<MojiDogadjaji_Result> lista { get; set; }
        
 
         public VlastitiDogadjaji()
         {
             InitializeComponent();
             Dogadjaj_DGV.AutoGenerateColumns = false;
+            lista = new List<MojiDogadjaji_Result>();
+            HttpResponseMessage response =
+                dogadjajServices.GetActionResponse("MojiDogadjaji", Global.logiraniKorisnik.KorisnikID.ToString());
+            lista = response.Content.ReadAsAsync<List<MojiDogadjaji_Result>>().Result;
         }
 
         private void VlastitiDogadjaji_Load(object sender, EventArgs e)
         {
             BindSale();
             BindVrsteDogadjaja();
-            BindGrid(false);
+            BindGrid(true);
+            
+
         }
 
         private void BindGrid(bool prikaziSve=false)
         {
-            HttpResponseMessage response =
-                dogadjajServices.GetActionResponse("MojiDogadjaji", Global.logiraniKorisnik.KorisnikID.ToString());
-            List<MojiDogadjaji_Result> lista = response.Content.ReadAsAsync<List<MojiDogadjaji_Result>>().Result;
+            
             int salaId = Convert.ToInt32(Sala_CMB.SelectedValue);
             int vrstaId = Convert.ToInt32(Vrsta_CMB.SelectedValue);
             DateTime datum = Datum_PCK.Value.Date;
@@ -123,6 +128,41 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
         private void PrikaziSve_BTN_Click(object sender, EventArgs e)
         {
             BindGrid(true);
+        }
+
+        private void Otkazi_BTN_Click(object sender, EventArgs e)
+        {
+           
+            Yes_No f = new Yes_No("Jeste li sigurni da želite otkazati događaj?");
+            if (f.ShowDialog() == DialogResult.Yes)
+            {
+
+                int dogadjajID = Convert.ToInt32(Dogadjaj_DGV.SelectedRows[0].Cells[0].Value);
+                HttpResponseMessage response = dogadjajServices.GetResponse(dogadjajID.ToString());
+                Dogadjaj D = response.Content.ReadAsAsync<Dogadjaj>().Result;
+                D.Aktivna = false;
+                HttpResponseMessage responseUpdate = dogadjajServices.PutResponse(D.DogadjajID, D);
+                if (responseUpdate.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Događaj uspješno otkazan");
+                }
+            }
+        }
+
+        private void listaPristunih_BTN_Click(object sender, EventArgs e)
+        {
+            int dogadjajID = Convert.ToInt32(Dogadjaj_DGV.SelectedRows[0].Cells[0].Value);
+
+            ListaPrisutnih f =new ListaPrisutnih(dogadjajID);
+            f.ShowDialog();
+        }
+
+        private void detalji_BTN_Click(object sender, EventArgs e)
+        {
+            int dogadjajID = Convert.ToInt32(Dogadjaj_DGV.SelectedRows[0].Cells[0].Value);
+            MojiDogadjaji_Result MDR = lista.Where(x => x.DogadjajID == dogadjajID).FirstOrDefault();
+            DetaljiDogadjaja f = new DetaljiDogadjaja(MDR);
+            f.ShowDialog();
         }
     }
 }

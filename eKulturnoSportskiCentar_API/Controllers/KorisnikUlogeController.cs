@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,7 +13,7 @@ namespace eKulturnoSportskiCentar_API.Controllers
     public class KorisnikUlogeController : ApiController
     {
         private eKulturnoSportskiCentar_Entities db = new eKulturnoSportskiCentar_Entities(false);
-
+        
         [ResponseType(typeof(KorisnikUloga))]
         public IHttpActionResult GetKorisnikUloge(int id)
         {
@@ -27,7 +28,8 @@ namespace eKulturnoSportskiCentar_API.Controllers
 
         public IHttpActionResult GetById(int id)
         {
-            List<KorisniciUloge_Result> uloge = db.esp_KorisniciUloge_GetByUserID(id).ToList();
+            //List<KorisniciUloge_Result> uloge = db.esp_KorisniciUloge_GetByUserID(id).ToList();
+            List<KorisnikUloga> uloge = db.KorisnikUloga.Where(x => x.KorisnikID == id).Include(x => x.Uloga).ToList();
             if (uloge == null)
             {
                 return NotFound();

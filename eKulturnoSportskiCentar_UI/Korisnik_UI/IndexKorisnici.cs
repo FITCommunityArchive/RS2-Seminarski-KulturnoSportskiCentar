@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using eKulturnoSportskiCentar_UI.Reports;
 
 namespace eKulturnoSportskiCentar_UI.Korisnik_UI
 {
@@ -21,12 +22,7 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         {
             InitializeComponent();
         }
-
-        private void UcitajKorisnike_BTN_Click(object sender, EventArgs e)
-        {
-            BindGrid();
-        }
-
+        
         private void BindGrid()
         {
             HttpResponseMessage response =
@@ -66,6 +62,24 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         {
             BindGrid();
 
+        }
+
+        private void imePrezimeInput_TextChanged(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
+
+        private void Izvjesta_BTN_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response =
+                korisniciServices.GetActionResponse("GetKorisniciReport", imePrezimeInput.Text.Trim());
+            if (response.IsSuccessStatusCode)
+            {
+                List<Korisnici_Result> korisnici = response.Content.ReadAsAsync<List<Korisnici_Result>>().Result;
+                Korisnici_Statistic_Form f=new Korisnici_Statistic_Form();
+                f.lista = korisnici;
+                f.Show();
+            }
         }
     } 
 }

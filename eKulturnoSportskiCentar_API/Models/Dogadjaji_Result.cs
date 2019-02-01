@@ -18,9 +18,12 @@ namespace eKulturnoSportskiCentar_API.Models
         public byte[] PlakatThumb { get; set; }
         public string Vrsta { get; set; }
         public System.DateTime Datum { get; set; }
-        public string Satnica { get; set; }
-        public string Sala { get; set; }
+        public Nullable<bool> Aktivna { get; set; }
+        public Nullable<bool> Odobrena { get; set; }
         public int SalaID { get; set; }
         public int VrstaDogadjajaID { get; set; }
+        public string Satnica { get; set; }
+        public string Sala { get; set; }
+        public int TerminID { get; set; }
     }
 }

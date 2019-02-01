@@ -43,8 +43,7 @@ namespace eKulturnoSportskiCentar_UI.Termin_UI
 
         private void Rezervisi_BTN_Click(object sender, EventArgs e)
         {
-           
-
+            Termin T = new Termin();
 
             if (Termin_DGV.SelectedRows.Count == 0)
             {
@@ -52,29 +51,48 @@ namespace eKulturnoSportskiCentar_UI.Termin_UI
             }
             else
             {
-                Termin T = new Termin();
                 T.Pocetak = TimeSpan.Parse((Termin_DGV.SelectedRows[0].Cells[2].Value).ToString());
                 T.Kraj = TimeSpan.Parse((Termin_DGV.SelectedRows[0].Cells[3].Value).ToString());
                 T.Datum = Datum_PCK.Value;
                 T.SalaID = Convert.ToInt32(Sala_CMB.SelectedValue);
-                HttpResponseMessage response = terminServices.PostResponse(T);
-                if (response.IsSuccessStatusCode)
-                    T = response.Content.ReadAsAsync<Termin>().Result;
+                T.salaNaziv = Termin_DGV.SelectedRows[0].Cells[4].Value.ToString();
+                this.Close();
+                //HttpResponseMessage response = terminServices.PostResponse(T);
+                //if (response.IsSuccessStatusCode)
+                //    T = response.Content.ReadAsAsync<Termin>().Result;
 
-                Dogadjaj = new Dogadjaj();
-                Dogadjaj.KorisnikID = Global.logiraniKorisnik.KorisnikID;
-                Dogadjaj.TerminID = T.TerminID;
-                KreirajDogadjaj f=new KreirajDogadjaj(Dogadjaj);
+                //Dogadjaj = new Dogadjaj();
+                //Dogadjaj.KorisnikID = Global.logiraniKorisnik.KorisnikID;
+                //Dogadjaj.TerminID = T.TerminID;
+
+                KreirajDogadjaj f = new KreirajDogadjaj(T);
                 f.ShowDialog();
-
             }
-            
 
+            
         }
 
         private void RezervisiZaKorisnika_BTN_Click(object sender, EventArgs e)
         {
+            Termin T = new Termin();
 
+            if (Termin_DGV.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate odabrati termin da bi ste izvršili rezervaciju!");
+            }
+            else
+            {
+                T.Pocetak = TimeSpan.Parse((Termin_DGV.SelectedRows[0].Cells[2].Value).ToString());
+                T.Kraj = TimeSpan.Parse((Termin_DGV.SelectedRows[0].Cells[3].Value).ToString());
+                T.Datum = Datum_PCK.Value;
+                T.SalaID = Convert.ToInt32(Sala_CMB.SelectedValue);
+                T.salaNaziv = Termin_DGV.SelectedRows[0].Cells[4].Value.ToString();
+                this.Close();
+                
+
+                RezervisiZaKorisnika f = new RezervisiZaKorisnika(T);
+                f.ShowDialog();
+            }
         }
 
         void BindGrid()
@@ -100,29 +118,11 @@ namespace eKulturnoSportskiCentar_UI.Termin_UI
         private void IndexTermin_Load(object sender, EventArgs e)
         {
            
-            //if (!Global.terminGenerated)
-            //{
-            //    GenerateTermin();
-            //    Global.terminGenerated = true;
-            //}
+           
             BindGrid();
         }
 
-   
-
-       private void Obrisi_BTN_Click(object sender, EventArgs e)
-        {
-        //    int terminID = Convert.ToInt32(Termin_DGV.SelectedRows[0].Cells[0].Value);
-
-        //    HttpResponseMessage response = terminServices.DeleteResponse(terminID);
-
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        MessageBox.Show("Izbrisano");
-        //        BindGrid();
-        //    }
-
-        }
+     
 
         private void Sala_CMB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -134,21 +134,7 @@ namespace eKulturnoSportskiCentar_UI.Termin_UI
         {
             BindGrid();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Termin T = new Termin();
-            T.Pocetak = TimeSpan.Parse((Termin_DGV.SelectedRows[0].Cells[2].Value).ToString());
-            T.Kraj = TimeSpan.Parse((Termin_DGV.SelectedRows[0].Cells[3].Value).ToString());
-            T.Datum = Datum_PCK.Value;
-            T.SalaID = Convert.ToInt32(Sala_CMB.SelectedValue);
-            HttpResponseMessage response = terminServices.PostResponse(T);
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("UPJESH");
-            }
-
-        }
+       
 
       
     }

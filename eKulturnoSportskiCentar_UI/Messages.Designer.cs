@@ -133,6 +133,24 @@ namespace eKulturnoSportskiCentar_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Da li želite izbrisati centar?.
+        /// </summary>
+        internal static string delete_msg {
+            get {
+                return ResourceManager.GetString("delete_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odaberite događaj za koji želite izvršiti akciju..
+        /// </summary>
+        internal static string dogadjaj_action {
+            get {
+                return ResourceManager.GetString("dogadjaj_action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Odaberite jednu od ponuđenih opcija..
         /// </summary>
         internal static string DropDown_NotSelected {
@@ -259,11 +277,29 @@ namespace eKulturnoSportskiCentar_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Potrebno je da odaberete sliku dimenzija većih od.
+        /// </summary>
+        internal static string picture_war {
+            get {
+                return ResourceManager.GetString("picture_war", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prezime je obavezno polje..
         /// </summary>
         internal static string Prezime_Required {
             get {
                 return ResourceManager.GetString("Prezime_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozorenje.
+        /// </summary>
+        internal static string warning {
+            get {
+                return ResourceManager.GetString("warning", resourceCulture);
             }
         }
     }

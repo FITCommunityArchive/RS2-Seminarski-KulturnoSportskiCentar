@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -22,14 +23,14 @@ namespace eKulturnoSportskiCentar_UI.Oprema_UI
 
         private WebAPIHelper opremaServices =
             new WebAPIHelper("http://localhost:51348/", Global.OpremaRoute);
-
+        private int _opremaID { get; set; }
         private Oprema oprema { get; set; }
 
         public UrediOpremu(int opremaID)
         {
             InitializeComponent();
             AutoValidate = AutoValidate.Disable;
-
+            _opremaID = opremaID;
             HttpResponseMessage response = opremaServices.GetResponse(opremaID.ToString());
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -71,7 +72,7 @@ namespace eKulturnoSportskiCentar_UI.Oprema_UI
         {
             HttpResponseMessage response = salaServices.GetResponse();
             List<Sala_Result> sale = new List<Sala_Result>();
-            sale.Add(new Sala_Result { Sala = "Odaberi Salu", SalaID = 0 });
+            sale.Add(new Sala_Result { Sala = "<<<Odaberi Salu>>>", SalaID = 0 });
             sale.AddRange(response.Content.ReadAsAsync<List<Sala_Result>>().Result);
             Sala_CMB.DataSource = sale;
             Sala_CMB.DisplayMember = "Sala";
@@ -92,7 +93,16 @@ namespace eKulturnoSportskiCentar_UI.Oprema_UI
                 {
                     oprema.SalaID = Convert.ToInt32(Sala_CMB.SelectedValue);
                     oprema.Naziv = Naziv_Input.Text;
-                    oprema.Kolicina = Convert.ToInt32(Kolicina_Input.Text);
+                    if (Convert.ToInt32(Kolicina_Input.Text) == 0)
+                    {
+                        oprema.Kolicina = 1;
+
+                    }
+                    else
+                    {
+                        oprema.Kolicina = Convert.ToInt32(Kolicina_Input.Text);
+
+                    }
                 }
                 HttpResponseMessage response = opremaServices.PutResponse(oprema.OpremaID, oprema);
 
@@ -125,6 +135,57 @@ namespace eKulturnoSportskiCentar_UI.Oprema_UI
             {
                 e.Cancel = true;
                 errorProvider.SetError(Sala_CMB, Messages.DropDown_NotSelected);
+            }
+        }
+
+        private void DodajSliku_BTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                oprema = new Oprema {OpremaID = _opremaID };
+                openFileDialog.ShowDialog();
+                Slika_Input.Text = openFileDialog.FileName;
+
+                oprema.Slika = File.ReadAllBytes(Slika_Input.Text);
+                Image orgImage = Image.FromFile(Slika_Input.Text);
+
+                int resizedImgWidth = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImgWidth"]);
+                int resizedImgHeight = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImgHeight"]);
+                int croppedImgWidth = Convert.ToInt32(ConfigurationManager.AppSettings["croppedImgWidth"]);
+                int croppedImgHeight = Convert.ToInt32(ConfigurationManager.AppSettings["croppedImgHeight"]);
+
+
+                if (orgImage.Width > resizedImgWidth)
+                {
+                    Image resizedImg = UIHelper.ResizeImage(orgImage, new Size(resizedImgWidth, resizedImgHeight));
+                    if (resizedImg.Width > croppedImgWidth && resizedImg.Height > croppedImgHeight)
+                    {
+                        int croppedXPosition = (resizedImg.Width - croppedImgWidth) / 2;
+                        int croppedYPosition = (resizedImg.Height - croppedImgHeight) / 2;
+
+                        Image croppedImg = UIHelper.CropImage(resizedImg, new Rectangle(croppedXPosition, croppedYPosition, croppedImgWidth, croppedImgHeight));
+                        Slika_PCB.Image = croppedImg;
+
+                        MemoryStream ms = new MemoryStream();
+                        croppedImg.Save(ms, orgImage.RawFormat);
+
+                        oprema.SlikaThumb = ms.ToArray();
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show(Messages.picture_war + " " + resizedImgWidth + "x" + resizedImgHeight + ".", Messages.warning,
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    oprema = null;
+                }
+            }
+            catch
+            {
+                
+                Slika_Input.Text = null;
+                Slika_PCB.Image = null;
             }
         }
     }

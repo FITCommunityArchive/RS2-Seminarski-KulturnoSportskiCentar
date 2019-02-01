@@ -142,10 +142,11 @@
             // TelefonInput
             // 
             this.TelefonInput.Location = new System.Drawing.Point(128, 93);
-            this.TelefonInput.Mask = "(000)000-0000";
+            this.TelefonInput.Mask = "0000000000";
             this.TelefonInput.Name = "TelefonInput";
             this.TelefonInput.Size = new System.Drawing.Size(148, 20);
             this.TelefonInput.TabIndex = 21;
+            this.TelefonInput.Validating += new System.ComponentModel.CancelEventHandler(this.TelefonInput_Validating);
             // 
             // label3
             // 

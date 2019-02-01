@@ -40,6 +40,7 @@
             this.Odustani_BTN = new System.Windows.Forms.Button();
             this.Izmjeni_BTN = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Slika_PCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@
             // Cijena_Input
             // 
             this.Cijena_Input.Location = new System.Drawing.Point(69, 63);
-            this.Cijena_Input.Mask = "000,00";
+            this.Cijena_Input.Mask = "00000";
             this.Cijena_Input.Name = "Cijena_Input";
             this.Cijena_Input.Size = new System.Drawing.Size(93, 20);
             this.Cijena_Input.TabIndex = 61;
@@ -67,6 +68,7 @@
             // 
             this.Slika_Input.Location = new System.Drawing.Point(69, 104);
             this.Slika_Input.Name = "Slika_Input";
+            this.Slika_Input.ReadOnly = true;
             this.Slika_Input.Size = new System.Drawing.Size(187, 20);
             this.Slika_Input.TabIndex = 62;
             // 
@@ -78,6 +80,7 @@
             this.DodajSliku_BTN.TabIndex = 63;
             this.DodajSliku_BTN.Text = "...";
             this.DodajSliku_BTN.UseVisualStyleBackColor = true;
+            this.DodajSliku_BTN.Click += new System.EventHandler(this.DodajSliku_BTN_Click);
             // 
             // label4
             // 
@@ -138,6 +141,10 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
             // UrediDodatnaOprema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,5 +187,6 @@
         private System.Windows.Forms.Button Odustani_BTN;
         private System.Windows.Forms.Button Izmjeni_BTN;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

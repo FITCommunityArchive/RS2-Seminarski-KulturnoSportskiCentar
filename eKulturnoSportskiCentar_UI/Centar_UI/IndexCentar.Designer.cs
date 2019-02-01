@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Obrisi_BTN = new System.Windows.Forms.Button();
             this.UrediCentar_BTN = new System.Windows.Forms.Button();
             this.DodajKorisnika_BTN = new System.Windows.Forms.Button();
             this.Centar_DGV = new System.Windows.Forms.DataGridView();
@@ -39,16 +38,6 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Centar_DGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Obrisi_BTN
-            // 
-            this.Obrisi_BTN.Location = new System.Drawing.Point(319, 21);
-            this.Obrisi_BTN.Name = "Obrisi_BTN";
-            this.Obrisi_BTN.Size = new System.Drawing.Size(89, 32);
-            this.Obrisi_BTN.TabIndex = 11;
-            this.Obrisi_BTN.Text = "Obriši centar";
-            this.Obrisi_BTN.UseVisualStyleBackColor = true;
-            this.Obrisi_BTN.Click += new System.EventHandler(this.Obrisi_BTN_Click);
             // 
             // UrediCentar_BTN
             // 
@@ -127,7 +116,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 260);
-            this.Controls.Add(this.Obrisi_BTN);
             this.Controls.Add(this.UrediCentar_BTN);
             this.Controls.Add(this.DodajKorisnika_BTN);
             this.Controls.Add(this.Centar_DGV);
@@ -144,8 +132,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Obrisi_BTN;
         private System.Windows.Forms.Button UrediCentar_BTN;
         private System.Windows.Forms.Button DodajKorisnika_BTN;
         private System.Windows.Forms.DataGridView Centar_DGV;

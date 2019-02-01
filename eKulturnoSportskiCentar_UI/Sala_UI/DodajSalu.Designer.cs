@@ -41,6 +41,7 @@
             // 
             // Centar_CMB
             // 
+            this.Centar_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Centar_CMB.FormattingEnabled = true;
             this.Centar_CMB.Location = new System.Drawing.Point(73, 49);
             this.Centar_CMB.Name = "Centar_CMB";
@@ -102,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 185);
+            this.ClientSize = new System.Drawing.Size(249, 146);
             this.Controls.Add(this.Dodaj_BTN);
             this.Controls.Add(this.Centar_CMB);
             this.Controls.Add(this.label1);
@@ -114,7 +115,7 @@
             this.Name = "DodajSalu";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Doda jSalu";
+            this.Text = "Dodaj Salu";
             this.Load += new System.EventHandler(this.DodajSalu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

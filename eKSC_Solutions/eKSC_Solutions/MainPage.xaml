@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eKSC_Solutions"
+             x:Class="eKSC_Solutions.MainPage">
+    <StackLayout Margin="50" VerticalOptions="CenterAndExpand" >
+        <Label Text="eKulturnoSportskiCentar" HorizontalTextAlignment="Center" FontSize="24"  TextColor="CornflowerBlue" FontAttributes="Bold"></Label>
+
+        <Grid Margin="30">
+         <Grid.RowDefinitions>
+             <RowDefinition Height="Auto"></RowDefinition>
+             <RowDefinition Height="Auto"></RowDefinition>
+             <RowDefinition Height="Auto"></RowDefinition>
+             <RowDefinition Height="Auto"></RowDefinition>
+             <RowDefinition Height="Auto"></RowDefinition>
+             <RowDefinition Height="Auto"></RowDefinition>
+</Grid.RowDefinitions>
+         <Button Text="Termin" x:Name="Termin_BTN" Grid.Row="1"  Clicked="Termin_BTN_OnClicked"></Button>
+         <Button Text="Vlastiti događaji" x:Name="VlastitiDogadjaji_BTN" Grid.Row="2" Clicked="VlastitiDogadjaji_BTN_OnClicked"></Button>
+         <Button Text="Javni događaji" x:Name="JavniDogadjaji_BTN" Grid.Row="3" Clicked="JavniDogadjaji_BTN_OnClicked"></Button>
+         <Button Text="Događaji za prisustvovati" x:Name="DogadjiZaPristuvovati_BTN" Grid.Row="4" Clicked="DogadjiZaPristuvovati_BTN_OnClicked"></Button>
+        <Button Text="Profil" x:Name="Profil_BTN" Grid.Row="5" Clicked="Profil_BTN_OnClicked"></Button>
+         <Button Text="Odjava" x:Name="Odjava_BTN" Grid.Row="6" Clicked="Odjava_BTN_OnClicked"></Button>
+
+</Grid>
+    </StackLayout>
+
+</ContentPage>

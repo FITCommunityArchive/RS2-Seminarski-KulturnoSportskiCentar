@@ -33,6 +33,7 @@
             this.GoingEvents = new System.Windows.Forms.Button();
             this.Vlastiti_BTN = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.Reports_BTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Administracija_BTN
@@ -85,11 +86,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Događaji";
             // 
+            // Reports_BTN
+            // 
+            this.Reports_BTN.Location = new System.Drawing.Point(104, 184);
+            this.Reports_BTN.Name = "Reports_BTN";
+            this.Reports_BTN.Size = new System.Drawing.Size(106, 38);
+            this.Reports_BTN.TabIndex = 5;
+            this.Reports_BTN.Text = "Reports";
+            this.Reports_BTN.UseVisualStyleBackColor = true;
+            this.Reports_BTN.Click += new System.EventHandler(this.Reports_BTN_Click);
+            // 
             // IndexDogadjaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(317, 244);
+            this.Controls.Add(this.Reports_BTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Vlastiti_BTN);
             this.Controls.Add(this.GoingEvents);
@@ -113,5 +125,6 @@
         private System.Windows.Forms.Button GoingEvents;
         private System.Windows.Forms.Button Vlastiti_BTN;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Reports_BTN;
     }
 }

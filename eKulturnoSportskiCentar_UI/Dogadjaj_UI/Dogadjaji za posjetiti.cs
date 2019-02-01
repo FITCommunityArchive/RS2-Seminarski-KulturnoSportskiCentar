@@ -42,20 +42,44 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
 
         private void Otkazi_BTN_Click(object sender, EventArgs e)
         {
-            int DogadjajID = Convert.ToInt32(Dogadjaji_DGV.SelectedRows[0].Cells[0].Value);
-            HttpResponseMessage response = korisnikDogadjajServices.DeleteResponse(DogadjajID.ToString(), Global.logiraniKorisnik.KorisnikID.ToString());
-            if (response.IsSuccessStatusCode)
+            Yes_No f=new Yes_No("Da li želite otkazati dolazak na događaj?");
+            if (f.ShowDialog()==DialogResult.Yes)
             {
-                MessageBox.Show("Prisustvo uspješno otkazano!");
-                BindGrid();
+                int DogadjajID = Convert.ToInt32(Dogadjaji_DGV.SelectedRows[0].Cells[0].Value);
+                HttpResponseMessage responseDogadjaj = dogadjajaServices.GetResponse(DogadjajID.ToString());
+                
+
+                Dogadjaj D = responseDogadjaj.Content.ReadAsAsync<Dogadjaj>().Result;
+
+                int result = DateTime.Compare(DateTime.Today, D.Termin.Datum);
+                if (result > 0)
+                {
+                    MessageBox.Show("Događaj je prošao!","Greška",MessageBoxButtons.OK);
+
+                }
+                else
+                {
+                    HttpResponseMessage response = korisnikDogadjajServices.DeleteResponse(DogadjajID.ToString(), Global.logiraniKorisnik.KorisnikID.ToString());
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Prisustvo uspješno otkazano!");
+                        BindGrid();
+                    }
+                }
             }
+               
+            
         }
 
         private void Ocijeni_BTN_Click(object sender, EventArgs e)
         {
            
             int DogadjajID = Convert.ToInt32(Dogadjaji_DGV.SelectedRows[0].Cells[0].Value);
-            Dogadjaj D = dogadjajaServices.GetResponse(DogadjajID.ToString()).Content.ReadAsAsync<Dogadjaj>().Result;
+            Dogadjaj D= dogadjajaServices.GetResponse(DogadjajID.ToString()).Content.ReadAsAsync<Dogadjaj>().Result;
+            if (D.Aktivna == false)
+            {
+                MessageBox.Show("Nemoguće ocjeniti događaj jer je isti otkazan!");
+            }
             int result = DateTime.Compare(DateTime.Today, D.Termin.Datum);
             if (result > 0)
             {

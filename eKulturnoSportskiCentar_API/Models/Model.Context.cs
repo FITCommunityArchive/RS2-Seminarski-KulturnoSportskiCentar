@@ -348,5 +348,53 @@ namespace eKulturnoSportskiCentar_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DogadjajiZaPrisustvovati_Result>("esp_DogadjajiZaPrisustvovati_SelectByKorisnik", korisnikIDParameter);
         }
+    
+        public virtual ObjectResult<Detalji_Dogadjaja_Result> esp_Dogadjaj_Detalji(Nullable<int> dogadjajID)
+        {
+            var dogadjajIDParameter = dogadjajID.HasValue ?
+                new ObjectParameter("dogadjajID", dogadjajID) :
+                new ObjectParameter("dogadjajID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Detalji_Dogadjaja_Result>("esp_Dogadjaj_Detalji", dogadjajIDParameter);
+        }
+    
+        public virtual int esp_Dogadjaj_Update(Nullable<int> dogadjajID, Nullable<int> odobri, Nullable<int> aktivan)
+        {
+            var dogadjajIDParameter = dogadjajID.HasValue ?
+                new ObjectParameter("DogadjajID", dogadjajID) :
+                new ObjectParameter("DogadjajID", typeof(int));
+    
+            var odobriParameter = odobri.HasValue ?
+                new ObjectParameter("odobri", odobri) :
+                new ObjectParameter("odobri", typeof(int));
+    
+            var aktivanParameter = aktivan.HasValue ?
+                new ObjectParameter("aktivan", aktivan) :
+                new ObjectParameter("aktivan", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("esp_Dogadjaj_Update", dogadjajIDParameter, odobriParameter, aktivanParameter);
+        }
+    
+        public virtual ObjectResult<Dogadjaj_Detalji_Result> esp_Dogadjaj_Detalji_Filter(Nullable<System.DateTime> pocetniDatum, Nullable<System.DateTime> krajnjiDatum)
+        {
+            var pocetniDatumParameter = pocetniDatum.HasValue ?
+                new ObjectParameter("pocetniDatum", pocetniDatum) :
+                new ObjectParameter("pocetniDatum", typeof(System.DateTime));
+    
+            var krajnjiDatumParameter = krajnjiDatum.HasValue ?
+                new ObjectParameter("KrajnjiDatum", krajnjiDatum) :
+                new ObjectParameter("KrajnjiDatum", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Dogadjaj_Detalji_Result>("esp_Dogadjaj_Detalji_Filter", pocetniDatumParameter, krajnjiDatumParameter);
+        }
+    
+        public virtual ObjectResult<Dogadjaji_Result> esp_JavniDogadjaj_SelectByDogadjajID(Nullable<int> dogadjajID)
+        {
+            var dogadjajIDParameter = dogadjajID.HasValue ?
+                new ObjectParameter("dogadjajID", dogadjajID) :
+                new ObjectParameter("dogadjajID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Dogadjaji_Result>("esp_JavniDogadjaj_SelectByDogadjajID", dogadjajIDParameter);
+        }
     }
 }

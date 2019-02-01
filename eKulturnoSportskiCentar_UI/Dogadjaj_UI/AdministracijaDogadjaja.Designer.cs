@@ -38,15 +38,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Sala_CMB = new System.Windows.Forms.ComboBox();
+            this.PrikaziSve_BTN = new System.Windows.Forms.Button();
             this.DogadjajID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dogadjaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VrstaDogadjaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Satnica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Korisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Korisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JavniDogadjaj = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PrikaziSve_BTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dogadjaj_DGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,17 +90,19 @@
             this.VrstaDogadjaja,
             this.Datum,
             this.Satnica,
-            this.Korisnik,
             this.Sala,
+            this.Korisnik,
             this.JavniDogadjaj});
             this.Dogadjaj_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dogadjaj_DGV.Location = new System.Drawing.Point(0, 150);
             this.Dogadjaj_DGV.Name = "Dogadjaj_DGV";
+            this.Dogadjaj_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dogadjaj_DGV.Size = new System.Drawing.Size(745, 253);
             this.Dogadjaj_DGV.TabIndex = 4;
             // 
             // Vrsta_CMB
             // 
+            this.Vrsta_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vrsta_CMB.FormattingEnabled = true;
             this.Vrsta_CMB.Location = new System.Drawing.Point(472, 23);
             this.Vrsta_CMB.Name = "Vrsta_CMB";
@@ -146,12 +148,23 @@
             // 
             // Sala_CMB
             // 
+            this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
             this.Sala_CMB.Location = new System.Drawing.Point(263, 21);
             this.Sala_CMB.Name = "Sala_CMB";
             this.Sala_CMB.Size = new System.Drawing.Size(121, 21);
             this.Sala_CMB.TabIndex = 47;
             this.Sala_CMB.SelectedIndexChanged += new System.EventHandler(this.Sala_CMB_SelectedIndexChanged);
+            // 
+            // PrikaziSve_BTN
+            // 
+            this.PrikaziSve_BTN.Location = new System.Drawing.Point(658, 24);
+            this.PrikaziSve_BTN.Name = "PrikaziSve_BTN";
+            this.PrikaziSve_BTN.Size = new System.Drawing.Size(75, 23);
+            this.PrikaziSve_BTN.TabIndex = 53;
+            this.PrikaziSve_BTN.Text = "Prikaži sve";
+            this.PrikaziSve_BTN.UseVisualStyleBackColor = true;
+            this.PrikaziSve_BTN.Click += new System.EventHandler(this.PrikaziSve_BTN_Click);
             // 
             // DogadjajID
             // 
@@ -186,35 +199,29 @@
             this.Satnica.Name = "Satnica";
             this.Satnica.ReadOnly = true;
             // 
-            // Korisnik
-            // 
-            this.Korisnik.DataPropertyName = "Korisnik";
-            this.Korisnik.HeaderText = "Korisnik";
-            this.Korisnik.Name = "Korisnik";
-            // 
             // Sala
             // 
             this.Sala.DataPropertyName = "Sala";
             this.Sala.HeaderText = "Sala";
             this.Sala.Name = "Sala";
             // 
+            // Korisnik
+            // 
+            this.Korisnik.DataPropertyName = "korisnik";
+            this.Korisnik.HeaderText = "Korisnik";
+            this.Korisnik.Name = "Korisnik";
+            // 
             // JavniDogadjaj
             // 
-            this.JavniDogadjaj.DataPropertyName = "JavniDogadjaj";
+            this.JavniDogadjaj.DataPropertyName = "javni";
+            this.JavniDogadjaj.FalseValue = "NE";
             this.JavniDogadjaj.HeaderText = "JavniDogadjaj";
+            this.JavniDogadjaj.IndeterminateValue = "NEDEFINISANO";
             this.JavniDogadjaj.Name = "JavniDogadjaj";
+            this.JavniDogadjaj.ReadOnly = true;
             this.JavniDogadjaj.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.JavniDogadjaj.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // PrikaziSve_BTN
-            // 
-            this.PrikaziSve_BTN.Location = new System.Drawing.Point(658, 24);
-            this.PrikaziSve_BTN.Name = "PrikaziSve_BTN";
-            this.PrikaziSve_BTN.Size = new System.Drawing.Size(75, 23);
-            this.PrikaziSve_BTN.TabIndex = 53;
-            this.PrikaziSve_BTN.Text = "Prikaži sve";
-            this.PrikaziSve_BTN.UseVisualStyleBackColor = true;
-            this.PrikaziSve_BTN.Click += new System.EventHandler(this.PrikaziSve_BTN_Click);
+            this.JavniDogadjaj.TrueValue = "DA";
             // 
             // AdministracijaDogadjaja
             // 
@@ -257,14 +264,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox Sala_CMB;
+        private System.Windows.Forms.Button PrikaziSve_BTN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DogadjajID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dogadjaj;
         private System.Windows.Forms.DataGridViewTextBoxColumn VrstaDogadjaja;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Satnica;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Korisnik;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sala;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Korisnik;
         private System.Windows.Forms.DataGridViewCheckBoxColumn JavniDogadjaj;
-        private System.Windows.Forms.Button PrikaziSve_BTN;
     }
 }

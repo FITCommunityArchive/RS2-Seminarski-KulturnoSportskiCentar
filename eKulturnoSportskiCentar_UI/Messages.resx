@@ -186,4 +186,16 @@
   <data name="Delete_Centar_Faild" xml:space="preserve">
     <value>Neuspješno brisanje centra.</value>
   </data>
+  <data name="picture_war" xml:space="preserve">
+    <value>Potrebno je da odaberete sliku dimenzija većih od</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Upozorenje</value>
+  </data>
+  <data name="delete_msg" xml:space="preserve">
+    <value>Da li želite izbrisati centar?</value>
+  </data>
+  <data name="dogadjaj_action" xml:space="preserve">
+    <value>Odaberite događaj za koji želite izvršiti akciju.</value>
+  </data>
 </root>

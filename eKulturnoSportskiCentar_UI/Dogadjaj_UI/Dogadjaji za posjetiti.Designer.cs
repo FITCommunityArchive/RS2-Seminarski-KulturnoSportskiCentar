@@ -31,10 +31,10 @@
             this.Ocijeni_BTN = new System.Windows.Forms.Button();
             this.Otkazi_BTN = new System.Windows.Forms.Button();
             this.Dogadjaji_DGV = new System.Windows.Forms.DataGridView();
-            this.Odustani_BTN = new System.Windows.Forms.Button();
             this.DogadjajID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dogadjaji_DGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +64,8 @@
             this.Dogadjaji_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DogadjajID,
             this.Naziv,
-            this.Datum});
+            this.Datum,
+            this.Aktivan});
             this.Dogadjaji_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dogadjaji_DGV.GridColor = System.Drawing.SystemColors.HighlightText;
             this.Dogadjaji_DGV.Location = new System.Drawing.Point(0, 60);
@@ -72,16 +73,6 @@
             this.Dogadjaji_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dogadjaji_DGV.Size = new System.Drawing.Size(413, 175);
             this.Dogadjaji_DGV.TabIndex = 3;
-            // 
-            // Odustani_BTN
-            // 
-            this.Odustani_BTN.Location = new System.Drawing.Point(291, 13);
-            this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(75, 23);
-            this.Odustani_BTN.TabIndex = 6;
-            this.Odustani_BTN.Text = "Odustani";
-            this.Odustani_BTN.UseVisualStyleBackColor = true;
-            this.Odustani_BTN.Click += new System.EventHandler(this.Odustani_BTN_Click);
             // 
             // DogadjajID
             // 
@@ -105,12 +96,20 @@
             this.Datum.HeaderText = "Datum";
             this.Datum.Name = "Datum";
             // 
+            // Aktivan
+            // 
+            this.Aktivan.DataPropertyName = "Aktivna";
+            this.Aktivan.HeaderText = "Aktivan";
+            this.Aktivan.Name = "Aktivan";
+            this.Aktivan.ReadOnly = true;
+            this.Aktivan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Aktivan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Dogadjaji_za_posjetiti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 235);
-            this.Controls.Add(this.Odustani_BTN);
             this.Controls.Add(this.Ocijeni_BTN);
             this.Controls.Add(this.Otkazi_BTN);
             this.Controls.Add(this.Dogadjaji_DGV);
@@ -131,9 +130,9 @@
         private System.Windows.Forms.Button Ocijeni_BTN;
         private System.Windows.Forms.Button Otkazi_BTN;
         private System.Windows.Forms.DataGridView Dogadjaji_DGV;
-        private System.Windows.Forms.Button Odustani_BTN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DogadjajID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Aktivan;
     }
 }

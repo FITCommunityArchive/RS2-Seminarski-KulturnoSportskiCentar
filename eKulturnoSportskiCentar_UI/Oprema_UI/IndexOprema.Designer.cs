@@ -83,6 +83,7 @@
             // 
             // Sala_CMB
             // 
+            this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
             this.Sala_CMB.Location = new System.Drawing.Point(88, 12);
             this.Sala_CMB.Name = "Sala_CMB";
@@ -92,6 +93,8 @@
             // 
             // Oprema_DGV
             // 
+            this.Oprema_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Oprema_DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Oprema_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Oprema_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OpremaID,
@@ -100,10 +103,10 @@
             this.Sala,
             this.Slika});
             this.Oprema_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Oprema_DGV.Location = new System.Drawing.Point(0, 98);
+            this.Oprema_DGV.Location = new System.Drawing.Point(0, 101);
             this.Oprema_DGV.Name = "Oprema_DGV";
             this.Oprema_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Oprema_DGV.Size = new System.Drawing.Size(445, 206);
+            this.Oprema_DGV.Size = new System.Drawing.Size(465, 382);
             this.Oprema_DGV.TabIndex = 13;
             // 
             // OpremaID
@@ -137,6 +140,7 @@
             // 
             // Slika
             // 
+            this.Slika.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Slika.DataPropertyName = "SlikaThumb";
             this.Slika.HeaderText = "Slika";
             this.Slika.Name = "Slika";
@@ -146,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 304);
+            this.ClientSize = new System.Drawing.Size(465, 483);
             this.Controls.Add(this.Obrisi_BTN);
             this.Controls.Add(this.Izmjeni_BTN);
             this.Controls.Add(this.Dodaj_BTN);

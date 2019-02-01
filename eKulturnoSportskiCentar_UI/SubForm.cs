@@ -22,6 +22,7 @@ namespace eKulturnoSportskiCentar_UI
         public SubForm()
         {
             InitializeComponent();
+           
         }
 
         private void Termini_BTN_Click(object sender, EventArgs e)

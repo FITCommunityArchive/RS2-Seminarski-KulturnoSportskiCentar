@@ -54,17 +54,22 @@ namespace eKulturnoSportskiCentar_UI.DodatnaOprema_UI
 
         private void Obrisi_BTN_Click(object sender, EventArgs e)
         {
-            int dodatnaOpremaID = Convert.ToInt32(DodatnaOprema_DGV.SelectedRows[0].Cells[0].Value);
-            HttpResponseMessage response = dodatnaOpremaServices.DeleteResponse(dodatnaOpremaID);
-            if (response.IsSuccessStatusCode)
+            Yes_No f=new Yes_No(Messages.delete_msg);
+            if (f.ShowDialog() == DialogResult.Yes)
             {
-                MessageBox.Show("Obrisano");
-                BindForm();
-            }
-            else
-            {
-                MessageBox.Show("Nije obrisano");
-            }
+                int dodatnaOpremaID = Convert.ToInt32(DodatnaOprema_DGV.SelectedRows[0].Cells[0].Value);
+                HttpResponseMessage response = dodatnaOpremaServices.DeleteResponse(dodatnaOpremaID);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Obrisano");
+                    BindForm();
+                }
+                else
+                {
+                    MessageBox.Show("Nije obrisano");
+                }
+            
+                }
         }
     }
 }

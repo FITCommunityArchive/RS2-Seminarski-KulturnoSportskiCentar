@@ -1,15 +1,17 @@
 ﻿using eKulturnoSportskiCentar_API.Models;
+using eKulturnoSportskiCentar_UI.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace eKulturnoSportskiCentar_UI
 {
     public class Global
     {
-        public static bool  terminGenerated { get; set; }
         public static Korisnik logiraniKorisnik { get; set; }
         public const string CentarRoute = "api/Centar";
         public const string DodatnaOpremaRoute = "api/DodatnaOprema";
@@ -27,4 +29,5 @@ namespace eKulturnoSportskiCentar_UI
         public const string VrstaDogadjajaRoute = "api/vrstaDogadjaja";
         public const string DogadjajDodatnaOpremaRoute = "api/DogadjajDodatnaOprema";
     }
+
 }

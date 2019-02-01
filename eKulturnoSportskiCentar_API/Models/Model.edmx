@@ -40,6 +40,7 @@
           <Property Name="TerminID" Type="int" />
           <Property Name="KorisnikID" Type="int" />
           <Property Name="Odobrena" Type="bit" />
+          <Property Name="Aktivna" Type="bit" />
         </EntityType>
         <EntityType Name="DogadjajDodatnaOprema">
           <Key>
@@ -328,9 +329,21 @@
           <Parameter Name="email" Type="nvarchar" Mode="In" />
           <Parameter Name="telefon" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="esp_Dogadjaj_Detalji" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dogadjajID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Dogadjaj_Detalji_Filter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pocetniDatum" Type="date" Mode="In" />
+          <Parameter Name="KrajnjiDatum" Type="date" Mode="In" />
+        </Function>
         <Function Name="esp_Dogadjaj_JavniDogadjaji_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="esp_Dogadjaj_SelectListaPrisutnih" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dogadjajID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Dogadjaj_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DogadjajID" Type="int" Mode="In" />
+          <Parameter Name="odobri" Type="int" Mode="In" />
+          <Parameter Name="aktivan" Type="int" Mode="In" />
         </Function>
         <Function Name="esp_DogadjajDodatnaOprema_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dogadjajID" Type="int" Mode="In" />
@@ -341,6 +354,9 @@
           <Parameter Name="korisnikID" Type="int" Mode="In" />
         </Function>
         <Function Name="esp_GetZadnjiDatumTermina_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_JavniDogadjaj_SelectByDogadjajID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dogadjajID" Type="int" Mode="In" />
+        </Function>
         <Function Name="esp_Korisnici_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ime" Type="nvarchar" Mode="In" />
           <Parameter Name="prezime" Type="nvarchar" Mode="In" />
@@ -533,6 +549,7 @@
           <NavigationProperty Name="DogadjajDodatnaOprema" Relationship="Self.FK_DogadjajDodatnaOprema_Dogadjaj" FromRole="Dogadjaj" ToRole="DogadjajDodatnaOprema" />
           <NavigationProperty Name="DogadjajOcjena" Relationship="Self.FK_DogadjajOcjena_Dogadjaj" FromRole="Dogadjaj" ToRole="DogadjajOcjena" />
           <NavigationProperty Name="KorisnikDogadjaj" Relationship="Self.FK_KorisnikDogadjajID_Dogadjaj" FromRole="Dogadjaj" ToRole="KorisnikDogadjaj" />
+          <Property Name="Aktivna" Type="Boolean" />
         </EntityType>
         <EntityType Name="DogadjajDodatnaOprema">
           <Key>
@@ -998,7 +1015,22 @@
             <Parameter Name="slikaThumb" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="esp_DogadjajiZaPrisustvovati_SelectByKorisnik" ReturnType="Collection(Model.DogadjajiZaPrisustvovati_Result)">
-            <Parameter Name="korisnikID" Mode="In" Type="Int32" />
+          <Parameter Name="korisnikID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Dogadjaj_Detalji" ReturnType="Collection(Model.Detalji_Dogadjaja_Result)">
+          <Parameter Name="dogadjajID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Dogadjaj_Update">
+            <Parameter Name="DogadjajID" Mode="In" Type="Int32" />
+            <Parameter Name="odobri" Mode="In" Type="Int32" />
+            <Parameter Name="aktivan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Dogadjaj_Detalji_Filter" ReturnType="Collection(Model.Dogadjaj_Detalji_Result)">
+            <Parameter Name="pocetniDatum" Mode="In" Type="DateTime" />
+            <Parameter Name="KrajnjiDatum" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="esp_JavniDogadjaj_SelectByDogadjajID" ReturnType="Collection(Model.Dogadjaji_Result)">
+          <Parameter Name="dogadjajID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Centar_Result">
@@ -1044,6 +1076,7 @@
           <Property Type="Time" Name="Pocetak" Nullable="false" />
           <Property Type="Time" Name="Kraj" Nullable="false" />
           <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Rezervisan" Nullable="false" />
         </ComplexType>
         <ComplexType Name="MojiDogadjaji_Result">
           <Property Type="Int32" Name="DogadjajID" Nullable="false" />
@@ -1056,6 +1089,7 @@
           <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="SalaID" Nullable="false" />
           <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="false" />
+          <Property Type="Boolean" Name="Aktivna" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Dogadjaji_Result">
           <Property Type="Int32" Name="DogadjajID" Nullable="false" />
@@ -1063,26 +1097,29 @@
           <Property Type="Binary" Name="PlakatThumb" Nullable="true" />
           <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="Datum" Nullable="false" />
-          <Property Type="String" Name="Satnica" Nullable="true" MaxLength="63" />
-          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Aktivna" Nullable="true" />
+          <Property Type="Boolean" Name="Odobrena" Nullable="true" />
           <Property Type="Int32" Name="SalaID" Nullable="false" />
           <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="false" />
-        </ComplexType>
+          <Property Type="String" Name="Satnica" Nullable="true" MaxLength="63" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="TerminID" Nullable="false" />
+          </ComplexType>
         <ComplexType Name="Lista_Result">
-          <Property Type="String" Name="Column1" Nullable="false" MaxLength="201" />
           <Property Type="Int32" Name="KorisnikID" Nullable="false" />
+          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
         </ComplexType>
         <ComplexType Name="DogadjajiZaAdministraciju_Result">
           <Property Type="Int32" Name="DogadjajID" Nullable="false" />
           <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="false" />
-          <Property Type="Boolean" Name="JavniDogadjaj" Nullable="true" />
           <Property Type="DateTime" Name="Datum" Nullable="false" />
           <Property Type="String" Name="Satnica" Nullable="true" MaxLength="63" />
           <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="SalaID" Nullable="false" />
-          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
+          <Property Type="Boolean" Name="Javni" Nullable="true" />
+          <Property Type="String" Name="korisnik" Nullable="false" MaxLength="201" />
         </ComplexType>
         <ComplexType Name="Oprema_Result">
           <Property Type="Int32" Name="OpremaId" Nullable="false" />
@@ -1102,6 +1139,71 @@
           <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="TerminId" Nullable="true" />
           <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="Boolean" Name="Aktivna" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Dogadjaj_Detalji_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="CijenaUlaza" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="BrojMijesta" Nullable="true" />
+          <Property Type="Boolean" Name="JavniDogadjaj" Nullable="true" />
+          <Property Type="Binary" Name="Plakat" Nullable="true" />
+          <Property Type="Binary" Name="Plakat1" Nullable="true" />
+          <Property Type="String" Name="Termin" Nullable="true" MaxLength="97" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
+        </ComplexType>
+        <ComplexType Name="Detalji_Dogadjaja_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="CijenaUlaza" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="BrojMijesta" Nullable="true" />
+          <Property Type="Boolean" Name="JavniDogadjaj" Nullable="true" />
+          <Property Type="Binary" Name="Plakat" Nullable="true" />
+          <Property Type="String" Name="Termin" Nullable="true" MaxLength="97" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
+          <Property Type="Binary" Name="PlakatThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Dogadjaj_Detalji_Filter_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="CijenaUlaza" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="BrojMijesta" Nullable="true" />
+          <Property Type="Boolean" Name="JavniDogadjaj" Nullable="true" />
+          <Property Type="Binary" Name="Plakat" Nullable="true" />
+          <Property Type="Binary" Name="PlakatThumb" Nullable="true" />
+          <Property Type="String" Name="Termin" Nullable="true" MaxLength="97" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
+        </ComplexType>
+        <ComplexType Name="Dogadjaj_Detalji_Result">
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="CijenaUlaza" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="BrojMijesta" Nullable="true" />
+          <Property Type="Boolean" Name="JavniDogadjaj" Nullable="true" />
+          <Property Type="Binary" Name="Plakat" Nullable="true" />
+          <Property Type="Binary" Name="PlakatThumb" Nullable="true" />
+          <Property Type="String" Name="Termin" Nullable="true" MaxLength="97" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Korisnik" Nullable="false" MaxLength="201" />
+          <Property Type="Int32" Name="SalaId" Nullable="true" />
+          <Property Type="Int32" Name="VrstaDogadjajaID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_JavniDogadjaj_SelectByDogadjajID_Result">
+          <Property Type="Int32" Name="TerminID" Nullable="true" />
+          <Property Type="Int32" Name="DogadjajID" Nullable="false" />
+          <Property Type="String" Name="Dogadjaj" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="PlakatThumb" Nullable="true" />
+          <Property Type="Int32" Name="BrojMijesta" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" />
+          <Property Type="Time" Name="Pocetak" Nullable="false" />
+          <Property Type="String" Name="Vrsta" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1134,6 +1236,7 @@
           <EntitySetMapping Name="Dogadjaj">
             <EntityTypeMapping TypeName="Model.Dogadjaj">
               <MappingFragment StoreEntitySet="Dogadjaj">
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
                 <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
@@ -1345,6 +1448,7 @@
                 <ScalarProperty Name="Pocetak" ColumnName="Pocetak" />
                 <ScalarProperty Name="Kraj" ColumnName="Kraj" />
                 <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="Rezervisan" ColumnName="Rezervisan" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1363,6 +1467,7 @@
                 <ScalarProperty Name="Sala" ColumnName="Sala" />
                 <ScalarProperty Name="SalaID" ColumnName="SalaID" />
                 <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1374,18 +1479,21 @@
                 <ScalarProperty Name="PlakatThumb" ColumnName="PlakatThumb" />
                 <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
-                <ScalarProperty Name="Satnica" ColumnName="Satnica" />
-                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
+                <ScalarProperty Name="Odobrena" ColumnName="Odobrena" />
                 <ScalarProperty Name="SalaID" ColumnName="SalaID" />
                 <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
-              </ComplexTypeMapping>
+                <ScalarProperty Name="Satnica" ColumnName="Satnica" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="TerminID" ColumnName="TerminID" />
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="esp_Dogadjaj_SelectListaPrisutnih" FunctionName="Model.Store.esp_Dogadjaj_SelectListaPrisutnih">
           <ResultMapping>
               <ComplexTypeMapping TypeName="Model.Lista_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
                 <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1396,12 +1504,12 @@
                 <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
                 <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
                 <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
-                <ScalarProperty Name="JavniDogadjaj" ColumnName="JavniDogadjaj" />
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
                 <ScalarProperty Name="Satnica" ColumnName="Satnica" />
                 <ScalarProperty Name="Sala" ColumnName="Sala" />
                 <ScalarProperty Name="SalaID" ColumnName="SalaID" />
-                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
+                <ScalarProperty Name="Javni" ColumnName="Javni" />
+                <ScalarProperty Name="korisnik" ColumnName="korisnik" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1424,7 +1532,63 @@
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="TerminId" ColumnName="TerminId" />
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
               </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Dogadjaj_Detalji" FunctionName="Model.Store.esp_Dogadjaj_Detalji">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Detalji_Dogadjaja_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
+                <ScalarProperty Name="CijenaUlaza" ColumnName="CijenaUlaza" />
+                <ScalarProperty Name="BrojMijesta" ColumnName="BrojMijesta" />
+                <ScalarProperty Name="JavniDogadjaj" ColumnName="JavniDogadjaj" />
+                <ScalarProperty Name="Plakat" ColumnName="Plakat" />
+                <ScalarProperty Name="Termin" ColumnName="Termin" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
+                <ScalarProperty Name="PlakatThumb" ColumnName="PlakatThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Dogadjaj_Update" FunctionName="Model.Store.esp_Dogadjaj_Update" />
+          <FunctionImportMapping FunctionImportName="esp_Dogadjaj_Detalji_Filter" FunctionName="Model.Store.esp_Dogadjaj_Detalji_Filter">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Dogadjaj_Detalji_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
+                <ScalarProperty Name="CijenaUlaza" ColumnName="CijenaUlaza" />
+                <ScalarProperty Name="BrojMijesta" ColumnName="BrojMijesta" />
+                <ScalarProperty Name="JavniDogadjaj" ColumnName="JavniDogadjaj" />
+                <ScalarProperty Name="Plakat" ColumnName="Plakat" />
+                <ScalarProperty Name="PlakatThumb" ColumnName="PlakatThumb" />
+                <ScalarProperty Name="Termin" ColumnName="Termin" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="Korisnik" ColumnName="Korisnik" />
+                <ScalarProperty Name="SalaId" ColumnName="SalaId" />
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_JavniDogadjaj_SelectByDogadjajID" FunctionName="Model.Store.esp_JavniDogadjaj_SelectByDogadjajID">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Dogadjaji_Result">
+                <ScalarProperty Name="DogadjajID" ColumnName="DogadjajID" />
+                <ScalarProperty Name="Dogadjaj" ColumnName="Dogadjaj" />
+                <ScalarProperty Name="PlakatThumb" ColumnName="PlakatThumb" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
+                <ScalarProperty Name="Odobrena" ColumnName="Odobrena" />
+                <ScalarProperty Name="SalaID" ColumnName="SalaID" />
+                <ScalarProperty Name="VrstaDogadjajaID" ColumnName="VrstaDogadjajaID" />
+                <ScalarProperty Name="Satnica" ColumnName="Satnica" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="TerminID" ColumnName="TerminID" />
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>
