@@ -42,20 +42,20 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         private void DodajKorisnika_BTN_Click(object sender, EventArgs e)
         {
             DodajKorisnika f = new DodajKorisnika();
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                BindGrid();
-            }
+            f.MdiParent = MdiParent;
+            Close();
+            f.Show();
+          
         }
 
         private void Izmjeni_BTN_Click(object sender, EventArgs e)
         {
             int korisnikID = Convert.ToInt32(Korisnici_DGV.SelectedRows[0].Cells[0].Value);
             UrediKorisnika f = new UrediKorisnika(korisnikID);
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                BindGrid();
-            }
+            f.MdiParent = MdiParent;
+            Close();
+            f.Show();
+           
         }
 
         private void IndexKorisnici_Load(object sender, EventArgs e)

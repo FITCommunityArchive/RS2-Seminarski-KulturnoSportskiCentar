@@ -95,6 +95,7 @@
             this.Datum.DataPropertyName = "Datum";
             this.Datum.HeaderText = "Datum";
             this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
             // 
             // Aktivan
             // 

@@ -71,7 +71,7 @@ namespace eKSC_Solutions
                        terminIspis T = new terminIspis
                        {
                            sala = (SalaPicker.SelectedItem as SALA).Sala,
-                           satnica = "Datum:" +x.Datum.ToString("dd.MM.yyyy") + " Početak: " + x.Pocetak + " Kraj: " +
+                           satnica = "DATUM: " +x.Datum.ToString("dd.MM.yyyy") + " - POČETAK: " + x.Pocetak + " - KRAJ: " +
                                      x.Kraj,
                            Datum = x.Datum,
                            Pocetak = x.Pocetak,
@@ -106,7 +106,8 @@ namespace eKSC_Solutions
                    {
                        terminIspis T = new terminIspis();
                        T.sala = (SalaPicker.SelectedItem as SALA).Sala;
-                       T.satnica = "Datum:" + x.Datum.ToString("dd.MM.yyyy") + " Početak: " + x.Pocetak + " Kraj: " +
+                       T.satnica = "DATUM: " + x.Datum.ToString("dd.MM.yyyy") + " - POČETAK: " + x.Pocetak +
+                                   " - KRAJ: " +
                                    x.Kraj;
 
 

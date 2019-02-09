@@ -132,6 +132,8 @@ namespace eKSC_Solutions
 
         private void PrikaziSveBtn_OnClicked(object sender, EventArgs e)
         {
+            SalaPicker.SelectedItem = null;
+            vrstaDogadjajaPicker.SelectedItem = null;
            BindForm(true);
         }
 
@@ -173,7 +175,8 @@ namespace eKSC_Solutions
 
         private void DogadjajiList_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            this.Navigation.PushAsync(new DetaljiDogadjaja((e.Item as Dogadjaj).DogadjajID));
+            int dogadjajId= (e.Item as MojiDogadjaji_Result).DogadjajID;
+            this.Navigation.PushAsync(new DetaljiDogadjaja(dogadjajId));
         }
     }
 }

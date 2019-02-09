@@ -38,10 +38,31 @@ namespace eKSC_Solutions
                 K.LozinkaSalt = UIHelper.GenerateSalt();
                 K.LozinkaHash = UIHelper.GenerateHash(lozinkaInput.Text, K.LozinkaSalt);
                 K.Uloge = new List<Uloga>();
-                korisnikService.PostResponse(K);
+               HttpResponseMessage response= korisnikService.PostResponse(K);
+               if (response.IsSuccessStatusCode)
+               {
+                   DisplayAlert("Uspjeh", "Uspješno ste se registrovali na sistem", "OK");
+                   Navigation.PushAsync(new Login());
+                }
+               else
+               {
+                   string msg = response.ReasonPhrase;
+                   string poruka = msg;
+                   switch (msg)
+                   {
+                        case "email_con": poruka = "Email je već u upotrebi!";
+                            break;
+                        case "username_con": poruka = "Korisničko ime je u zauzeto!";
+                            break;
+                        case "telefon_con": poruka = "Broj telefona je već u upotrebi!";
+                            break;
 
-                DisplayAlert("Uspjeh", "Uspješno ste se registrovali na sistem", "OK");
-                Navigation.PushAsync(new Login());
+
+                   }
+
+                   DisplayAlert("Greška", poruka, "OK");
+                   
+                }
 
             }
       

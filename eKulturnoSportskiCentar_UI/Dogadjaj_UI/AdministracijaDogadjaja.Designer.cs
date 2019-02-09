@@ -179,18 +179,21 @@
             this.Dogadjaj.DataPropertyName = "Dogadjaj";
             this.Dogadjaj.HeaderText = "Dogadjaj";
             this.Dogadjaj.Name = "Dogadjaj";
+            this.Dogadjaj.ReadOnly = true;
             // 
             // VrstaDogadjaja
             // 
             this.VrstaDogadjaja.DataPropertyName = "Vrsta";
             this.VrstaDogadjaja.HeaderText = "Vrsta dogadjaja";
             this.VrstaDogadjaja.Name = "VrstaDogadjaja";
+            this.VrstaDogadjaja.ReadOnly = true;
             // 
             // Datum
             // 
             this.Datum.DataPropertyName = "Datum";
             this.Datum.HeaderText = "Datum";
             this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
             // 
             // Satnica
             // 
@@ -204,12 +207,14 @@
             this.Sala.DataPropertyName = "Sala";
             this.Sala.HeaderText = "Sala";
             this.Sala.Name = "Sala";
+            this.Sala.ReadOnly = true;
             // 
             // Korisnik
             // 
             this.Korisnik.DataPropertyName = "korisnik";
             this.Korisnik.HeaderText = "Korisnik";
             this.Korisnik.Name = "Korisnik";
+            this.Korisnik.ReadOnly = true;
             // 
             // JavniDogadjaj
             // 

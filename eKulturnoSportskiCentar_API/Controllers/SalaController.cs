@@ -50,6 +50,11 @@ namespace eKulturnoSportskiCentar_API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+            if (s.SalaID != 0)
+            {
+                db.esp_Sala_Update(s.SalaID, s.Naziv, s.CentarID);
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             db.Sala.Add(s);
             db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = s.SalaID }, s);

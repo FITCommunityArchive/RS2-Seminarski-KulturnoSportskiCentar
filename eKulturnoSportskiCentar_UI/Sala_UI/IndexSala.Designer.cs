@@ -28,41 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Izmjeni_BTN = new System.Windows.Forms.Button();
-            this.Dodaj_BTN = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Centar_CMB = new System.Windows.Forms.ComboBox();
             this.Sala_DGV = new System.Windows.Forms.DataGridView();
             this.SalaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Centar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sacuvaj_BTN = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Naziv_Input = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Sala_DGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Izmjeni_BTN
-            // 
-            this.Izmjeni_BTN.Location = new System.Drawing.Point(142, 68);
-            this.Izmjeni_BTN.Name = "Izmjeni_BTN";
-            this.Izmjeni_BTN.Size = new System.Drawing.Size(91, 23);
-            this.Izmjeni_BTN.TabIndex = 12;
-            this.Izmjeni_BTN.Text = "Izmjeni";
-            this.Izmjeni_BTN.UseVisualStyleBackColor = true;
-            this.Izmjeni_BTN.Click += new System.EventHandler(this.Izmjeni_BTN_Click);
-            // 
-            // Dodaj_BTN
-            // 
-            this.Dodaj_BTN.Location = new System.Drawing.Point(20, 68);
-            this.Dodaj_BTN.Name = "Dodaj_BTN";
-            this.Dodaj_BTN.Size = new System.Drawing.Size(91, 23);
-            this.Dodaj_BTN.TabIndex = 11;
-            this.Dodaj_BTN.Text = "Dodaj";
-            this.Dodaj_BTN.UseVisualStyleBackColor = true;
-            this.Dodaj_BTN.Click += new System.EventHandler(this.Dodaj_BTN_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 32);
+            this.label1.Location = new System.Drawing.Point(24, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 9;
@@ -72,11 +56,12 @@
             // 
             this.Centar_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Centar_CMB.FormattingEnabled = true;
-            this.Centar_CMB.Location = new System.Drawing.Point(81, 32);
+            this.Centar_CMB.Location = new System.Drawing.Point(82, 35);
             this.Centar_CMB.Name = "Centar_CMB";
             this.Centar_CMB.Size = new System.Drawing.Size(213, 21);
             this.Centar_CMB.TabIndex = 8;
             this.Centar_CMB.SelectedIndexChanged += new System.EventHandler(this.Centar_CMB_SelectedIndexChanged);
+            this.Centar_CMB.Validating += new System.ComponentModel.CancelEventHandler(this.Centar_CMB_Validating);
             // 
             // Sala_DGV
             // 
@@ -86,11 +71,12 @@
             this.Naziv,
             this.Centar});
             this.Sala_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Sala_DGV.Location = new System.Drawing.Point(0, 108);
+            this.Sala_DGV.Location = new System.Drawing.Point(0, 83);
             this.Sala_DGV.Name = "Sala_DGV";
             this.Sala_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Sala_DGV.Size = new System.Drawing.Size(361, 210);
+            this.Sala_DGV.Size = new System.Drawing.Size(419, 281);
             this.Sala_DGV.TabIndex = 7;
+            this.Sala_DGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Sala_DGV_CellContentDoubleClick);
             // 
             // SalaID
             // 
@@ -102,6 +88,7 @@
             // 
             // Naziv
             // 
+            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Naziv.DataPropertyName = "Sala";
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.Name = "Naziv";
@@ -115,13 +102,46 @@
             this.Centar.Name = "Centar";
             this.Centar.ReadOnly = true;
             // 
+            // Sacuvaj_BTN
+            // 
+            this.Sacuvaj_BTN.Location = new System.Drawing.Point(316, 12);
+            this.Sacuvaj_BTN.Name = "Sacuvaj_BTN";
+            this.Sacuvaj_BTN.Size = new System.Drawing.Size(91, 40);
+            this.Sacuvaj_BTN.TabIndex = 13;
+            this.Sacuvaj_BTN.Text = "Sačuvaj";
+            this.Sacuvaj_BTN.UseVisualStyleBackColor = true;
+            this.Sacuvaj_BTN.Click += new System.EventHandler(this.Sacuvaj_BTN_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
+            // Naziv_Input
+            // 
+            this.Naziv_Input.Location = new System.Drawing.Point(82, 9);
+            this.Naziv_Input.Name = "Naziv_Input";
+            this.Naziv_Input.Size = new System.Drawing.Size(213, 20);
+            this.Naziv_Input.TabIndex = 26;
+            this.Naziv_Input.Validating += new System.ComponentModel.CancelEventHandler(this.Naziv_Input_Validating);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Naziv:";
+            // 
             // IndexSala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 318);
-            this.Controls.Add(this.Izmjeni_BTN);
-            this.Controls.Add(this.Dodaj_BTN);
+            this.ClientSize = new System.Drawing.Size(419, 364);
+            this.Controls.Add(this.Naziv_Input);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Sacuvaj_BTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Centar_CMB);
             this.Controls.Add(this.Sala_DGV);
@@ -133,19 +153,22 @@
             this.Text = "Sala";
             this.Load += new System.EventHandler(this.IndexSala_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Sala_DGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button Izmjeni_BTN;
-        private System.Windows.Forms.Button Dodaj_BTN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox Centar_CMB;
         private System.Windows.Forms.DataGridView Sala_DGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Centar;
+        private System.Windows.Forms.Button Sacuvaj_BTN;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.TextBox Naziv_Input;
+        private System.Windows.Forms.Label label2;
     }
 }

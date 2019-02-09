@@ -47,6 +47,12 @@ namespace eKulturnoSportskiCentar_API.Util
                             NewMessage = "Korisnik_Dogadjaj_con";
                             break;
                         }
+                    case "UQ_Telefon":
+                        NewMessage = "telefon_con";
+                        break;
+                    case "UQ_Centar_Email":
+                        NewMessage = "email_con";
+                        break;
 
 
                 }

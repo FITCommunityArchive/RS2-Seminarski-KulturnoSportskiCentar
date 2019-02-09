@@ -116,6 +116,8 @@
             // 
             // DodatnaOprema_DGV
             // 
+            this.DodatnaOprema_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DodatnaOprema_DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.DodatnaOprema_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DodatnaOprema_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DodatnaOpremaID,

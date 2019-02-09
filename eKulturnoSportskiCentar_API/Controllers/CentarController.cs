@@ -51,6 +51,12 @@ namespace eKulturnoSportskiCentar_API.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if (centar.CentarID != 0)
+            {
+                db.esp_Centar_Update(centar.CentarID, centar.Naziv, centar.Adresa, centar.Email, centar.Telefon);
+
+                return StatusCode(HttpStatusCode.NoContent);
+            }
 
             db.Centar.Add(centar);
             db.SaveChanges();

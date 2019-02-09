@@ -43,8 +43,8 @@ namespace eKSC_Solutions
                 SalaInput.Text = dogadjaj.Sala;
                 TerminInput.Text = dogadjaj.Termin;
                 KorisikInput.Text = dogadjaj.Korisnik;
-               if(dogadjaj.PlakatThumb!=null)
-                slika.Source = ImageSource.FromStream(() => new MemoryStream(dogadjaj.PlakatThumb));
+                if (dogadjaj.PlakatThumb != null)
+                    slika.Source = ImageSource.FromStream(() => new MemoryStream(dogadjaj.PlakatThumb));
 
             }
             

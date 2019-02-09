@@ -169,6 +169,15 @@ namespace eKulturnoSportskiCentar_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email je već u upotrebi..
+        /// </summary>
+        internal static string email_con {
+            get {
+                return ResourceManager.GetString("email_con", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email je u pogrešnom formatu..
         /// </summary>
         internal static string Email_Error {
@@ -219,6 +228,15 @@ namespace eKulturnoSportskiCentar_UI {
         internal static string KorisnickoIme_Required {
             get {
                 return ResourceManager.GetString("KorisnickoIme_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korisnik je već prijaveljen na događaj.
+        /// </summary>
+        internal static string Korisnik_Dogadjaj_con {
+            get {
+                return ResourceManager.GetString("Korisnik_Dogadjaj_con", resourceCulture);
             }
         }
         
@@ -291,6 +309,24 @@ namespace eKulturnoSportskiCentar_UI {
         internal static string Prezime_Required {
             get {
                 return ResourceManager.GetString("Prezime_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broj telefona je već u upotrebi!.
+        /// </summary>
+        internal static string telefon_con {
+            get {
+                return ResourceManager.GetString("telefon_con", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korisničko ime je zauzeto...
+        /// </summary>
+        internal static string username_con {
+            get {
+                return ResourceManager.GetString("username_con", resourceCulture);
             }
         }
         

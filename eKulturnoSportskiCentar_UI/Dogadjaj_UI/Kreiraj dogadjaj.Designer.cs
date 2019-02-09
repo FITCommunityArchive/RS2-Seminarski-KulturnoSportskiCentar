@@ -31,11 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DodatnaOprema_DGV = new System.Windows.Forms.DataGridView();
-            this.DodatnaOpremaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CijenaUlaza = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Odabrano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NE_RDB = new System.Windows.Forms.RadioButton();
             this.Da_RDB = new System.Windows.Forms.RadioButton();
             this.javniDogadjaj_box = new System.Windows.Forms.GroupBox();
@@ -60,6 +55,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.DodatnaOpremaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CijenaUlaza = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Odabrano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DodatnaOprema_DGV)).BeginInit();
             this.javniDogadjaj_box.SuspendLayout();
@@ -79,54 +79,19 @@
             // 
             // DodatnaOprema_DGV
             // 
+            this.DodatnaOprema_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DodatnaOprema_DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DodatnaOprema_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DodatnaOprema_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DodatnaOpremaID,
             this.Naziv,
             this.CijenaUlaza,
-            this.SlikaThumb,
-            this.Odabrano});
+            this.Odabrano,
+            this.SlikaThumb});
             this.DodatnaOprema_DGV.Location = new System.Drawing.Point(6, 32);
             this.DodatnaOprema_DGV.Name = "DodatnaOprema_DGV";
             this.DodatnaOprema_DGV.Size = new System.Drawing.Size(454, 122);
             this.DodatnaOprema_DGV.TabIndex = 24;
-            // 
-            // DodatnaOpremaID
-            // 
-            this.DodatnaOpremaID.DataPropertyName = "DodatnaOpremaID";
-            this.DodatnaOpremaID.Frozen = true;
-            this.DodatnaOpremaID.HeaderText = "DodatnaOpremaID";
-            this.DodatnaOpremaID.Name = "DodatnaOpremaID";
-            this.DodatnaOpremaID.ReadOnly = true;
-            this.DodatnaOpremaID.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // CijenaUlaza
-            // 
-            this.CijenaUlaza.DataPropertyName = "Cijena";
-            this.CijenaUlaza.HeaderText = "Cijena";
-            this.CijenaUlaza.Name = "CijenaUlaza";
-            this.CijenaUlaza.ReadOnly = true;
-            // 
-            // SlikaThumb
-            // 
-            this.SlikaThumb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SlikaThumb.DataPropertyName = "SlikaThumb";
-            this.SlikaThumb.HeaderText = "Slika";
-            this.SlikaThumb.Name = "SlikaThumb";
-            this.SlikaThumb.ReadOnly = true;
-            this.SlikaThumb.Width = 36;
-            // 
-            // Odabrano
-            // 
-            this.Odabrano.HeaderText = "Odabrano";
-            this.Odabrano.Name = "Odabrano";
             // 
             // NE_RDB
             // 
@@ -347,6 +312,42 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // DodatnaOpremaID
+            // 
+            this.DodatnaOpremaID.DataPropertyName = "DodatnaOpremaID";
+            this.DodatnaOpremaID.Frozen = true;
+            this.DodatnaOpremaID.HeaderText = "DodatnaOpremaID";
+            this.DodatnaOpremaID.Name = "DodatnaOpremaID";
+            this.DodatnaOpremaID.ReadOnly = true;
+            this.DodatnaOpremaID.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // CijenaUlaza
+            // 
+            this.CijenaUlaza.DataPropertyName = "Cijena";
+            this.CijenaUlaza.HeaderText = "Cijena";
+            this.CijenaUlaza.Name = "CijenaUlaza";
+            this.CijenaUlaza.ReadOnly = true;
+            // 
+            // Odabrano
+            // 
+            this.Odabrano.HeaderText = "Odabrano";
+            this.Odabrano.Name = "Odabrano";
+            // 
+            // SlikaThumb
+            // 
+            this.SlikaThumb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SlikaThumb.DataPropertyName = "SlikaThumb";
+            this.SlikaThumb.HeaderText = "Slika";
+            this.SlikaThumb.Name = "SlikaThumb";
+            this.SlikaThumb.ReadOnly = true;
+            // 
             // KreirajDogadjaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,11 +390,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView DodatnaOprema_DGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DodatnaOpremaID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CijenaUlaza;
-        private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Odabrano;
         private System.Windows.Forms.RadioButton NE_RDB;
         private System.Windows.Forms.RadioButton Da_RDB;
         private System.Windows.Forms.GroupBox javniDogadjaj_box;
@@ -418,5 +414,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DodatnaOpremaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CijenaUlaza;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Odabrano;
+        private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
     }
 }

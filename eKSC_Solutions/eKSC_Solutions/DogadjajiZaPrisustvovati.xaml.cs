@@ -97,18 +97,22 @@ namespace eKSC_Solutions
                 if (D.Aktivna == false)
                 {
                     DisplayAlert("Greška!", "Nemoguće ocjeniti događaj jer je isti otkazan!", "OK");
-                  
-                }
-                int result = DateTime.Compare(DateTime.Today, D.Termin.Datum);
-                if (result > 0)
-                {
-                    Navigation.PushAsync(new OcjeniDogadjaj(D.DogadjajID));
 
                 }
                 else
                 {
-                    DisplayAlert("Greška!", "Nije moguće ocjenuti događaj koji se nije desio!", "OK");
+                    int result = DateTime.Compare(DateTime.Today, D.Termin.Datum);
+                    if (result > 0)
+                    {
+                        Navigation.PushAsync(new OcjeniDogadjaj(D.DogadjajID));
+
+                    }
+                    else
+                    {
+                        DisplayAlert("Greška!", "Nije moguće ocjenuti događaj koji se nije desio!", "OK");
+                    }
                 }
+                
             }
             
         }

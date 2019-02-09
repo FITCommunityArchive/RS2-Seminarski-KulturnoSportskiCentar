@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Sala_CMB = new System.Windows.Forms.ComboBox();
             this.Dogadjaj_DGV = new System.Windows.Forms.DataGridView();
+            this.OznaciSe_BTN = new System.Windows.Forms.Button();
             this.DogadjajID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dogadjaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vrsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,9 +44,7 @@
             this.Satnica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojPrisutnih = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProsjecnaOcjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plakat = new System.Windows.Forms.DataGridViewImageColumn();
-            this.OznaciSe_BTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dogadjaj_DGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +116,8 @@
             // 
             // Dogadjaj_DGV
             // 
+            this.Dogadjaj_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.Dogadjaj_DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.Dogadjaj_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dogadjaj_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DogadjajID,
@@ -126,14 +127,23 @@
             this.Satnica,
             this.Sala,
             this.BrojPrisutnih,
-            this.ProsjecnaOcjena,
             this.Plakat});
             this.Dogadjaj_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Dogadjaj_DGV.Location = new System.Drawing.Point(0, 169);
+            this.Dogadjaj_DGV.Location = new System.Drawing.Point(0, 97);
             this.Dogadjaj_DGV.Name = "Dogadjaj_DGV";
             this.Dogadjaj_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dogadjaj_DGV.Size = new System.Drawing.Size(846, 281);
+            this.Dogadjaj_DGV.Size = new System.Drawing.Size(1090, 493);
             this.Dogadjaj_DGV.TabIndex = 40;
+            // 
+            // OznaciSe_BTN
+            // 
+            this.OznaciSe_BTN.Location = new System.Drawing.Point(847, 14);
+            this.OznaciSe_BTN.Name = "OznaciSe_BTN";
+            this.OznaciSe_BTN.Size = new System.Drawing.Size(104, 47);
+            this.OznaciSe_BTN.TabIndex = 48;
+            this.OznaciSe_BTN.Text = "Oznaci se";
+            this.OznaciSe_BTN.UseVisualStyleBackColor = true;
+            this.OznaciSe_BTN.Click += new System.EventHandler(this.OznaciSe_BTN_Click);
             // 
             // DogadjajID
             // 
@@ -142,6 +152,7 @@
             this.DogadjajID.Name = "DogadjajID";
             this.DogadjajID.ReadOnly = true;
             this.DogadjajID.Visible = false;
+            this.DogadjajID.Width = 85;
             // 
             // Dogadjaj
             // 
@@ -149,6 +160,7 @@
             this.Dogadjaj.HeaderText = "Dogadjaj";
             this.Dogadjaj.Name = "Dogadjaj";
             this.Dogadjaj.ReadOnly = true;
+            this.Dogadjaj.Width = 74;
             // 
             // Vrsta
             // 
@@ -156,6 +168,7 @@
             this.Vrsta.HeaderText = "Vrsta";
             this.Vrsta.Name = "Vrsta";
             this.Vrsta.ReadOnly = true;
+            this.Vrsta.Width = 56;
             // 
             // Datum
             // 
@@ -163,6 +176,7 @@
             this.Datum.HeaderText = "Datum";
             this.Datum.Name = "Datum";
             this.Datum.ReadOnly = true;
+            this.Datum.Width = 63;
             // 
             // Satnica
             // 
@@ -170,12 +184,15 @@
             this.Satnica.HeaderText = "Satnica";
             this.Satnica.Name = "Satnica";
             this.Satnica.ReadOnly = true;
+            this.Satnica.Width = 68;
             // 
             // Sala
             // 
             this.Sala.DataPropertyName = "Sala";
             this.Sala.HeaderText = "Sala";
             this.Sala.Name = "Sala";
+            this.Sala.ReadOnly = true;
+            this.Sala.Width = 53;
             // 
             // BrojPrisutnih
             // 
@@ -183,35 +200,21 @@
             this.BrojPrisutnih.HeaderText = "Broj prisutnih";
             this.BrojPrisutnih.Name = "BrojPrisutnih";
             this.BrojPrisutnih.ReadOnly = true;
-            // 
-            // ProsjecnaOcjena
-            // 
-            this.ProsjecnaOcjena.DataPropertyName = "ProsjecnaOcjena";
-            this.ProsjecnaOcjena.HeaderText = "Prosječna ocjena";
-            this.ProsjecnaOcjena.Name = "ProsjecnaOcjena";
+            this.BrojPrisutnih.Width = 92;
             // 
             // Plakat
             // 
+            this.Plakat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Plakat.DataPropertyName = "PlakatThumb";
             this.Plakat.HeaderText = "Plakat";
             this.Plakat.Name = "Plakat";
             this.Plakat.ReadOnly = true;
             // 
-            // OznaciSe_BTN
-            // 
-            this.OznaciSe_BTN.Location = new System.Drawing.Point(678, 80);
-            this.OznaciSe_BTN.Name = "OznaciSe_BTN";
-            this.OznaciSe_BTN.Size = new System.Drawing.Size(104, 47);
-            this.OznaciSe_BTN.TabIndex = 48;
-            this.OznaciSe_BTN.Text = "Oznaci se";
-            this.OznaciSe_BTN.UseVisualStyleBackColor = true;
-            this.OznaciSe_BTN.Click += new System.EventHandler(this.OznaciSe_BTN_Click);
-            // 
             // JavniDogadjaji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 450);
+            this.ClientSize = new System.Drawing.Size(1090, 590);
             this.Controls.Add(this.OznaciSe_BTN);
             this.Controls.Add(this.PrikaziSve_BTN);
             this.Controls.Add(this.Vrsta_CMB);
@@ -244,6 +247,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox Sala_CMB;
         private System.Windows.Forms.DataGridView Dogadjaj_DGV;
+        private System.Windows.Forms.Button OznaciSe_BTN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DogadjajID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dogadjaj;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vrsta;
@@ -251,8 +255,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Satnica;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sala;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojPrisutnih;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProsjecnaOcjena;
         private System.Windows.Forms.DataGridViewImageColumn Plakat;
-        private System.Windows.Forms.Button OznaciSe_BTN;
     }
 }

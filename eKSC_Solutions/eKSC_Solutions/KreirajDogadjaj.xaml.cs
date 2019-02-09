@@ -58,6 +58,7 @@ namespace eKSC_Solutions
         } 
         bool Validacija()
         {
+           
             if (string.IsNullOrEmpty(NazivInput.Text))
             {
                 DisplayAlert("Upozorenje!", "Naziv je obavezno polje", "OK");
@@ -68,10 +69,37 @@ namespace eKSC_Solutions
                 DisplayAlert("Upozorenje!", "Niste odabrali vrstu događaja", "OK");
                 return false;
             }
+            else if(javniDogadjajSwitch.IsToggled)
+            {
+                if (string.IsNullOrEmpty(cijenaUlazaInput.Text) == false)
+                {
+                    bool isNumeric = double.TryParse(cijenaUlazaInput.Text, out double n);
+                    if (!isNumeric)
+                    {
+                        DisplayAlert("Upozorenje!", "Cijena ulaza je brojčana vrijednost", "OK");
+                       
+                        return false;
+                    }
+                }
+                if (string.IsNullOrEmpty(brojMjestaInput.Text) == false)
+                {
+                    bool isNumeric = int.TryParse(brojMjestaInput.Text, out int n);
+                    if (!isNumeric)
+                    {
+                        DisplayAlert("Upozorenje!", "Broj mjesta je brojčana vrijednost", "OK");
+                       return false;
+
+                    }
+                }
+                return true;
+            }
+
             else
             {
                 return true;
             }
+                
+           
         }
 
         private void BindVrsteDogadjaj()
@@ -153,12 +181,7 @@ namespace eKSC_Solutions
             }
         }
 
-        private void DodatnaOpremaList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            int dodatnaOpremaID=(DodatnaOpremaList.SelectedItem as DodatnaOprema).DodatnaOpremaID;
-            
-            CheckDodatnaOprema(dodatnaOpremaID);
-        }
+       
 
       
 
@@ -195,6 +218,13 @@ namespace eKSC_Solutions
                 }
             }
            
+        }
+
+        private void DodatnaOpremaList_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            int dodatnaOpremaID = (DodatnaOpremaList.SelectedItem as DodatnaOprema).DodatnaOpremaID;
+
+            CheckDodatnaOprema(dodatnaOpremaID);
         }
     }
 }

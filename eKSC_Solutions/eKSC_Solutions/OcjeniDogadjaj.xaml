@@ -3,22 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eKSC_Solutions.OcjeniDogadjaj">
     <ContentPage.Content>
-        <StackLayout Margin="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  >
-
+        <StackLayout Margin="30" HorizontalOptions="Center" VerticalOptions="Center"  >
             <Label Text="eKulturnoSportskiCentar::Ocijeni događaj"
                    TextColor="CornflowerBlue"
                    FontSize="25"></Label>
-            <Label x:Name="NazivInput" ></Label>
+            <StackLayout Margin="50">
+            <Label x:Name="NazivInput" FontSize="18" ></Label>
                 <Label x:Name="KorisnikInput" ></Label>
-            
-                <Picker x:Name="OcjenePicker" Title="Ocjene"  ></Picker>
-            
+                <Picker x:Name="OcjenePicker" Title="Ocjene" ></Picker>
+       
                 
                 <StackLayout Orientation="Horizontal">
-                    <Button x:Name="Odustani" Clicked="Odustani_OnClicked" Text="Odustani"></Button>
-                    <Button x:Name="Ocjeni" Clicked="Ocjeni_OnClicked" Text="Ocjeni"></Button>
+                    <Button x:Name="Odustani" Clicked="Odustani_OnClicked" Text="Odustani" BackgroundColor="DarkRed"></Button>
+                    <Button x:Name="Ocjeni" Clicked="Ocjeni_OnClicked" Text="Ocjeni" BackgroundColor="Green"></Button>
                 </StackLayout>
-           
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

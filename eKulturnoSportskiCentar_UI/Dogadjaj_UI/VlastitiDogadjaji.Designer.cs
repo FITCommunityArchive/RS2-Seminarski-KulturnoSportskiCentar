@@ -196,6 +196,7 @@
             this.Datum.DataPropertyName = "Datum";
             this.Datum.HeaderText = "Datum";
             this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
             // 
             // Satnica
             // 
@@ -209,6 +210,7 @@
             this.Sala.DataPropertyName = "Sala";
             this.Sala.HeaderText = "Sala";
             this.Sala.Name = "Sala";
+            this.Sala.ReadOnly = true;
             // 
             // BrojPrisutnih
             // 
@@ -224,6 +226,7 @@
             this.ProsjecnaOcjena.DataPropertyName = "ProsjecnaOcjena";
             this.ProsjecnaOcjena.HeaderText = "Prosječna ocjena";
             this.ProsjecnaOcjena.Name = "ProsjecnaOcjena";
+            this.ProsjecnaOcjena.ReadOnly = true;
             // 
             // Odobrena
             // 

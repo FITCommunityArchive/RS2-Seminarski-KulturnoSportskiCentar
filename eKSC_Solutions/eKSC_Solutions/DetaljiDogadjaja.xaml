@@ -10,23 +10,25 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+       
         <StackLayout Margin="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <Label Text="eKulturnoSportskiCentar::Detalji događaja" TextColor="CornflowerBlue" FontSize="19"></Label>
             <Grid>
-               <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=""></ColumnDefinition>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                </Grid.ColumnDefinitions>
-               <Image x:Name="slika" Grid.Column="0" Source="{Binding PlakatThumb,Converter={StaticResource imgConv}}"></Image>
+               <Image x:Name="slika" Grid.Column="0" Source="{Binding PlakatThumb,Converter={StaticResource imgConv}}" HorizontalOptions="Start"></Image>
 
-                <StackLayout Grid.Column="1">
-                    <Label x:Name="DogadjajInput"></Label>
+                <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="DogadjajInput" FontSize="19" ></Label>
                     <Label x:Name="TerminInput"></Label>
                     <Label x:Name="VrstaInput"></Label>
 
                     <Label x:Name="SalaInput"></Label>
                     <Label x:Name="KorisikInput"></Label>
-                    <Label x:Name="CijenaUlazaInput"></Label>
+                   <Label x:Name="CijenaUlazaInput"></Label>
                 </StackLayout>
 
 </Grid>

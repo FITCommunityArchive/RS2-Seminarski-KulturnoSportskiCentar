@@ -82,7 +82,13 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
             Ocjene_CMB.ValueMember = "OcjenaID";
             if (IsOcjenjen != 0)
             {
-                Ocjene_CMB.SelectedValue = IsOcjenjen;
+                HttpResponseMessage responseDogadjajOcjena =
+                    dogadjajOcjenaServices.GetResponse(IsOcjenjen.ToString());
+                if (responseDogadjajOcjena.IsSuccessStatusCode)
+                {
+                    DogadjajOcjena DO = responseDogadjajOcjena.Content.ReadAsAsync<DogadjajOcjena>().Result;
+                    Ocjene_CMB.SelectedIndex = Convert.ToInt32(DO.OcjenaID);
+                }
             }
         }
 

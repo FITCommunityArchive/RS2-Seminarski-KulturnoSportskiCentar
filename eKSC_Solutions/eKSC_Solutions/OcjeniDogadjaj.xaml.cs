@@ -64,7 +64,14 @@ namespace eKSC_Solutions
                 OcjenePicker.ItemDisplayBinding = new Binding("Naziv");
                 if (IsOcjenjen != 0)
                 {
-                    OcjenePicker.SelectedIndex = IsOcjenjen;
+                    HttpResponseMessage responseDogadjajOcjena =
+                        dogadjajOcjenaServices.GetResponse(IsOcjenjen.ToString());
+                    if (responseDogadjajOcjena.IsSuccessStatusCode)
+                    {
+                        jsonObject = responseDogadjajOcjena.Content.ReadAsStringAsync();
+                        DogadjajOcjena DO = JsonConvert.DeserializeObject<DogadjajOcjena>(jsonObject.Result);
+                        OcjenePicker.SelectedIndex = Convert.ToInt32(DO.OcjenaID) - 1;
+                    }
                 }
             }
            

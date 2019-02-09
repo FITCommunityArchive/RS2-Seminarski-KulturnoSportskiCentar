@@ -5,79 +5,71 @@
              x:Class="eKSC_Solutions.VlastitiDogadjaji">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:BoolConverter x:TypeArguments="x:String" FalseValue="DA" NullValue="Nista" TrueValue="DA" x:Key="CYesNo" />
+            <local:BoolConverter x:TypeArguments="x:String" FalseValue="NE" NullValue="Nista" TrueValue="DA" x:Key="CYesNo" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="30">
+        <StackLayout Margin="30" VerticalOptions="Center" HorizontalOptions="Center">
             <Label TextColor="CornflowerBlue" x:Name="naslovLabel" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-            <Grid>
+            <Grid Margin="20">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackLayout>
+                <StackLayout Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" HorizontalOptions="Start" >
                     <Label Text="Odaberite datum:"></Label>
-                    <DatePicker x:Name="DatumPicker" DateSelected="DatumPicker_OnDateSelected" ></DatePicker>
+                    <DatePicker x:Name="DatumPicker" DateSelected="DatumPicker_OnDateSelected"></DatePicker>
                 </StackLayout>
-                <Picker x:Name="SalaPicker" Title="Odaberite salu" Grid.Column="1" SelectedIndexChanged="SalaPicker_OnSelectedIndexChanged"></Picker>
-                <Picker x:Name="vrstaDogadjajaPicker" Title="Odaberite vrstu događaja:" Grid.Column="2" SelectedIndexChanged="VrstaDogadjajaPicker_OnSelectedIndexChanged"></Picker>
-                <Button x:Name="PrikaziSveBtn" Text="Prikaži sve" Grid.Column="3" Clicked="PrikaziSveBtn_OnClicked"></Button>
+                <StackLayout  Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Picker x:Name="SalaPicker" Title="Odaberite salu"  SelectedIndexChanged="SalaPicker_OnSelectedIndexChanged"></Picker>
+                </StackLayout>
+                <StackLayout  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Picker x:Name="vrstaDogadjajaPicker" Title="Odaberite vrstu događaja:" SelectedIndexChanged="VrstaDogadjajaPicker_OnSelectedIndexChanged"></Picker>
+
+                </StackLayout>
+                <StackLayout Grid.Column="3" Grid.Row="1" VerticalOptions="Center" >
+                    <Button x:Name="PrikaziSveBtn" Text="Prikaži sve"  Clicked="PrikaziSveBtn_OnClicked" BackgroundColor="CornflowerBlue"></Button>
+
+                </StackLayout>
             </Grid>
+
             <ListView x:Name="DogadjajiList" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid RowSpacing="80" Margin="10">
+                               
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    
                                 </Grid.ColumnDefinitions>
-                                <StackLayout>
+
+                                <StackLayout VerticalOptions="Center">
                                     <Label Text="{Binding Dogadjaj, StringFormat='Događaj: {0:F0}'}"></Label>
                                     <Label Text="{Binding Vrsta, StringFormat='Vrsta događaja: {0:F0}'}"></Label>
-                                    <StackLayout >
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="{Binding Odobrena, Converter={StaticResource CYesNo},StringFormat='Odobena: {0:F0}'}"></Label>
-                                        </Grid>
-                                    </StackLayout>
-                                    <StackLayout >
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="{Binding Aktivna, Converter={StaticResource CYesNo},StringFormat='Aktivna: {0:F0}'}"></Label>
-                                        </Grid>
-                                    </StackLayout>
-                                </StackLayout>
-                                <StackLayout Grid.Column="1">
-                                    <Label Text="{Binding Datum,StringFormat='Datum: {0:dd.MM.yyyy}'}"></Label>
                                     <Label Text="{Binding Sala,StringFormat='Sala: {0:F0}'}"></Label>
-                                    <Label Text="{Binding Satnica,StringFormat='Satnica: {0:F0}'}"></Label>
+                                    <Label Text="{Binding Odobrena, Converter={StaticResource CYesNo},StringFormat='Odobena: {0:F0}'}"></Label>
+                                    <Label Text="{Binding Aktivna, Converter={StaticResource CYesNo},StringFormat='Aktivna: {0:F0}'}"></Label>
+                                  <StackLayout Margin="20"> <Button x:Name="OtkaziBtn" Text="Otkaži" BackgroundColor="Red" Clicked="OtkaziBtn_OnClicked" CommandParameter="{Binding DogadjajID}"></Button>
+                                  </StackLayout>
                                 </StackLayout>
-                                <StackLayout Grid.Column="2">
-                                 
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding Datum,StringFormat='Datum: {0:dd.MM.yyyy}'}"></Label>
+                                    <Label Text="{Binding Satnica,StringFormat='Satnica: {0:F0}'}"></Label>
                                     <Label Text="{Binding BrojPrisutnih,StringFormat='Broj prisutnih: {0:F0}'}"></Label>
                                     <Label Text="{Binding ProsjecnaOcjena,StringFormat='Prosječna ocjena: {0:F0}'}"></Label>
+                                    <StackLayout Margin="20">
+                                        <Button x:Name="ListaPrisutnihBtn" Text="Lista prisutnih" CommandParameter="{Binding DogadjajID}" Clicked="ListaPrisutnihBtn_OnClicked" ></Button>
+                                    </StackLayout>
                                 </StackLayout>
-
-                                <StackLayout Grid.Column="3" Orientation="Horizontal" Margin="40">
-                                    <Button x:Name="OtkaziBtn" Text="Otkaži" BackgroundColor="Red" Clicked="OtkaziBtn_OnClicked" CommandParameter="{Binding DogadjajID}"></Button>
-                                    <Button x:Name="ListaPrisutnihBtn" Text="Lista prisutnih" CommandParameter="{Binding DogadjajID}" Clicked="ListaPrisutnihBtn_OnClicked" ></Button>
-
-                                </StackLayout>
+                              
 
                             </Grid>
                         </ViewCell>

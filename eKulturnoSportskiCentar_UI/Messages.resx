@@ -198,4 +198,16 @@
   <data name="dogadjaj_action" xml:space="preserve">
     <value>Odaberite događaj za koji želite izvršiti akciju.</value>
   </data>
+  <data name="email_con" xml:space="preserve">
+    <value>Email je već u upotrebi.</value>
+  </data>
+  <data name="Korisnik_Dogadjaj_con" xml:space="preserve">
+    <value>Korisnik je već prijaveljen na događaj</value>
+  </data>
+  <data name="telefon_con" xml:space="preserve">
+    <value>Broj telefona je već u upotrebi!</value>
+  </data>
+  <data name="username_con" xml:space="preserve">
+    <value>Korisničko ime je zauzeto..</value>
+  </data>
 </root>

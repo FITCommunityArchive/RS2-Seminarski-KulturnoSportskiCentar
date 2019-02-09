@@ -30,6 +30,10 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         private void Odustani_BTN_Click(object sender, EventArgs e)
         {
             Close();
+            IndexKorisnici f=new IndexKorisnici();
+            f.MdiParent = MdiParent;
+            Close();
+            f.Show();
         }
 
         private void DodajKorisnika_BTN_Click(object sender, EventArgs e)
@@ -54,11 +58,15 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
                     MessageBox.Show(Messages.add_usr_succ, Messages.msg_succ, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                     Close();
+                    IndexKorisnici f = new IndexKorisnici();
+                    f.MdiParent = MdiParent;
+                    Close();
+                    f.Show();
                 }
                 else
                 {
                     string msg = response.ReasonPhrase;
-                    if (String.IsNullOrEmpty(Messages.ResourceManager.GetString(response.ReasonPhrase)))
+                    if (!String.IsNullOrEmpty(Messages.ResourceManager.GetString(response.ReasonPhrase)))
                     {
                         msg = Messages.ResourceManager.GetString(response.ReasonPhrase);
                     }

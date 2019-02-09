@@ -18,9 +18,12 @@ namespace eKulturnoSportskiCentar_UI.Sala_UI
         private WebAPIHelper centarServices = new WebAPIHelper("http://localhost:51348/", Global.CentarRoute);
         private WebAPIHelper salaServices = new WebAPIHelper("http://localhost:51348/", Global.SalaRoute);
         private int brojac = 0;
+        private Sala Sala { get; set; }
+        private int SalaId = 0;
         public IndexSala()
         {
             InitializeComponent();
+            AutoValidate = AutoValidate.Disable;
         }
         private void IndexSala_Load(object sender, EventArgs e)
         {
@@ -49,28 +52,7 @@ namespace eKulturnoSportskiCentar_UI.Sala_UI
             Centar_CMB.DisplayMember = "Naziv";
         }
 
-        private void Dodaj_BTN_Click(object sender, EventArgs e)
-        {
-           
-            DodajSalu f = new DodajSalu();
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                Centar_CMB.SelectedValue = 0;
-                BindGrid();
-            }
-        }
-
-        private void Izmjeni_BTN_Click(object sender, EventArgs e)
-        {
-           
-            int salaID = Convert.ToInt32(Sala_DGV.SelectedRows[0].Cells[0].Value);
-            UrediSalu f = new UrediSalu(salaID);
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                Centar_CMB.SelectedValue = 0;
-                BindGrid();
-            }
-        }
+  
 
         
 
@@ -78,6 +60,80 @@ namespace eKulturnoSportskiCentar_UI.Sala_UI
         {
             if(brojac!=0)
             BindGrid();
+        }
+
+        #region Validacija
+
+        private void Naziv_Input_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(Naziv_Input.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(Naziv_Input, Messages.Name_Required);
+            }
+        }
+
+        private void Centar_CMB_Validating(object sender, CancelEventArgs e)
+        {
+            if (Convert.ToInt32(Centar_CMB.SelectedValue) == 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(Centar_CMB, Messages.DropDown_NotSelected);
+            }
+        }  
+        #endregion
+
+        private void Clear()
+        {
+            Naziv_Input.Text = null;
+            SalaId = 0;
+            Centar_CMB.SelectedValue = 0;
+            Sala = null;
+        }
+        private void Sacuvaj_BTN_Click(object sender, EventArgs e)
+        {
+            if (ValidateChildren())
+            {
+                Sala.Naziv = Naziv_Input.Text;
+                Sala.SalaID = SalaId;
+                Sala.CentarID = Convert.ToInt32(Centar_CMB.SelectedValue);
+
+                HttpResponseMessage response = salaServices.PostResponse(Sala);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(Messages.add_Sala_succ, Messages.msg_succ, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                   BindGrid();
+                   Clear();
+
+                }
+                else
+                {
+                    MessageBox.Show("Error code: " + response.StatusCode + " Message: " + response.ReasonPhrase);
+                }
+            }
+           
+        }
+
+        private void Sala_DGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SalaId = Convert.ToInt32(Sala_DGV.SelectedRows[0].Cells[0].Value);
+            HttpResponseMessage response = salaServices.GetResponse(SalaId.ToString());
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                Sala = null;
+            }
+            else
+            {
+                Sala = response.Content.ReadAsAsync<eKulturnoSportskiCentar_API.Models.Sala>().Result;
+                FillForm();
+            }
+        }
+
+        private void FillForm()
+        {
+            Naziv_Input.Text = Sala.Naziv;
+            Centar_CMB.SelectedValue = Sala.CentarID;
         }
     }
 }

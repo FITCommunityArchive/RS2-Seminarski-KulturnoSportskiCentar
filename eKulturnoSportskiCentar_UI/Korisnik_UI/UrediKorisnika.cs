@@ -207,7 +207,11 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
                     {
                         MessageBox.Show("Korisnik uspjenšno izmjenjen");
                         DialogResult = DialogResult.OK;
-                        this.Close();
+                        Close();
+                        IndexKorisnici f = new IndexKorisnici();
+                        f.MdiParent = MdiParent;
+                        Close();
+                        f.Show();
                     }
                     else
                     {
@@ -228,6 +232,10 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         private void Odustani_BTN_Click(object sender, EventArgs e)
         {
             Close();
+            IndexKorisnici f = new IndexKorisnici();
+            f.MdiParent = MdiParent;
+            Close();
+            f.Show();
         }
 
         

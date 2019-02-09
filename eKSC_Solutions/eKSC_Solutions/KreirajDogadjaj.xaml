@@ -54,7 +54,7 @@
             </Grid>
 
             <Label Text="Dodatna oprema" FontSize="18" TextColor="CornflowerBlue" HorizontalOptions="CenterAndExpand"></Label>
-            <ListView x:Name="DodatnaOpremaList" ItemSelected="DodatnaOpremaList_OnItemSelected">
+            <ListView x:Name="DodatnaOpremaList" ItemTapped="DodatnaOpremaList_OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -75,7 +75,7 @@
                                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Label Text="Odabrano"></Label>
-                                            <Switch  IsToggled="{Binding IsOznacen}" Grid.Column="1"></Switch>
+                                            <Switch  IsToggled="{Binding IsOznacen}" Grid.Column="1" IsEnabled="False"></Switch>
                                         </Grid>
                                     </StackLayout>
                                     

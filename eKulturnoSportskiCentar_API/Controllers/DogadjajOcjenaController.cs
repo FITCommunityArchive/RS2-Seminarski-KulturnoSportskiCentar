@@ -14,7 +14,7 @@ namespace eKulturnoSportskiCentar_API.Controllers
 {
     public class DogadjajOcjenaController : ApiController
     {
-        private eKulturnoSportskiCentar_Entities db = new eKulturnoSportskiCentar_Entities();
+        private eKulturnoSportskiCentar_Entities db = new eKulturnoSportskiCentar_Entities(false);
 
         // GET: api/DogadjajOcjena
         public List<DogadjajOcjena> GetDogadjajOcjena()

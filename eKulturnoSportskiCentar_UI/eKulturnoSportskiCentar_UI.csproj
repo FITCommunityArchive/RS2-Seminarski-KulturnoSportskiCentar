@@ -71,41 +71,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Centar_UI\DodajCentar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Centar_UI\DodajCentar.Designer.cs">
-      <DependentUpon>DodajCentar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Centar_UI\IndexCentar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Centar_UI\IndexCentar.Designer.cs">
       <DependentUpon>IndexCentar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Centar_UI\UrediCentar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Centar_UI\UrediCentar.Designer.cs">
-      <DependentUpon>UrediCentar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DodatnaOprema_UI\DodajDodatnaOprema.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DodatnaOprema_UI\DodajDodatnaOprema.Designer.cs">
-      <DependentUpon>DodajDodatnaOprema.cs</DependentUpon>
-    </Compile>
     <Compile Include="DodatnaOprema_UI\IndexDodatnaOprema.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DodatnaOprema_UI\IndexDodatnaOprema.Designer.cs">
       <DependentUpon>IndexDodatnaOprema.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DodatnaOprema_UI\UrediDodatnaOprema.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DodatnaOprema_UI\UrediDodatnaOprema.Designer.cs">
-      <DependentUpon>UrediDodatnaOprema.cs</DependentUpon>
     </Compile>
     <Compile Include="Dogadjaj_UI\AdministracijaDogadjaja.cs">
       <SubType>Form</SubType>
@@ -203,23 +179,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Oprema_UI\DodajOpremu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Oprema_UI\DodajOpremu.Designer.cs">
-      <DependentUpon>DodajOpremu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Oprema_UI\IndexOprema.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Oprema_UI\IndexOprema.Designer.cs">
       <DependentUpon>IndexOprema.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Oprema_UI\UrediOpremu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Oprema_UI\UrediOpremu.Designer.cs">
-      <DependentUpon>UrediOpremu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,31 +211,13 @@
     <Compile Include="Reports\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sala_UI\DodajSalu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sala_UI\DodajSalu.Designer.cs">
-      <DependentUpon>DodajSalu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Sala_UI\IndexSala.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Sala_UI\IndexSala.Designer.cs">
       <DependentUpon>IndexSala.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sala_UI\UrediSalu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sala_UI\UrediSalu.Designer.cs">
-      <DependentUpon>UrediSalu.cs</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="SubForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubForm.Designer.cs">
-      <DependentUpon>SubForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Termin_UI\IndexTermin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,23 +232,11 @@
     <Compile Include="Yes_No.Designer.cs">
       <DependentUpon>Yes_No.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Centar_UI\DodajCentar.resx">
-      <DependentUpon>DodajCentar.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Centar_UI\IndexCentar.resx">
       <DependentUpon>IndexCentar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Centar_UI\UrediCentar.resx">
-      <DependentUpon>UrediCentar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DodatnaOprema_UI\DodajDodatnaOprema.resx">
-      <DependentUpon>DodajDodatnaOprema.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DodatnaOprema_UI\IndexDodatnaOprema.resx">
       <DependentUpon>IndexDodatnaOprema.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DodatnaOprema_UI\UrediDodatnaOprema.resx">
-      <DependentUpon>UrediDodatnaOprema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dogadjaj_UI\AdministracijaDogadjaja.resx">
       <DependentUpon>AdministracijaDogadjaja.cs</DependentUpon>
@@ -353,14 +287,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Oprema_UI\DodajOpremu.resx">
-      <DependentUpon>DodajOpremu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Oprema_UI\IndexOprema.resx">
       <DependentUpon>IndexOprema.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Oprema_UI\UrediOpremu.resx">
-      <DependentUpon>UrediOpremu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -386,17 +314,8 @@
     <EmbeddedResource Include="Reports\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sala_UI\DodajSalu.resx">
-      <DependentUpon>DodajSalu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Sala_UI\IndexSala.resx">
       <DependentUpon>IndexSala.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sala_UI\UrediSalu.resx">
-      <DependentUpon>UrediSalu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SubForm.resx">
-      <DependentUpon>SubForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Termin_UI\IndexTermin.resx">
       <DependentUpon>IndexTermin.cs</DependentUpon>

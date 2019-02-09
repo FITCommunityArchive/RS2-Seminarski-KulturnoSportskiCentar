@@ -9,8 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eKulturnoSportskiCentar_UI.Centar_UI;
+using eKulturnoSportskiCentar_UI.DodatnaOprema_UI;
 using eKulturnoSportskiCentar_UI.Dogadjaj_UI;
 using eKulturnoSportskiCentar_UI.Korisnik_UI;
+using eKulturnoSportskiCentar_UI.Oprema_UI;
 using eKulturnoSportskiCentar_UI.Sala_UI;
 using eKulturnoSportskiCentar_UI.Termin_UI;
 using eKulturnoSportskiCentar_UI.Util;
@@ -22,59 +24,14 @@ namespace eKulturnoSportskiCentar_UI
         private WebAPIHelper dogadjajServices =
             new WebAPIHelper("http://localhost:51348/", Global.DogadjajRoute);
 
+    
         public MainForm()
         {
             InitializeComponent();
             notifyIcon.Icon = this.Icon;
         }
 
-        //private void upravljanjeCentromToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    IndexCentar f=new IndexCentar();
-        //    f.MdiParent = this;
-        //    f.Show();
-        //}
-
-        //private void upravljanjeKorisnicimaToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    IndexKorisnici f = new IndexKorisnici();
-        //    f.MdiParent = this;
-        //    f.Show();
-        //}
-
-        //private void upravljanjeSalomToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    IndexSala f = new IndexSala();
-        //    f.MdiParent = this;
-        //    f.Show();
-        //}
-
-        //private void upravljanjeOpremomToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void upravljanjeTerminomToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    IndexTermin f = new IndexTermin();
-        //    f.MdiParent = this;
-        //    f.Show();
-        //}
-
-        //private void nepregledaneRezervacijeToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void rezervacijeToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void dogadjajToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-
-        //}
+    
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -91,6 +48,7 @@ namespace eKulturnoSportskiCentar_UI
                 }
             }
 
+          
             //SubForm F=new SubForm();
             //F.ShowDialog();
         }
@@ -98,19 +56,106 @@ namespace eKulturnoSportskiCentar_UI
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            SubForm F = new SubForm();
-            F.MdiParent = this;
-            F.Show();
+              
         }
-        private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
-        {
-
-            AdministracijaDogadjaja f = new AdministracijaDogadjaja();
-          
+        private void notifyIcon_BalloonTipClicked(object sender, EventArgs e) { 
+           AdministracijaDogadjaja f = new AdministracijaDogadjaja();
            f.MdiParent = this;
            f.Show();
+           f.Focus();
         }
 
-      
+        
+
+        private void terminiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexTermin f = new IndexTermin();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+     
+
+        private void dogadjajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexDogadjaj f = new IndexDogadjaj();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void pregledKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexKorisnici f = new IndexKorisnici();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            DodajKorisnika f = new DodajKorisnika();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void centriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexCentar f = new IndexCentar();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void seleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexSala f = new IndexSala();
+            f.MdiParent = this;
+            f.Show();
+
+        }
+
+        private void opremaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexOprema f = new IndexOprema();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void dodatnaOpremaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IndexDodatnaOprema f = new IndexDodatnaOprema();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

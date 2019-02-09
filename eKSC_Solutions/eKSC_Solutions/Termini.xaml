@@ -12,11 +12,10 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-            <Picker x:Name="SalaPicker" Title="Odaberite salu" SelectedIndexChanged="SalaPicker_OnSelectedIndexChanged" ></Picker>
+            <Picker x:Name="SalaPicker" Title="Odaberite salu:" SelectedIndexChanged="SalaPicker_OnSelectedIndexChanged" ></Picker>
                 <StackLayout Grid.Column="1">
                     <Label Text="Odaberite datum:"></Label>
                     <DatePicker x:Name="DatumPicker" DateSelected="DatumPicker_OnDateSelected" ></DatePicker>
@@ -27,17 +26,20 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid>
+                                    <Grid RowSpacing="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                          </Grid.ColumnDefinitions>
-                                         <StackLayout Grid.Column="0" >
-                                            <Label Text="{Binding satnica }" ></Label>
+                                         <StackLayout >
+                                            <Label FontSize="16" Text="{Binding satnica }" ></Label>
                                         </StackLayout>
-                                        <StackLayout Grid.Column="1" Padding="10">
+                                        <!--<StackLayout Grid.Column="1" Padding="10">
                                             <Label Text="{Binding sala}"></Label>
-                                        </StackLayout>
+                                        </StackLayout>-->
                                     </Grid>
                                  </ViewCell>
                         </DataTemplate>

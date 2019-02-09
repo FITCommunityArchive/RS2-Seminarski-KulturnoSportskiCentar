@@ -75,7 +75,14 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Oprema.Add(oprema);
+            if (oprema.OpremaID != 0)
+            {
+                db.esp_Oprema_Update(oprema.OpremaID, oprema.Naziv, oprema.Kolicina,
+                    oprema.SalaID, oprema.Slika, oprema.SlikaThumb);
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
+        db.Oprema.Add(oprema);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = oprema.OpremaID }, oprema);

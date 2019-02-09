@@ -80,6 +80,29 @@ namespace eKulturnoSportskiCentar_API.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (dodatnaOprema.DodatnaOpremaID != 0)
+            {
+                db.Entry(dodatnaOprema).State = EntityState.Modified;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!DodatnaOpremaExists(dodatnaOprema.DodatnaOpremaID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+
             db.DodatnaOprema.Add(dodatnaOprema);
             db.SaveChanges();
 
