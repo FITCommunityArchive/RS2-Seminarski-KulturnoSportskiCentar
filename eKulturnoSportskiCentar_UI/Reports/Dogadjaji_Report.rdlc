@@ -93,25 +93,25 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.19926cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>4.52217cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.19926cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.19926cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.19926cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.19926cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.93467cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -594,7 +594,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!ProsjecnaOcjena.Value)</Value>
+                                  <Value>=Fields!ProsjecnaOcjena.Value</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
                                     <Color>#333333</Color>
@@ -681,9 +681,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dbDogadjajiFilter</DataSetName>
-            <Top>2.27542cm</Top>
+            <Top>3.46604cm</Top>
             <Height>1.2cm</Height>
-            <Width>17.5cm</Width>
+            <Width>23.45314cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -715,8 +715,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>1.13785cm</Top>
-            <Left>7.5cm</Left>
+            <Top>2.31938cm</Top>
+            <Left>12.33054cm</Left>
             <Height>0.6cm</Height>
             <Width>6.00542cm</Width>
             <ZIndex>1</ZIndex>
@@ -755,51 +755,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>0.36146cm</Top>
-            <Left>7.5cm</Left>
+            <Top>2.31938cm</Top>
+            <Left>4.36343cm</Left>
             <Height>0.6cm</Height>
             <Width>5.71438cm</Width>
             <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox17">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Krajnji datum:</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value xml:space="preserve"> </Value>
-                    <Style />
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Parameters!KrajnjiDatum.Value</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>1.13785cm</Top>
-            <Left>1.15cm</Left>
-            <Height>0.6cm</Height>
-            <Width>5.59562cm</Width>
-            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -817,25 +777,49 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Početni datum:</Value>
+                    <Value>Događaji kreirani u periodu od: </Value>
                     <Style>
+                      <FontSize>13.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!PocetniDatum.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>13.5pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontSize>13.5pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>- do: </Value>
+                    <Style>
+                      <FontSize>13.5pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!KrajnjiDatum.Value</Value>
+                    <Style>
+                      <FontSize>13.5pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>0.36146cm</Top>
-            <Left>1.15cm</Left>
-            <Height>0.6cm</Height>
-            <Width>5.59562cm</Width>
-            <ZIndex>4</ZIndex>
+            <Top>0.39674cm</Top>
+            <Left>3.19926cm</Left>
+            <Height>1.52604cm</Height>
+            <Width>16.64765cm</Width>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -847,13 +831,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>3.61458in</Height>
         <Style />
       </Body>
-      <Width>6.88976in</Width>
+      <Width>9.23352in</Width>
       <Page>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>21cm</PageWidth>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
         <RightMargin>2cm</RightMargin>
         <TopMargin>2cm</TopMargin>
@@ -865,11 +849,11 @@
   </ReportSections>
   <ReportParameters>
     <ReportParameter Name="PocetniDatum">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="KrajnjiDatum">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Sala">

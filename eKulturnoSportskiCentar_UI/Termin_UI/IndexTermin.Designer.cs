@@ -35,20 +35,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Sala_CMB = new System.Windows.Forms.ComboBox();
             this.Termin_DGV = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.TerminID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pocetak = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Termin_DGV)).BeginInit();
             this.SuspendLayout();
             // 
             // RezervisiZaKorisnika_BTN
             // 
-            this.RezervisiZaKorisnika_BTN.Location = new System.Drawing.Point(155, 102);
+            this.RezervisiZaKorisnika_BTN.Location = new System.Drawing.Point(268, 57);
             this.RezervisiZaKorisnika_BTN.Name = "RezervisiZaKorisnika_BTN";
-            this.RezervisiZaKorisnika_BTN.Size = new System.Drawing.Size(142, 23);
+            this.RezervisiZaKorisnika_BTN.Size = new System.Drawing.Size(142, 30);
             this.RezervisiZaKorisnika_BTN.TabIndex = 34;
             this.RezervisiZaKorisnika_BTN.Text = "Rezerviši za korisnika";
             this.RezervisiZaKorisnika_BTN.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // Rezervisi_BTN
             // 
-            this.Rezervisi_BTN.Location = new System.Drawing.Point(24, 102);
+            this.Rezervisi_BTN.Location = new System.Drawing.Point(60, 57);
             this.Rezervisi_BTN.Name = "Rezervisi_BTN";
-            this.Rezervisi_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Rezervisi_BTN.Size = new System.Drawing.Size(142, 30);
             this.Rezervisi_BTN.TabIndex = 33;
             this.Rezervisi_BTN.Text = "Rezerviši";
             this.Rezervisi_BTN.UseVisualStyleBackColor = true;
@@ -67,16 +67,16 @@
             // Datum_PCK
             // 
             this.Datum_PCK.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Datum_PCK.Location = new System.Drawing.Point(58, 8);
+            this.Datum_PCK.Location = new System.Drawing.Point(59, 12);
             this.Datum_PCK.Name = "Datum_PCK";
-            this.Datum_PCK.Size = new System.Drawing.Size(200, 20);
+            this.Datum_PCK.Size = new System.Drawing.Size(143, 20);
             this.Datum_PCK.TabIndex = 32;
             this.Datum_PCK.ValueChanged += new System.EventHandler(this.Datum_PCK_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 8);
+            this.label2.Location = new System.Drawing.Point(12, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 31;
@@ -85,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 51);
+            this.label1.Location = new System.Drawing.Point(232, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 27;
@@ -95,9 +95,9 @@
             // 
             this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
-            this.Sala_CMB.Location = new System.Drawing.Point(58, 44);
+            this.Sala_CMB.Location = new System.Drawing.Point(269, 12);
             this.Sala_CMB.Name = "Sala_CMB";
-            this.Sala_CMB.Size = new System.Drawing.Size(121, 21);
+            this.Sala_CMB.Size = new System.Drawing.Size(141, 21);
             this.Sala_CMB.TabIndex = 26;
             this.Sala_CMB.SelectedIndexChanged += new System.EventHandler(this.Sala_CMB_SelectedIndexChanged);
             // 
@@ -111,21 +111,11 @@
             this.Kraj,
             this.Sala});
             this.Termin_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Termin_DGV.Location = new System.Drawing.Point(0, 160);
+            this.Termin_DGV.Location = new System.Drawing.Point(0, 124);
             this.Termin_DGV.Name = "Termin_DGV";
             this.Termin_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Termin_DGV.Size = new System.Drawing.Size(444, 330);
+            this.Termin_DGV.Size = new System.Drawing.Size(444, 191);
             this.Termin_DGV.TabIndex = 25;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(141, 132);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 25);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Slobodni termini";
             // 
             // TerminID
             // 
@@ -163,11 +153,21 @@
             this.Sala.Name = "Sala";
             this.Sala.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(141, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(166, 25);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Slobodni termini";
+            // 
             // IndexTermin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 490);
+            this.ClientSize = new System.Drawing.Size(444, 315);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.RezervisiZaKorisnika_BTN);
             this.Controls.Add(this.Rezervisi_BTN);

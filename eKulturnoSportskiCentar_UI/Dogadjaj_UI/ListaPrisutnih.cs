@@ -17,10 +17,15 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
     {
         private WebAPIHelper dogadjajaServices = new WebAPIHelper("http://localhost:51348/", Global.DogadjajRoute);
         private WebAPIHelper korisnikDogadjajServices = new WebAPIHelper("http://localhost:51348", Global.KorisnikDogadjajRoute);
-        public ListaPrisutnih(int dogadjajId)
+        private WebAPIHelper dogadjajServices =   new WebAPIHelper("http://localhost:51348/", Global.DogadjajRoute);
+        private bool IsDetalji { get; set; }
+        private int dogadjajID { get; set; }
+        public ListaPrisutnih(int dogadjajId, bool isDetalji)
         {
             InitializeComponent();
             BindForm(dogadjajId);
+            dogadjajID = dogadjajId;
+            IsDetalji = isDetalji;
         }
 
         private void BindForm(int dogadjajId)
@@ -39,6 +44,38 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
                    List<Lista_Result> lista = responsePristuni.Content.ReadAsAsync<List<Lista_Result>>().Result;
                    listaPrisutnih_DGV.DataSource = lista;
                }
+            }
+        }
+
+        private void ListaPrisutnih_Deactivate(object sender, EventArgs e)
+        {
+            if (IsDetalji)
+            {
+                HttpResponseMessage response =
+              dogadjajServices.GetActionResponse("MojiDogadjaji", Global.logiraniKorisnik.KorisnikID.ToString());
+                List<MojiDogadjaji_Result> lista = response.Content.ReadAsAsync<List<MojiDogadjaji_Result>>().Result;
+
+                MojiDogadjaji_Result MDR = lista.Where(x => x.DogadjajID == dogadjajID).FirstOrDefault();
+                var parent = MdiParent;
+                foreach (var x in MdiParent.MdiChildren)
+                {
+                    x.Close();
+                }
+                DetaljiDogadjaja f = new DetaljiDogadjaja(MDR);
+                f.MdiParent = parent;
+                f.Show();
+            }
+            else
+            {
+                var parent = MdiParent;
+                foreach (var x in this.MdiChildren)
+                {
+                    x.Close();
+                }
+                VlastitiDogadjaji f = new VlastitiDogadjaji();
+                f.MdiParent = parent;
+                f.Show();
+
             }
         }
     }

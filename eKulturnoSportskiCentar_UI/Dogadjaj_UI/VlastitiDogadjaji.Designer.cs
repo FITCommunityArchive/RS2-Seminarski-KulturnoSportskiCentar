@@ -54,6 +54,7 @@
             // 
             // Dogadjaj_DGV
             // 
+            this.Dogadjaj_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dogadjaj_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dogadjaj_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DogadjajID,
@@ -70,7 +71,7 @@
             this.Dogadjaj_DGV.Location = new System.Drawing.Point(0, 135);
             this.Dogadjaj_DGV.Name = "Dogadjaj_DGV";
             this.Dogadjaj_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dogadjaj_DGV.Size = new System.Drawing.Size(946, 240);
+            this.Dogadjaj_DGV.Size = new System.Drawing.Size(761, 240);
             this.Dogadjaj_DGV.TabIndex = 4;
             // 
             // Datum_PCK
@@ -78,7 +79,7 @@
             this.Datum_PCK.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Datum_PCK.Location = new System.Drawing.Point(68, 26);
             this.Datum_PCK.Name = "Datum_PCK";
-            this.Datum_PCK.Size = new System.Drawing.Size(200, 20);
+            this.Datum_PCK.Size = new System.Drawing.Size(113, 20);
             this.Datum_PCK.TabIndex = 36;
             this.Datum_PCK.ValueChanged += new System.EventHandler(this.Datum_PCK_ValueChanged);
             // 
@@ -94,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(298, 33);
+            this.label1.Location = new System.Drawing.Point(212, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 34;
@@ -104,7 +105,7 @@
             // 
             this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
-            this.Sala_CMB.Location = new System.Drawing.Point(335, 26);
+            this.Sala_CMB.Location = new System.Drawing.Point(249, 24);
             this.Sala_CMB.Name = "Sala_CMB";
             this.Sala_CMB.Size = new System.Drawing.Size(121, 21);
             this.Sala_CMB.TabIndex = 33;
@@ -114,7 +115,7 @@
             // 
             this.Vrsta_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vrsta_CMB.FormattingEnabled = true;
-            this.Vrsta_CMB.Location = new System.Drawing.Point(545, 26);
+            this.Vrsta_CMB.Location = new System.Drawing.Point(459, 24);
             this.Vrsta_CMB.Name = "Vrsta_CMB";
             this.Vrsta_CMB.Size = new System.Drawing.Size(156, 21);
             this.Vrsta_CMB.TabIndex = 38;
@@ -123,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(492, 29);
+            this.label3.Location = new System.Drawing.Point(406, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 37;
@@ -131,9 +132,9 @@
             // 
             // PrikaziSve_BTN
             // 
-            this.PrikaziSve_BTN.Location = new System.Drawing.Point(727, 27);
+            this.PrikaziSve_BTN.Location = new System.Drawing.Point(641, 25);
             this.PrikaziSve_BTN.Name = "PrikaziSve_BTN";
-            this.PrikaziSve_BTN.Size = new System.Drawing.Size(75, 23);
+            this.PrikaziSve_BTN.Size = new System.Drawing.Size(100, 30);
             this.PrikaziSve_BTN.TabIndex = 39;
             this.PrikaziSve_BTN.Text = "Prikaži sve";
             this.PrikaziSve_BTN.UseVisualStyleBackColor = true;
@@ -141,19 +142,19 @@
             // 
             // Otkazi_BTN
             // 
-            this.Otkazi_BTN.Location = new System.Drawing.Point(92, 72);
+            this.Otkazi_BTN.Location = new System.Drawing.Point(270, 79);
             this.Otkazi_BTN.Name = "Otkazi_BTN";
-            this.Otkazi_BTN.Size = new System.Drawing.Size(92, 32);
+            this.Otkazi_BTN.Size = new System.Drawing.Size(100, 30);
             this.Otkazi_BTN.TabIndex = 40;
-            this.Otkazi_BTN.Text = "Otkazi";
+            this.Otkazi_BTN.Text = "Otkaži";
             this.Otkazi_BTN.UseVisualStyleBackColor = true;
             this.Otkazi_BTN.Click += new System.EventHandler(this.Otkazi_BTN_Click);
             // 
             // listaPristunih_BTN
             // 
-            this.listaPristunih_BTN.Location = new System.Drawing.Point(254, 72);
+            this.listaPristunih_BTN.Location = new System.Drawing.Point(459, 79);
             this.listaPristunih_BTN.Name = "listaPristunih_BTN";
-            this.listaPristunih_BTN.Size = new System.Drawing.Size(140, 32);
+            this.listaPristunih_BTN.Size = new System.Drawing.Size(100, 30);
             this.listaPristunih_BTN.TabIndex = 41;
             this.listaPristunih_BTN.Text = "Lista prisutnih";
             this.listaPristunih_BTN.UseVisualStyleBackColor = true;
@@ -161,9 +162,9 @@
             // 
             // detalji_BTN
             // 
-            this.detalji_BTN.Location = new System.Drawing.Point(467, 72);
+            this.detalji_BTN.Location = new System.Drawing.Point(641, 79);
             this.detalji_BTN.Name = "detalji_BTN";
-            this.detalji_BTN.Size = new System.Drawing.Size(118, 32);
+            this.detalji_BTN.Size = new System.Drawing.Size(100, 30);
             this.detalji_BTN.TabIndex = 42;
             this.detalji_BTN.Text = "Detalji događaja";
             this.detalji_BTN.UseVisualStyleBackColor = true;
@@ -214,7 +215,6 @@
             // 
             // BrojPrisutnih
             // 
-            this.BrojPrisutnih.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.BrojPrisutnih.DataPropertyName = "BrojPrisutnih";
             this.BrojPrisutnih.HeaderText = "Broj prisutnih";
             this.BrojPrisutnih.Name = "BrojPrisutnih";
@@ -222,7 +222,6 @@
             // 
             // ProsjecnaOcjena
             // 
-            this.ProsjecnaOcjena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ProsjecnaOcjena.DataPropertyName = "ProsjecnaOcjena";
             this.ProsjecnaOcjena.HeaderText = "Prosječna ocjena";
             this.ProsjecnaOcjena.Name = "ProsjecnaOcjena";
@@ -250,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 375);
+            this.ClientSize = new System.Drawing.Size(761, 375);
             this.Controls.Add(this.detalji_BTN);
             this.Controls.Add(this.listaPristunih_BTN);
             this.Controls.Add(this.Otkazi_BTN);

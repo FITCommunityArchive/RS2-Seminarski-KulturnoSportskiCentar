@@ -200,9 +200,9 @@
             // 
             // Plakat_PBX
             // 
-            this.Plakat_PBX.Location = new System.Drawing.Point(40, 87);
+            this.Plakat_PBX.Location = new System.Drawing.Point(66, 54);
             this.Plakat_PBX.Name = "Plakat_PBX";
-            this.Plakat_PBX.Size = new System.Drawing.Size(276, 138);
+            this.Plakat_PBX.Size = new System.Drawing.Size(250, 160);
             this.Plakat_PBX.TabIndex = 18;
             this.Plakat_PBX.TabStop = false;
             // 
@@ -244,7 +244,7 @@
             // 
             this.Odustani_BTN.Location = new System.Drawing.Point(500, 338);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(87, 35);
+            this.Odustani_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odustani_BTN.TabIndex = 46;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -314,7 +314,7 @@
             // 
             this.Odbij_BTN.Location = new System.Drawing.Point(734, 338);
             this.Odbij_BTN.Name = "Odbij_BTN";
-            this.Odbij_BTN.Size = new System.Drawing.Size(100, 35);
+            this.Odbij_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odbij_BTN.TabIndex = 59;
             this.Odbij_BTN.Text = "Odbij";
             this.Odbij_BTN.UseVisualStyleBackColor = true;
@@ -324,7 +324,7 @@
             // 
             this.Odobri_Btn.Location = new System.Drawing.Point(613, 338);
             this.Odobri_Btn.Name = "Odobri_Btn";
-            this.Odobri_Btn.Size = new System.Drawing.Size(95, 35);
+            this.Odobri_Btn.Size = new System.Drawing.Size(100, 30);
             this.Odobri_Btn.TabIndex = 58;
             this.Odobri_Btn.Text = "Odobri";
             this.Odobri_Btn.UseVisualStyleBackColor = true;
@@ -381,9 +381,9 @@
             // 
             this.Otkazi_BTN.Location = new System.Drawing.Point(734, 338);
             this.Otkazi_BTN.Name = "Otkazi_BTN";
-            this.Otkazi_BTN.Size = new System.Drawing.Size(100, 35);
+            this.Otkazi_BTN.Size = new System.Drawing.Size(100, 30);
             this.Otkazi_BTN.TabIndex = 66;
-            this.Otkazi_BTN.Text = "Otkazi";
+            this.Otkazi_BTN.Text = "Otkaži";
             this.Otkazi_BTN.UseVisualStyleBackColor = true;
             this.Otkazi_BTN.Click += new System.EventHandler(this.Otkazi_BTN_Click);
             // 
@@ -391,7 +391,7 @@
             // 
             this.ListaPrisutnih_BTN.Location = new System.Drawing.Point(613, 338);
             this.ListaPrisutnih_BTN.Name = "ListaPrisutnih_BTN";
-            this.ListaPrisutnih_BTN.Size = new System.Drawing.Size(95, 35);
+            this.ListaPrisutnih_BTN.Size = new System.Drawing.Size(100, 30);
             this.ListaPrisutnih_BTN.TabIndex = 65;
             this.ListaPrisutnih_BTN.Text = "Lista prisutnih";
             this.ListaPrisutnih_BTN.UseVisualStyleBackColor = true;

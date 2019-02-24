@@ -41,12 +41,10 @@ namespace eKulturnoSportskiCentar_UI.Reports
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("KrajnjiDatum", krajnjiDatum.ToString()));
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("VrstaDogadjaja", vrstaDogadjaja));
 
-            this.reportViewer1.RefreshReport(); 
+            this.reportViewer1.RefreshReport();
+           
         }
 
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

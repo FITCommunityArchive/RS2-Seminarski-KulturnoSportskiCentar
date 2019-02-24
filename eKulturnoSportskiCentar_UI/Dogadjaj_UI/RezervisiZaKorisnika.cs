@@ -47,9 +47,16 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
 
         private void Rezervisi_BTN_Click(object sender, EventArgs e)
         {
+
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }        
+           
             int korisnikID = Convert.ToInt32(Korisnici_DGV.SelectedRows[0].Cells[0].Value);
             KreirajDogadjaj f=new KreirajDogadjaj(termin, korisnikID);
-            f.ShowDialog();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void RezervisiZaKorisnika_Load(object sender, EventArgs e)

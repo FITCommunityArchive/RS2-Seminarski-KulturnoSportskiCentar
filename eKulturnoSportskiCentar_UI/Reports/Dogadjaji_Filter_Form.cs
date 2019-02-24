@@ -27,6 +27,7 @@ namespace eKulturnoSportskiCentar_UI.Reports
         {
             InitializeComponent();
             PocetniDatum.MinDate=new DateTime(2018,1,1);
+         
         }
 
         private void KreirajIzvjestaj_BTN_Click(object sender, EventArgs e)
@@ -63,7 +64,7 @@ namespace eKulturnoSportskiCentar_UI.Reports
             }
 
 
-                Reports.ReportForm f = new ReportForm();
+                Reports.DogadjajReportForm f = new DogadjajReportForm();
                 f.pocetniDatum = PocetniDatum.Value.Date;
                 f.krajnjiDatum = Krajnji_Datum.Value.Date;
                 f.sala = (Sala_CMB.SelectedItem as Sala_Result).Sala;

@@ -191,19 +191,17 @@ namespace eKulturnoSportskiCentar_API.Controllers
             int aktivan= Convert.ToInt32(dogadjaj.Aktivna);
             if (dogadjaj.Odobrena == true)
             {
-                Termin T = db.Termin.Find(dogadjaj.TerminID);
-                T.Rezervisan = true;
-                db.SaveChanges();
+                
+                db.esp_Termin_Change(dogadjaj.TerminID, 1);
 
             }
             else
             {
-                Termin T = db.Termin.Find(dogadjaj.TerminID);
-                T.Rezervisan = false;
-                db.SaveChanges();
+                db.esp_Termin_Change(dogadjaj.TerminID, 0);
+
 
             }
-            
+
             db.esp_Dogadjaj_Update(dogadjaj.DogadjajID,odobreno,aktivan);
           
 

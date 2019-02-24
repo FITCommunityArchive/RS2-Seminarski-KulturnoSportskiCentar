@@ -53,7 +53,7 @@
             // 
             this.Odustani_BTN.Location = new System.Drawing.Point(14, 382);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(108, 23);
+            this.Odustani_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odustani_BTN.TabIndex = 31;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             // 
             this.DodajKorisnika_BTN.Location = new System.Drawing.Point(170, 382);
             this.DodajKorisnika_BTN.Name = "DodajKorisnika_BTN";
-            this.DodajKorisnika_BTN.Size = new System.Drawing.Size(106, 23);
+            this.DodajKorisnika_BTN.Size = new System.Drawing.Size(100, 30);
             this.DodajKorisnika_BTN.TabIndex = 30;
             this.DodajKorisnika_BTN.Text = "Dodaj";
             this.DodajKorisnika_BTN.UseVisualStyleBackColor = true;

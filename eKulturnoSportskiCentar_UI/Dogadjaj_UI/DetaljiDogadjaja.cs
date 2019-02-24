@@ -106,7 +106,8 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
             else
             {
                 NE_RDB.Checked = true;
-            }
+                    javniDogadjaj_box.Visible = false;
+                }
             }
         }
 
@@ -138,17 +139,22 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
 
         private void ListaPrisutnih_BTN_Click(object sender, EventArgs e)
         {
-          ListaPrisutnih f = new ListaPrisutnih(dogadjajID);
-            f.ShowDialog();
+            var parent = MdiParent;
+            foreach (var x in MdiParent.MdiChildren)
+            {
+                x.Close();
+            }
+            ListaPrisutnih f = new ListaPrisutnih(dogadjajID,true);
+            f.MdiParent = parent;
+            f.Show();                 
+       
         }
 
         private void Otkazi_BTN_Click(object sender, EventArgs e)
         {
             Yes_No f = new Yes_No("Jeste li sigurni da želite otkazati događaj?");
             if (f.ShowDialog() == DialogResult.Yes)
-            {
-
-                
+            {                
                 HttpResponseMessage response = dogadjajServices.GetResponse(dogadjajID.ToString());
                 Dogadjaj D = response.Content.ReadAsAsync<Dogadjaj>().Result;
                 D.Aktivna = false;

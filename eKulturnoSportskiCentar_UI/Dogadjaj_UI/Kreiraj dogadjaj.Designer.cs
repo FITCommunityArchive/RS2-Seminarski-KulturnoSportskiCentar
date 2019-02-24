@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DodatnaOprema_DGV = new System.Windows.Forms.DataGridView();
+            this.DodatnaOpremaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CijenaUlaza = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Odabrano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.NE_RDB = new System.Windows.Forms.RadioButton();
             this.Da_RDB = new System.Windows.Forms.RadioButton();
             this.javniDogadjaj_box = new System.Windows.Forms.GroupBox();
@@ -55,11 +60,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.DodatnaOpremaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CijenaUlaza = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Odabrano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DodatnaOprema_DGV)).BeginInit();
             this.javniDogadjaj_box.SuspendLayout();
@@ -92,6 +92,42 @@
             this.DodatnaOprema_DGV.Name = "DodatnaOprema_DGV";
             this.DodatnaOprema_DGV.Size = new System.Drawing.Size(454, 122);
             this.DodatnaOprema_DGV.TabIndex = 24;
+            // 
+            // DodatnaOpremaID
+            // 
+            this.DodatnaOpremaID.DataPropertyName = "DodatnaOpremaID";
+            this.DodatnaOpremaID.Frozen = true;
+            this.DodatnaOpremaID.HeaderText = "DodatnaOpremaID";
+            this.DodatnaOpremaID.Name = "DodatnaOpremaID";
+            this.DodatnaOpremaID.ReadOnly = true;
+            this.DodatnaOpremaID.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // CijenaUlaza
+            // 
+            this.CijenaUlaza.DataPropertyName = "Cijena";
+            this.CijenaUlaza.HeaderText = "Cijena";
+            this.CijenaUlaza.Name = "CijenaUlaza";
+            this.CijenaUlaza.ReadOnly = true;
+            // 
+            // Odabrano
+            // 
+            this.Odabrano.HeaderText = "Odabrano";
+            this.Odabrano.Name = "Odabrano";
+            // 
+            // SlikaThumb
+            // 
+            this.SlikaThumb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SlikaThumb.DataPropertyName = "SlikaThumb";
+            this.SlikaThumb.HeaderText = "Slika";
+            this.SlikaThumb.Name = "SlikaThumb";
+            this.SlikaThumb.ReadOnly = true;
             // 
             // NE_RDB
             // 
@@ -127,7 +163,7 @@
             this.javniDogadjaj_box.Controls.Add(this.BrojMijesta_Input);
             this.javniDogadjaj_box.Controls.Add(this.label5);
             this.javniDogadjaj_box.Controls.Add(this.Cijena_Input);
-            this.javniDogadjaj_box.Location = new System.Drawing.Point(500, 59);
+            this.javniDogadjaj_box.Location = new System.Drawing.Point(497, 27);
             this.javniDogadjaj_box.Name = "javniDogadjaj_box";
             this.javniDogadjaj_box.Size = new System.Drawing.Size(355, 277);
             this.javniDogadjaj_box.TabIndex = 32;
@@ -207,9 +243,9 @@
             // 
             // Odustani_BTN
             // 
-            this.Odustani_BTN.Location = new System.Drawing.Point(558, 362);
+            this.Odustani_BTN.Location = new System.Drawing.Point(555, 330);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(87, 35);
+            this.Odustani_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odustani_BTN.TabIndex = 31;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -217,9 +253,9 @@
             // 
             // Rezevisi_BTN
             // 
-            this.Rezevisi_BTN.Location = new System.Drawing.Point(687, 362);
+            this.Rezevisi_BTN.Location = new System.Drawing.Point(684, 330);
             this.Rezevisi_BTN.Name = "Rezevisi_BTN";
-            this.Rezevisi_BTN.Size = new System.Drawing.Size(89, 35);
+            this.Rezevisi_BTN.Size = new System.Drawing.Size(100, 30);
             this.Rezevisi_BTN.TabIndex = 30;
             this.Rezevisi_BTN.Text = "Rezerviši";
             this.Rezevisi_BTN.UseVisualStyleBackColor = true;
@@ -312,47 +348,11 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
-            // DodatnaOpremaID
-            // 
-            this.DodatnaOpremaID.DataPropertyName = "DodatnaOpremaID";
-            this.DodatnaOpremaID.Frozen = true;
-            this.DodatnaOpremaID.HeaderText = "DodatnaOpremaID";
-            this.DodatnaOpremaID.Name = "DodatnaOpremaID";
-            this.DodatnaOpremaID.ReadOnly = true;
-            this.DodatnaOpremaID.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // CijenaUlaza
-            // 
-            this.CijenaUlaza.DataPropertyName = "Cijena";
-            this.CijenaUlaza.HeaderText = "Cijena";
-            this.CijenaUlaza.Name = "CijenaUlaza";
-            this.CijenaUlaza.ReadOnly = true;
-            // 
-            // Odabrano
-            // 
-            this.Odabrano.HeaderText = "Odabrano";
-            this.Odabrano.Name = "Odabrano";
-            // 
-            // SlikaThumb
-            // 
-            this.SlikaThumb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SlikaThumb.DataPropertyName = "SlikaThumb";
-            this.SlikaThumb.HeaderText = "Slika";
-            this.SlikaThumb.Name = "SlikaThumb";
-            this.SlikaThumb.ReadOnly = true;
-            // 
             // KreirajDogadjaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 429);
+            this.ClientSize = new System.Drawing.Size(878, 392);
             this.Controls.Add(this.DatumInput);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.SalaInput);

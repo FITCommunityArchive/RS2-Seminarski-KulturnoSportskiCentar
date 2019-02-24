@@ -36,7 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Sala_CMB = new System.Windows.Forms.ComboBox();
             this.Dogadjaj_DGV = new System.Windows.Forms.DataGridView();
-            this.OznaciSe_BTN = new System.Windows.Forms.Button();
             this.DogadjajID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dogadjaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vrsta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,14 +44,15 @@
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojPrisutnih = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plakat = new System.Windows.Forms.DataGridViewImageColumn();
+            this.OznaciSe_BTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dogadjaj_DGV)).BeginInit();
             this.SuspendLayout();
             // 
             // PrikaziSve_BTN
             // 
-            this.PrikaziSve_BTN.Location = new System.Drawing.Point(726, 14);
+            this.PrikaziSve_BTN.Location = new System.Drawing.Point(632, 12);
             this.PrikaziSve_BTN.Name = "PrikaziSve_BTN";
-            this.PrikaziSve_BTN.Size = new System.Drawing.Size(75, 23);
+            this.PrikaziSve_BTN.Size = new System.Drawing.Size(100, 30);
             this.PrikaziSve_BTN.TabIndex = 47;
             this.PrikaziSve_BTN.Text = "Prikaži sve";
             this.PrikaziSve_BTN.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             this.Vrsta_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vrsta_CMB.FormattingEnabled = true;
-            this.Vrsta_CMB.Location = new System.Drawing.Point(544, 13);
+            this.Vrsta_CMB.Location = new System.Drawing.Point(455, 13);
             this.Vrsta_CMB.Name = "Vrsta_CMB";
             this.Vrsta_CMB.Size = new System.Drawing.Size(156, 21);
             this.Vrsta_CMB.TabIndex = 46;
@@ -71,7 +71,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(491, 16);
+            this.label3.Location = new System.Drawing.Point(402, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 45;
@@ -82,7 +82,7 @@
             this.Datum_PCK.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Datum_PCK.Location = new System.Drawing.Point(67, 13);
             this.Datum_PCK.Name = "Datum_PCK";
-            this.Datum_PCK.Size = new System.Drawing.Size(200, 20);
+            this.Datum_PCK.Size = new System.Drawing.Size(122, 20);
             this.Datum_PCK.TabIndex = 44;
             this.Datum_PCK.ValueChanged += new System.EventHandler(this.Datum_PCK_ValueChanged);
             // 
@@ -98,7 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(297, 20);
+            this.label1.Location = new System.Drawing.Point(208, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 42;
@@ -108,7 +108,7 @@
             // 
             this.Sala_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sala_CMB.FormattingEnabled = true;
-            this.Sala_CMB.Location = new System.Drawing.Point(334, 13);
+            this.Sala_CMB.Location = new System.Drawing.Point(245, 13);
             this.Sala_CMB.Name = "Sala_CMB";
             this.Sala_CMB.Size = new System.Drawing.Size(121, 21);
             this.Sala_CMB.TabIndex = 41;
@@ -129,21 +129,11 @@
             this.BrojPrisutnih,
             this.Plakat});
             this.Dogadjaj_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Dogadjaj_DGV.Location = new System.Drawing.Point(0, 97);
+            this.Dogadjaj_DGV.Location = new System.Drawing.Point(0, 94);
             this.Dogadjaj_DGV.Name = "Dogadjaj_DGV";
             this.Dogadjaj_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dogadjaj_DGV.Size = new System.Drawing.Size(1090, 493);
+            this.Dogadjaj_DGV.Size = new System.Drawing.Size(744, 450);
             this.Dogadjaj_DGV.TabIndex = 40;
-            // 
-            // OznaciSe_BTN
-            // 
-            this.OznaciSe_BTN.Location = new System.Drawing.Point(847, 14);
-            this.OznaciSe_BTN.Name = "OznaciSe_BTN";
-            this.OznaciSe_BTN.Size = new System.Drawing.Size(104, 47);
-            this.OznaciSe_BTN.TabIndex = 48;
-            this.OznaciSe_BTN.Text = "Oznaci se";
-            this.OznaciSe_BTN.UseVisualStyleBackColor = true;
-            this.OznaciSe_BTN.Click += new System.EventHandler(this.OznaciSe_BTN_Click);
             // 
             // DogadjajID
             // 
@@ -210,11 +200,21 @@
             this.Plakat.Name = "Plakat";
             this.Plakat.ReadOnly = true;
             // 
+            // OznaciSe_BTN
+            // 
+            this.OznaciSe_BTN.Location = new System.Drawing.Point(632, 58);
+            this.OznaciSe_BTN.Name = "OznaciSe_BTN";
+            this.OznaciSe_BTN.Size = new System.Drawing.Size(100, 30);
+            this.OznaciSe_BTN.TabIndex = 48;
+            this.OznaciSe_BTN.Text = "Oznaci se";
+            this.OznaciSe_BTN.UseVisualStyleBackColor = true;
+            this.OznaciSe_BTN.Click += new System.EventHandler(this.OznaciSe_BTN_Click);
+            // 
             // JavniDogadjaji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 590);
+            this.ClientSize = new System.Drawing.Size(744, 544);
             this.Controls.Add(this.OznaciSe_BTN);
             this.Controls.Add(this.PrikaziSve_BTN);
             this.Controls.Add(this.Vrsta_CMB);

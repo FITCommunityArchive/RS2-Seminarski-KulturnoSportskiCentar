@@ -138,7 +138,11 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
                     MessageBox.Show(Messages.add_usr_evt_succ, Messages.msg_succ, MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
+                    var parent = MdiParent;
                     Close();
+                    Dogadjaji_za_posjetiti f = new Dogadjaji_za_posjetiti();
+                    f.MdiParent = parent;
+                    f.Show();
                 }
                 else
                 {

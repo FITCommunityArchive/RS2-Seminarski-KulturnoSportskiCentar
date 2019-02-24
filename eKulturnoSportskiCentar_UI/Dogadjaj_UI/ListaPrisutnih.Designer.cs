@@ -74,7 +74,6 @@
             this.KorisnikID.Name = "KorisnikID";
             this.KorisnikID.ReadOnly = true;
             this.KorisnikID.Visible = false;
-            this.KorisnikID.Width = 56;
             // 
             // Korisnik
             // 
@@ -96,7 +95,9 @@
             this.MinimizeBox = false;
             this.Name = "ListaPrisutnih";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista Prisutnih";
+            this.Deactivate += new System.EventHandler(this.ListaPrisutnih_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.listaPrisutnih_DGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

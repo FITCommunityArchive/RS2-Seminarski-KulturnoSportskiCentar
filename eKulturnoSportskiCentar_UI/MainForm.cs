@@ -8,11 +8,13 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using eKulturnoSportskiCentar_API.Models;
 using eKulturnoSportskiCentar_UI.Centar_UI;
 using eKulturnoSportskiCentar_UI.DodatnaOprema_UI;
 using eKulturnoSportskiCentar_UI.Dogadjaj_UI;
 using eKulturnoSportskiCentar_UI.Korisnik_UI;
 using eKulturnoSportskiCentar_UI.Oprema_UI;
+using eKulturnoSportskiCentar_UI.Reports;
 using eKulturnoSportskiCentar_UI.Sala_UI;
 using eKulturnoSportskiCentar_UI.Termin_UI;
 using eKulturnoSportskiCentar_UI.Util;
@@ -23,41 +25,61 @@ namespace eKulturnoSportskiCentar_UI
     {
         private WebAPIHelper dogadjajServices =
             new WebAPIHelper("http://localhost:51348/", Global.DogadjajRoute);
+        private WebAPIHelper korisnikUlogaServices = 
+            new WebAPIHelper("http://localhost:51348/", Global.KorisnikUlogaRoute);
 
-    
+
         public MainForm()
         {
             InitializeComponent();
             notifyIcon.Icon = this.Icon;
+            CheckUloge();
         }
 
-    
-
-        private void MainForm_Load(object sender, EventArgs e)
+       private void CheckUloge()
         {
-            HttpResponseMessage response = dogadjajServices.GetActionResponse("GetBrojNeadministriranihDogadjaja","");
-            if (response.IsSuccessStatusCode)
+            HttpResponseMessage responseUloge = korisnikUlogaServices.GetActionResponse("getById",
+                Global.logiraniKorisnik.KorisnikID.ToString());
+            if (responseUloge.IsSuccessStatusCode)
             {
-                int brojNepregledanihRezervacija = response.Content.ReadAsAsync<int>().Result;
-                if (brojNepregledanihRezervacija > 0)
+                List<KorisnikUloga> korisnikUloge =
+                    responseUloge.Content.ReadAsAsync<List<KorisnikUloga>>().Result;
+                foreach (var X in korisnikUloge)
                 {
-                    notifyIcon.Visible = true;
+                    if (X.Uloga.Naziv.ToLower() == "zaposlenik"|| X.Uloga.Naziv.ToLower() == "administrator")
+                    {
+                       
+                        HttpResponseMessage response = dogadjajServices.GetActionResponse("GetBrojNeadministriranihDogadjaja", "");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            int brojNepregledanihRezervacija = response.Content.ReadAsAsync<int>().Result;
+                            if (brojNepregledanihRezervacija > 0)
+                            {
+                                notifyIcon.Visible = true;
 
-                    notifyIcon.ShowBalloonTip(40000, "Nove rezervacija!",
-                        "Broj rezervacija: " + brojNepregledanihRezervacija, ToolTipIcon.Info);
+                                notifyIcon.ShowBalloonTip(40000, "Nove rezervacija!",
+                                    "Broj rezervacija: " + brojNepregledanihRezervacija, ToolTipIcon.Info);
+                            }
+                        }
+                        break;
+                    }
+                   else if (X.Uloga.Naziv.ToLower() == "korisnik")
+                    {
+                        seleToolStripMenuItem.Visible = false;
+                        centriToolStripMenuItem.Visible = false;
+                        kSCToolStripMenuItem.Visible = false;
+                        korisniciToolStripMenuItem.Visible = false;
+                        administracijaToolStripMenuItem.Visible = false;
+                        izvještajiToolStripMenuItem.Visible = false;
+                    }
+
                 }
             }
-
-          
-            //SubForm F=new SubForm();
-            //F.ShowDialog();
         }
 
+      
 
-        private void MainForm_Activated(object sender, EventArgs e)
-        {
-              
-        }
+      
         private void notifyIcon_BalloonTipClicked(object sender, EventArgs e) { 
            AdministracijaDogadjaja f = new AdministracijaDogadjaja();
            f.MdiParent = this;
@@ -77,19 +99,7 @@ namespace eKulturnoSportskiCentar_UI
             f.MdiParent = this;
             f.Show();
         }
-
-     
-
-        private void dogadjajiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (var x in this.MdiChildren)
-            {
-                x.Close();
-            }
-            IndexDogadjaj f = new IndexDogadjaj();
-            f.MdiParent = this;
-            f.Show();
-        }
+      
 
         private void pregledKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -156,6 +166,81 @@ namespace eKulturnoSportskiCentar_UI
             IndexDodatnaOprema f = new IndexDodatnaOprema();
             f.MdiParent = this;
             f.Show();
+        }
+
+        private void izvještajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            Dogadjaji_Filter_Form f = new Dogadjaji_Filter_Form();
+            f.MdiParent = this;
+            f.Show();
+           
+        }
+
+        private void administracijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            AdministracijaDogadjaja f = new AdministracijaDogadjaja();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void javniDogađajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            JavniDogadjaji f = new JavniDogadjaji();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void vlastitiDogađajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            VlastitiDogadjaji f = new VlastitiDogadjaji();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void događajiZaPosjetitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            Dogadjaji_za_posjetiti f = new Dogadjaji_za_posjetiti();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Global.logiraniKorisnik = null;
+            Application.Restart();
+        }
+
+        private void izmjeniProfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var x in this.MdiChildren)
+            {
+                x.Close();
+            }
+            IzmjeniProfil f = new IzmjeniProfil(Global.logiraniKorisnik.KorisnikID);
+            f.MdiParent = this;
+            f.Show();
+            
+            
         }
     }
 }

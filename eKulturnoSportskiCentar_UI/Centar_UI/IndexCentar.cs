@@ -33,7 +33,7 @@ namespace eKulturnoSportskiCentar_UI.Centar_UI
             if (response.IsSuccessStatusCode)
             {
                 List<Centar_Result> centri = response.Content.ReadAsAsync<List<Centar_Result>>().Result;
-                Centar_DGV.DataSource = centri;
+               Centar_DGV.DataSource = centri;
             }
             else
             {
@@ -172,7 +172,7 @@ namespace eKulturnoSportskiCentar_UI.Centar_UI
 
         private void Centar_DGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            CentarId = Convert.ToInt32(Centar_DGV.SelectedRows[0].Cells[0].Value);
+           CentarId = Convert.ToInt32(Centar_DGV.SelectedRows[0].Cells[0].Value);
             BindForm(CentarId);
         }
     }

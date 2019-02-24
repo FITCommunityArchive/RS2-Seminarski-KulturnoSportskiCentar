@@ -41,9 +41,9 @@
             // 
             // Odustani_BTN
             // 
-            this.Odustani_BTN.Location = new System.Drawing.Point(63, 99);
+            this.Odustani_BTN.Location = new System.Drawing.Point(32, 91);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Odustani_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odustani_BTN.TabIndex = 23;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -51,9 +51,9 @@
             // 
             // Prijava_BTN
             // 
-            this.Prijava_BTN.Location = new System.Drawing.Point(208, 99);
+            this.Prijava_BTN.Location = new System.Drawing.Point(183, 91);
             this.Prijava_BTN.Name = "Prijava_BTN";
-            this.Prijava_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Prijava_BTN.Size = new System.Drawing.Size(100, 30);
             this.Prijava_BTN.TabIndex = 22;
             this.Prijava_BTN.Text = "Prijava";
             this.Prijava_BTN.UseVisualStyleBackColor = true;

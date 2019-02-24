@@ -40,9 +40,9 @@
             // 
             // Ocijeni_BTN
             // 
-            this.Ocijeni_BTN.Location = new System.Drawing.Point(171, 12);
+            this.Ocijeni_BTN.Location = new System.Drawing.Point(277, 22);
             this.Ocijeni_BTN.Name = "Ocijeni_BTN";
-            this.Ocijeni_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Ocijeni_BTN.Size = new System.Drawing.Size(100, 30);
             this.Ocijeni_BTN.TabIndex = 5;
             this.Ocijeni_BTN.Text = "Ocijeni";
             this.Ocijeni_BTN.UseVisualStyleBackColor = true;
@@ -50,9 +50,9 @@
             // 
             // Otkazi_BTN
             // 
-            this.Otkazi_BTN.Location = new System.Drawing.Point(41, 13);
+            this.Otkazi_BTN.Location = new System.Drawing.Point(123, 22);
             this.Otkazi_BTN.Name = "Otkazi_BTN";
-            this.Otkazi_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Otkazi_BTN.Size = new System.Drawing.Size(100, 30);
             this.Otkazi_BTN.TabIndex = 4;
             this.Otkazi_BTN.Text = "Otkaži";
             this.Otkazi_BTN.UseVisualStyleBackColor = true;

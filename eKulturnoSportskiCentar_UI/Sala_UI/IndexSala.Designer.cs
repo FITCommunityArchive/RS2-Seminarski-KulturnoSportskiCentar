@@ -39,6 +39,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.Naziv_Input = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Sala_DGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 35);
+            this.label1.Location = new System.Drawing.Point(280, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 9;
@@ -56,9 +57,9 @@
             // 
             this.Centar_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Centar_CMB.FormattingEnabled = true;
-            this.Centar_CMB.Location = new System.Drawing.Point(82, 35);
+            this.Centar_CMB.Location = new System.Drawing.Point(338, 29);
             this.Centar_CMB.Name = "Centar_CMB";
-            this.Centar_CMB.Size = new System.Drawing.Size(213, 21);
+            this.Centar_CMB.Size = new System.Drawing.Size(174, 21);
             this.Centar_CMB.TabIndex = 8;
             this.Centar_CMB.SelectedIndexChanged += new System.EventHandler(this.Centar_CMB_SelectedIndexChanged);
             this.Centar_CMB.Validating += new System.ComponentModel.CancelEventHandler(this.Centar_CMB_Validating);
@@ -71,10 +72,10 @@
             this.Naziv,
             this.Centar});
             this.Sala_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Sala_DGV.Location = new System.Drawing.Point(0, 83);
+            this.Sala_DGV.Location = new System.Drawing.Point(0, 122);
             this.Sala_DGV.Name = "Sala_DGV";
             this.Sala_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Sala_DGV.Size = new System.Drawing.Size(419, 281);
+            this.Sala_DGV.Size = new System.Drawing.Size(534, 389);
             this.Sala_DGV.TabIndex = 7;
             this.Sala_DGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Sala_DGV_CellContentDoubleClick);
             // 
@@ -104,9 +105,9 @@
             // 
             // Sacuvaj_BTN
             // 
-            this.Sacuvaj_BTN.Location = new System.Drawing.Point(316, 12);
+            this.Sacuvaj_BTN.Location = new System.Drawing.Point(412, 64);
             this.Sacuvaj_BTN.Name = "Sacuvaj_BTN";
-            this.Sacuvaj_BTN.Size = new System.Drawing.Size(91, 40);
+            this.Sacuvaj_BTN.Size = new System.Drawing.Size(100, 30);
             this.Sacuvaj_BTN.TabIndex = 13;
             this.Sacuvaj_BTN.Text = "Sačuvaj";
             this.Sacuvaj_BTN.UseVisualStyleBackColor = true;
@@ -119,26 +120,37 @@
             // 
             // Naziv_Input
             // 
-            this.Naziv_Input.Location = new System.Drawing.Point(82, 9);
+            this.Naziv_Input.Location = new System.Drawing.Point(89, 26);
             this.Naziv_Input.Name = "Naziv_Input";
-            this.Naziv_Input.Size = new System.Drawing.Size(213, 20);
+            this.Naziv_Input.Size = new System.Drawing.Size(151, 20);
             this.Naziv_Input.TabIndex = 26;
             this.Naziv_Input.Validating += new System.ComponentModel.CancelEventHandler(this.Naziv_Input_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 12);
+            this.label2.Location = new System.Drawing.Point(31, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 27;
             this.label2.Text = "Naziv:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(31, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(313, 15);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Za odabir sale kliknite dva puta na željenu salu!";
+            // 
             // IndexSala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 364);
+            this.ClientSize = new System.Drawing.Size(534, 511);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Naziv_Input);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Sacuvaj_BTN);
@@ -170,5 +182,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.TextBox Naziv_Input;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
     }
 }

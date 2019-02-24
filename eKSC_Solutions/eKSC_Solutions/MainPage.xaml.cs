@@ -15,7 +15,7 @@ namespace eKSC_Solutions
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
-
+           
         }
 
         private void JavniDogadjaji_BTN_OnClicked(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace eKSC_Solutions
             var odgovor= await DisplayAlert("Upozorenje", "Da li se odjavljijete", "DA", "NE");
             if (odgovor)
             {
-                Global.logiraniKorisnik = null;
+                
                 Navigation.PushAsync(new Login());
             }
            

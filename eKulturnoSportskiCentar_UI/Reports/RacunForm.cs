@@ -46,6 +46,7 @@ namespace eKulturnoSportskiCentar_UI.Reports
 
             this.reportViewer1.LocalReport.SetParameters(new ReportParameter("VrstaDogadjaja", vrstaDogadjaja));
             this.reportViewer1.RefreshReport();
+          
         }
     }
 }

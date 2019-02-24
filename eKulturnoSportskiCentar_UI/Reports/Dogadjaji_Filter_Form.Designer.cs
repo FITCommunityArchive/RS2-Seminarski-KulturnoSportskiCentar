@@ -42,15 +42,15 @@
             // PocetniDatum
             // 
             this.PocetniDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.PocetniDatum.Location = new System.Drawing.Point(119, 7);
+            this.PocetniDatum.Location = new System.Drawing.Point(119, 13);
             this.PocetniDatum.Name = "PocetniDatum";
-            this.PocetniDatum.Size = new System.Drawing.Size(200, 20);
+            this.PocetniDatum.Size = new System.Drawing.Size(145, 20);
             this.PocetniDatum.TabIndex = 36;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 12);
+            this.label2.Location = new System.Drawing.Point(35, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 35;
@@ -59,15 +59,15 @@
             // Krajnji_Datum
             // 
             this.Krajnji_Datum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Krajnji_Datum.Location = new System.Drawing.Point(421, 7);
+            this.Krajnji_Datum.Location = new System.Drawing.Point(368, 12);
             this.Krajnji_Datum.Name = "Krajnji_Datum";
-            this.Krajnji_Datum.Size = new System.Drawing.Size(200, 20);
+            this.Krajnji_Datum.Size = new System.Drawing.Size(156, 20);
             this.Krajnji_Datum.TabIndex = 40;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 13);
+            this.label3.Location = new System.Drawing.Point(292, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 39;
@@ -88,14 +88,14 @@
             this.Sala_CMB.FormattingEnabled = true;
             this.Sala_CMB.Location = new System.Drawing.Point(119, 52);
             this.Sala_CMB.Name = "Sala_CMB";
-            this.Sala_CMB.Size = new System.Drawing.Size(121, 21);
+            this.Sala_CMB.Size = new System.Drawing.Size(145, 21);
             this.Sala_CMB.TabIndex = 37;
             // 
             // Vrsta_CMB
             // 
             this.Vrsta_CMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Vrsta_CMB.FormattingEnabled = true;
-            this.Vrsta_CMB.Location = new System.Drawing.Point(421, 52);
+            this.Vrsta_CMB.Location = new System.Drawing.Point(368, 51);
             this.Vrsta_CMB.Name = "Vrsta_CMB";
             this.Vrsta_CMB.Size = new System.Drawing.Size(156, 21);
             this.Vrsta_CMB.TabIndex = 54;
@@ -103,7 +103,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(333, 59);
+            this.label5.Location = new System.Drawing.Point(280, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 53;
@@ -111,9 +111,9 @@
             // 
             // KreirajIzvjestaj_BTN
             // 
-            this.KreirajIzvjestaj_BTN.Location = new System.Drawing.Point(658, 52);
+            this.KreirajIzvjestaj_BTN.Location = new System.Drawing.Point(426, 87);
             this.KreirajIzvjestaj_BTN.Name = "KreirajIzvjestaj_BTN";
-            this.KreirajIzvjestaj_BTN.Size = new System.Drawing.Size(98, 23);
+            this.KreirajIzvjestaj_BTN.Size = new System.Drawing.Size(100, 30);
             this.KreirajIzvjestaj_BTN.TabIndex = 55;
             this.KreirajIzvjestaj_BTN.Text = "Kreiraj izvještaj";
             this.KreirajIzvjestaj_BTN.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 122);
+            this.ClientSize = new System.Drawing.Size(548, 130);
             this.Controls.Add(this.KreirajIzvjestaj_BTN);
             this.Controls.Add(this.Vrsta_CMB);
             this.Controls.Add(this.label5);

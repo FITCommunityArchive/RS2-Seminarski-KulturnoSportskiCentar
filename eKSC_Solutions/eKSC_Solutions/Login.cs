@@ -15,7 +15,14 @@ namespace eKSC_Solutions
 	public class Login : ContentPage
 	{
         private WebAPIHelper korisnikServices=new WebAPIHelper(Global.apiRoute,Global.KorisnikRoute);
-		public Login ()
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Global.logiraniKorisnik = null;
+            NavigationPage.SetHasNavigationBar(this, false);
+          
+        }
+        public Login ()
 		{
             NavigationPage.SetHasBackButton(this,false);
             StackLayout stek = new StackLayout();
@@ -53,8 +60,11 @@ namespace eKSC_Solutions
                         if (K.LozinkaHash == UIHelper.GenerateHash(LozinkaInput.Text, K.LozinkaSalt))
                         {
                             Global.logiraniKorisnik = K;
-                            Navigation.PushAsync(new MainPage());
-                            
+
+                            Navigation.PushAsync(new Navigation.MyPage());
+                            Navigation.PushModalAsync(new Navigation.MyPage());
+                            ////Navigation.PushAsync(new MainPage());
+
                         }
                         else
                         {

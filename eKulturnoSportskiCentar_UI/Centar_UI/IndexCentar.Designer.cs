@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Centar_DGV = new System.Windows.Forms.DataGridView();
-            this.CentarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AdresaInput = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.TelefonInput = new System.Windows.Forms.MaskedTextBox();
@@ -45,65 +39,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.Sacuvaj_BTN = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Centar_DGV)).BeginInit();
+            this.Centar_DGV = new System.Windows.Forms.DataGridView();
+            this.CentarID_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Centar_DGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Centar_DGV
-            // 
-            this.Centar_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Centar_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CentarID,
-            this.Naziv,
-            this.Adresa,
-            this.Telefon,
-            this.Email});
-            this.Centar_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Centar_DGV.Location = new System.Drawing.Point(0, 151);
-            this.Centar_DGV.Name = "Centar_DGV";
-            this.Centar_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Centar_DGV.Size = new System.Drawing.Size(608, 453);
-            this.Centar_DGV.TabIndex = 8;
-            this.Centar_DGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Centar_DGV_CellContentDoubleClick);
-            // 
-            // CentarID
-            // 
-            this.CentarID.DataPropertyName = "CentarID";
-            this.CentarID.HeaderText = "CentarID";
-            this.CentarID.Name = "CentarID";
-            this.CentarID.ReadOnly = true;
-            this.CentarID.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // Adresa
-            // 
-            this.Adresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Adresa.DataPropertyName = "Adresa";
-            this.Adresa.HeaderText = "Adresa";
-            this.Adresa.Name = "Adresa";
-            this.Adresa.ReadOnly = true;
-            // 
-            // Telefon
-            // 
-            this.Telefon.DataPropertyName = "Telefon";
-            this.Telefon.HeaderText = "Telefon";
-            this.Telefon.Name = "Telefon";
-            this.Telefon.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
             // 
             // AdresaInput
             // 
@@ -181,19 +126,86 @@
             // 
             // Sacuvaj_BTN
             // 
-            this.Sacuvaj_BTN.Location = new System.Drawing.Point(410, 99);
+            this.Sacuvaj_BTN.Location = new System.Drawing.Point(379, 97);
             this.Sacuvaj_BTN.Name = "Sacuvaj_BTN";
-            this.Sacuvaj_BTN.Size = new System.Drawing.Size(132, 40);
+            this.Sacuvaj_BTN.Size = new System.Drawing.Size(142, 30);
             this.Sacuvaj_BTN.TabIndex = 35;
             this.Sacuvaj_BTN.Text = "Sačuvaj";
             this.Sacuvaj_BTN.UseVisualStyleBackColor = true;
             this.Sacuvaj_BTN.Click += new System.EventHandler(this.Sacuvaj_BTN_Click);
             // 
+            // Centar_DGV
+            // 
+            this.Centar_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Centar_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CentarID_,
+            this.Naziv,
+            this.Adresa,
+            this.Telefon,
+            this.Email});
+            this.Centar_DGV.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Centar_DGV.Location = new System.Drawing.Point(0, 157);
+            this.Centar_DGV.Name = "Centar_DGV";
+            this.Centar_DGV.Size = new System.Drawing.Size(534, 354);
+            this.Centar_DGV.TabIndex = 36;
+            // 
+            // CentarID_
+            // 
+            this.CentarID_.DataPropertyName = "CentarID";
+            this.CentarID_.HeaderText = "CentarID_";
+            this.CentarID_.Name = "CentarID_";
+            this.CentarID_.ReadOnly = true;
+            this.CentarID_.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // Adresa
+            // 
+            this.Adresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Adresa.DataPropertyName = "Adresa";
+            this.Adresa.HeaderText = "Adresa";
+            this.Adresa.Name = "Adresa";
+            this.Adresa.ReadOnly = true;
+            // 
+            // Telefon
+            // 
+            this.Telefon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Telefon.DataPropertyName = "Telefon";
+            this.Telefon.HeaderText = "Telefon";
+            this.Telefon.Name = "Telefon";
+            this.Telefon.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(17, 112);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(335, 15);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Za odabir centra kliknite dva puta na željeni centar!";
+            // 
             // IndexCentar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 604);
+            this.ClientSize = new System.Drawing.Size(534, 511);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Centar_DGV);
             this.Controls.Add(this.Sacuvaj_BTN);
             this.Controls.Add(this.AdresaInput);
             this.Controls.Add(this.label4);
@@ -203,7 +215,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NazivInput);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Centar_DGV);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "IndexCentar";
@@ -211,20 +222,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Centar";
             this.Load += new System.EventHandler(this.IndexCentar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Centar_DGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Centar_DGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView Centar_DGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CentarID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.MaskedTextBox AdresaInput;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox TelefonInput;
@@ -235,5 +240,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button Sacuvaj_BTN;
+        private System.Windows.Forms.DataGridView Centar_DGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CentarID_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.Label label5;
     }
 }

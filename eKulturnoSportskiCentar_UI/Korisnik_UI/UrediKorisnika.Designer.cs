@@ -72,9 +72,9 @@
             // 
             // Odustani_BTN
             // 
-            this.Odustani_BTN.Location = new System.Drawing.Point(13, 406);
+            this.Odustani_BTN.Location = new System.Drawing.Point(13, 403);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(117, 21);
+            this.Odustani_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odustani_BTN.TabIndex = 66;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -82,9 +82,9 @@
             // 
             // UrediKorisnika_BTN
             // 
-            this.UrediKorisnika_BTN.Location = new System.Drawing.Point(147, 406);
+            this.UrediKorisnika_BTN.Location = new System.Drawing.Point(164, 403);
             this.UrediKorisnika_BTN.Name = "UrediKorisnika_BTN";
-            this.UrediKorisnika_BTN.Size = new System.Drawing.Size(117, 23);
+            this.UrediKorisnika_BTN.Size = new System.Drawing.Size(100, 30);
             this.UrediKorisnika_BTN.TabIndex = 65;
             this.UrediKorisnika_BTN.Text = "Uredi";
             this.UrediKorisnika_BTN.UseVisualStyleBackColor = true;

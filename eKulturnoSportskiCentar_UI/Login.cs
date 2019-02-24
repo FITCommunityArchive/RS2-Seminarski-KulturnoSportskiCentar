@@ -26,7 +26,7 @@ namespace eKulturnoSportskiCentar_UI
 
         private void Odustani_BTN_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void Prijava_BTN_Click(object sender, EventArgs e)

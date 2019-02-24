@@ -12,7 +12,7 @@ namespace eKSC_Solutions
         public App()
         {
             InitializeComponent();
-
+            
             MainPage = new NavigationPage(new Login());
         }
 

@@ -67,7 +67,7 @@
             this.Korisnici_DGV.Location = new System.Drawing.Point(0, 100);
             this.Korisnici_DGV.Name = "Korisnici_DGV";
             this.Korisnici_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Korisnici_DGV.Size = new System.Drawing.Size(374, 341);
+            this.Korisnici_DGV.Size = new System.Drawing.Size(329, 341);
             this.Korisnici_DGV.TabIndex = 14;
             // 
             // KorisnikID
@@ -96,19 +96,19 @@
             // 
             // Rezervisi_BTN
             // 
-            this.Rezervisi_BTN.Location = new System.Drawing.Point(182, 59);
+            this.Rezervisi_BTN.Location = new System.Drawing.Point(205, 59);
             this.Rezervisi_BTN.Name = "Rezervisi_BTN";
-            this.Rezervisi_BTN.Size = new System.Drawing.Size(123, 23);
+            this.Rezervisi_BTN.Size = new System.Drawing.Size(100, 30);
             this.Rezervisi_BTN.TabIndex = 15;
-            this.Rezervisi_BTN.Text = "Rezervisi za korisnika";
+            this.Rezervisi_BTN.Text = "Rezerviši";
             this.Rezervisi_BTN.UseVisualStyleBackColor = true;
             this.Rezervisi_BTN.Click += new System.EventHandler(this.Rezervisi_BTN_Click);
             // 
             // Odustani_BTN
             // 
-            this.Odustani_BTN.Location = new System.Drawing.Point(52, 59);
+            this.Odustani_BTN.Location = new System.Drawing.Point(33, 59);
             this.Odustani_BTN.Name = "Odustani_BTN";
-            this.Odustani_BTN.Size = new System.Drawing.Size(75, 23);
+            this.Odustani_BTN.Size = new System.Drawing.Size(100, 30);
             this.Odustani_BTN.TabIndex = 15;
             this.Odustani_BTN.Text = "Odustani";
             this.Odustani_BTN.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 441);
+            this.ClientSize = new System.Drawing.Size(329, 441);
             this.Controls.Add(this.Odustani_BTN);
             this.Controls.Add(this.Rezervisi_BTN);
             this.Controls.Add(this.Korisnici_DGV);

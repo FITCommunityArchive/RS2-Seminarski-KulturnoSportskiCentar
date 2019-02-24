@@ -14,7 +14,7 @@ namespace eKulturnoSportskiCentar_API.Util
 
         public List<Dogadjaji_Result> GetSlicniDogadjaji(int KorisnikID)
         {
-            List<DogadjajOcjena> ocjenjeniDogadjaji = db.DogadjajOcjena.Where(x => x.KorisnikID == KorisnikID).OrderBy(x => x.KorisnikID).ToList();
+           // List<DogadjajOcjena> ocjenjeniDogadjaji = db.DogadjajOcjena.Where(x => x.KorisnikID == KorisnikID).OrderBy(x => x.KorisnikID).ToList();
             List<KorisnikDogadjaj> korisnikDogadjaji = db.KorisnikDogadjaj.Where(x => x.KorisnikID == KorisnikID).OrderBy(x => x.KorisnikID).ToList();
 
 
@@ -23,38 +23,44 @@ namespace eKulturnoSportskiCentar_API.Util
 
                 foreach (KorisnikDogadjaj KD in korisnikDogadjaji)
                 {
-                    foreach (DogadjajOcjena DO in ocjenjeniDogadjaji)
-                    {
-                        if (KD.DogadjajID == DO.DogadjajID)
-                        {
-                            if (!PostojiDogadjaj(Convert.ToInt32(DO.DogadjajID), Dogadjaji))
-                            {
-                                Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == DO.DogadjajID)
-                                    .Include(x => x.VrstaDogadjaja).FirstOrDefault();
-                                Dogadjaji.Add(dogadjaj);
-                            }
-                        }
-                        else
-                        {
-                            if (!PostojiDogadjaj(Convert.ToInt32(DO.DogadjajID), Dogadjaji))
-                            {
-                                Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == DO.DogadjajID)
-                                    .Include(x => x.VrstaDogadjaja).FirstOrDefault();
-                                Dogadjaji.Add(dogadjaj);
-                            }
-                            if (!PostojiDogadjaj(KD.DogadjajID, Dogadjaji))
-                            {
-                                Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == KD.DogadjajID)
-                                    .Include(x => x.VrstaDogadjaja).FirstOrDefault();
-                                Dogadjaji.Add(dogadjaj);
-                            }
-                        }
-                    }
+                if (!PostojiDogadjaj(KD.DogadjajID, Dogadjaji))
+                {
+                    Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == KD.DogadjajID)
+                        .Include(x => x.VrstaDogadjaja).FirstOrDefault();
+                    Dogadjaji.Add(dogadjaj);
                 }
+                //foreach (DogadjajOcjena DO in ocjenjeniDogadjaji)
+                //    {
+                //        if (KD.DogadjajID == DO.DogadjajID)
+                //        {
+                //            if (!PostojiDogadjaj(Convert.ToInt32(DO.DogadjajID), Dogadjaji))
+                //            {
+                //                Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == DO.DogadjajID)
+                //                    .Include(x => x.VrstaDogadjaja).FirstOrDefault();
+                //                Dogadjaji.Add(dogadjaj);
+                //            }
+                //        }
+                //        else
+                //        {
+                //            if (!PostojiDogadjaj(Convert.ToInt32(DO.DogadjajID), Dogadjaji))
+                //            {
+                //                Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == DO.DogadjajID)
+                //                    .Include(x => x.VrstaDogadjaja).FirstOrDefault();
+                //                Dogadjaji.Add(dogadjaj);
+                //            }
+                //            if (!PostojiDogadjaj(KD.DogadjajID, Dogadjaji))
+                //            {
+                //                Dogadjaj dogadjaj = db.Dogadjaj.Where(x => x.DogadjajID == KD.DogadjajID)
+                //                    .Include(x => x.VrstaDogadjaja).FirstOrDefault();
+                //                Dogadjaji.Add(dogadjaj);
+                //            }
+                //        }
+                //    }
+            }
 
 
 
-                List<VrstaDogadjaja> vrste = new List<VrstaDogadjaja>();
+            List<VrstaDogadjaja> vrste = new List<VrstaDogadjaja>();
                 if (vrste.Count > 0)
                 {
                 }
@@ -101,6 +107,26 @@ namespace eKulturnoSportskiCentar_API.Util
                         povrat.Add(JD);
                     }
                 }
+            foreach (var X in povrat)
+            {
+                List<KorisnikDogadjaj> ListaPrisutnih = db.KorisnikDogadjaj.Where(s => s.DogadjajID == X.DogadjajID).ToList();
+                List<DogadjajOcjena> DogadjajOcjena = db.DogadjajOcjena.Where(o => o.DogadjajID == X.DogadjajID).Include(x => x.Ocjena).ToList();
+                X.BrojPrisutnih = ListaPrisutnih.Count;
+                double suma = 0;
+                foreach (var O in DogadjajOcjena)
+                {
+                    suma += Double.Parse(O.Ocjena.OcjenaBroj.ToString());
+                }
+                if (X.BrojPrisutnih == 0)
+                {
+                    X.ProsjecnaOcjena = 0;
+                }
+                else
+                {
+                    X.ProsjecnaOcjena = suma / DogadjajOcjena.Count;
+                }
+
+            }
                 return povrat; 
             }
           

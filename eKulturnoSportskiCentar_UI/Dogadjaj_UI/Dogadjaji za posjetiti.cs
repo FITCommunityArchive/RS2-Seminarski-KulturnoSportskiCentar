@@ -34,7 +34,7 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
             HttpResponseMessage response = dogadjajaServices.GetActionResponse("GetDogadjajiZaPrisustvovati", Global.logiraniKorisnik.KorisnikID.ToString());
             if (response.IsSuccessStatusCode)
             {
-                List<DogadjajiZaPrisustvovati_Result> lista = response.Content.ReadAsAsync<List<DogadjajiZaPrisustvovati_Result>>().Result;
+                List<DogadjajiZaPrisustvovati_Result> lista = response.Content.ReadAsAsync<List<DogadjajiZaPrisustvovati_Result>>().Result.OrderByDescending(x => x.Datum).ToList(); ;
                 Dogadjaji_DGV.DataSource = lista;
             }
 
@@ -80,17 +80,22 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
             {
                 MessageBox.Show("Nemoguće ocjeniti događaj jer je isti otkazan!");
             }
-            int result = DateTime.Compare(DateTime.Today, D.Termin.Datum);
-            if (result > 0)
-            {
-                OcjeniDogadjaj f = new OcjeniDogadjaj(DogadjajID);
-                f.Show();
-
-            }
+           
             else
             {
-                MessageBox.Show("Nije moguće ocjenuti događaj koji se nije desio!");
+                int result = DateTime.Compare(DateTime.Today, D.Termin.Datum);
+                if (result > 0)
+                {
+                    OcjeniDogadjaj f = new OcjeniDogadjaj(DogadjajID);
+                    f.Show();
+
+                }
+                else
+                {
+                    MessageBox.Show("Nije moguće ocjenuti događaj koji se nije desio!");
+                }
             }
+           
 
         }
 

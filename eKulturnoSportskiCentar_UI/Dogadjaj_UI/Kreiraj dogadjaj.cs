@@ -168,7 +168,7 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
             List<DodatnaOprema> povrat = new List<DodatnaOprema>();
             int DodatnaOpremaID = 0;
             for (var i = 0; i < DodatnaOprema_DGV.RowCount; i++)
-                if (Convert.ToBoolean(DodatnaOprema_DGV.Rows[i].Cells[4].Value))
+                if (Convert.ToBoolean(DodatnaOprema_DGV.Rows[i].Cells[3].Value))
                 {
                     DodatnaOpremaID = Convert.ToInt32(DodatnaOprema_DGV.Rows[i].Cells[0].Value);
                     HttpResponseMessage response = dodatnaOpremaServices.GetResponse(DodatnaOpremaID.ToString());

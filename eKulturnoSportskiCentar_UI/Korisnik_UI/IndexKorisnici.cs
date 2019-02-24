@@ -21,6 +21,7 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
         public IndexKorisnici()
         {
             InitializeComponent();
+            Korisnici_DGV.AutoGenerateColumns = false;
         }
         
         private void BindGrid()
@@ -29,7 +30,7 @@ namespace eKulturnoSportskiCentar_UI.Korisnik_UI
                 korisniciServices.GetActionResponse("SearchByName", imePrezimeInput.Text.Trim());
             if (response.IsSuccessStatusCode)
             {
-                List<Korisnici_Result> korisnici = response.Content.ReadAsAsync<List<Korisnici_Result>>().Result;
+                List<Korisnici_Result> korisnici = response.Content.ReadAsAsync<List<Korisnici_Result>>().Result.OrderBy(x => x.Prezime).ToList(); ;
                 Korisnici_DGV.DataSource = korisnici;
             }
             else

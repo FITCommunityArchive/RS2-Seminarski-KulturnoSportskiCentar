@@ -41,7 +41,7 @@ namespace eKSC_Solutions
             {
                 var jsonObjecT = response.Content.ReadAsStringAsync();
                 List<DogadjajiZaPrisustvovati_Result> lista =
-                    JsonConvert.DeserializeObject<List<DogadjajiZaPrisustvovati_Result>>(jsonObjecT.Result);
+                    JsonConvert.DeserializeObject<List<DogadjajiZaPrisustvovati_Result>>(jsonObjecT.Result).OrderByDescending(x => x.Datum).ToList(); ;
                 DogadjajiList.ItemsSource = lista;
             }
         }

@@ -145,6 +145,7 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
                 if (responseUpdate.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Događaj uspješno otkazan");
+                    BindGrid(true);
                 }
             }
         }
@@ -152,17 +153,28 @@ namespace eKulturnoSportskiCentar_UI.Dogadjaj_UI
         private void listaPristunih_BTN_Click(object sender, EventArgs e)
         {
             int dogadjajID = Convert.ToInt32(Dogadjaj_DGV.SelectedRows[0].Cells[0].Value);
-
-            ListaPrisutnih f =new ListaPrisutnih(dogadjajID);
-            f.ShowDialog();
+            var parent = MdiParent;
+            foreach (var x in MdiParent.MdiChildren)
+            {
+                x.Close();
+            }
+            ListaPrisutnih f = new ListaPrisutnih(dogadjajID,false);
+            f.MdiParent = parent;
+            f.Show();
         }
 
         private void detalji_BTN_Click(object sender, EventArgs e)
         {
             int dogadjajID = Convert.ToInt32(Dogadjaj_DGV.SelectedRows[0].Cells[0].Value);
             MojiDogadjaji_Result MDR = lista.Where(x => x.DogadjajID == dogadjajID).FirstOrDefault();
+            var parent = MdiParent;
+            foreach (var x in MdiParent.MdiChildren)
+            {
+                x.Close();
+            }
             DetaljiDogadjaja f = new DetaljiDogadjaja(MDR);
-            f.ShowDialog();
+            f.MdiParent = parent;
+            f.Show();
         }
     }
 }
